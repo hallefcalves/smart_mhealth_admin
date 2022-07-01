@@ -6,7 +6,8 @@ class CenteredMessage extends StatelessWidget {
   final double iconSize;
   final double fontSize;
 
-  CenteredMessage(
+  // ignore: use_key_in_widget_constructors
+  const CenteredMessage(
     this.message, {
     required this.icon,
     this.iconSize = 64,
@@ -21,11 +22,12 @@ class CenteredMessage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Visibility(
+            // ignore: unnecessary_null_comparison
+            visible: icon != null,
             child: Icon(
               icon,
               size: iconSize,
             ),
-            visible: icon != null,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 24.0),

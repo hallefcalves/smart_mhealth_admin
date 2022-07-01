@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
@@ -7,23 +5,25 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Login extends StatelessWidget {
-  Login({Key? key}) : super(key: key);
+  const Login({Key? key}) : super(key: key);
   final String image = 'lib/assets/images/Logo_Verde.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarCustom(),
       endDrawer: const DrawerCustom(),
-      body: Column(
+      body: ListView(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Text(
-              'O despertador',
-              style: GoogleFonts.rampartOne(
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                'O despertador',
+                style: GoogleFonts.rampartOne(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w400,
+                  color: MyTheme.defaultTheme.primaryColor,
+                ),
               ),
             ),
           ),
@@ -33,12 +33,14 @@ class Login extends StatelessWidget {
               scale: 2.2,
             ),
           ),
-          Text(
-            'Deles',
-            style: GoogleFonts.rampartOne(
-              fontSize: 22,
-              fontWeight: FontWeight.w400,
-              color: MyTheme.defaultTheme.primaryColor,
+          Center(
+            child: Text(
+              'Deles',
+              style: GoogleFonts.rampartOne(
+                fontSize: 22,
+                fontWeight: FontWeight.w400,
+                color: MyTheme.defaultTheme.primaryColor,
+              ),
             ),
           ),
           Padding(
@@ -88,24 +90,22 @@ class Login extends StatelessWidget {
           Align(
             alignment: Alignment.topLeft,
             child: Text(
-              
               textDirection: TextDirection.ltr,
               style: GoogleFonts.roboto(
                 fontSize: 12,
-
               ),
               'Esqueceu a Senha?',
             ),
           ),
           ElevatedButton(
             onPressed: () => {},
-            child: const Text('Login'),
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
+            child: const Text('Login'),
           )
         ],
       ),
