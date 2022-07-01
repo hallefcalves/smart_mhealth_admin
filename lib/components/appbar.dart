@@ -10,21 +10,31 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       backgroundColor: MyTheme.defaultTheme.appBarTheme.backgroundColor,
       iconTheme: IconThemeData(color: MyTheme.defaultTheme.primaryColor),
+      elevation: 0,
       actions: <Widget>[
         IconButton(
           onPressed: () {
             Scaffold.of(context).openEndDrawer();
           },
-          icon: Icon(Icons.home),
+          icon: const Icon(
+            Icons.home,
+            size: 25.0,
+          ),
         ),
         IconButton(
-          icon: FaIcon(FontAwesomeIcons.solidIdBadge),
+          icon: const FaIcon(
+            FontAwesomeIcons.solidIdBadge,
+            size: 25.0,
+          ),
           onPressed: () {
             Scaffold.of(context).openEndDrawer();
           },
         ),
         IconButton(
-          icon: Icon(Icons.menu),
+          icon: const Icon(
+            Icons.menu_open,
+            size: 25.0,
+          ),
           onPressed: () {
             Scaffold.of(context).openEndDrawer();
           },
@@ -34,5 +44,5 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight/1.5);
 }
