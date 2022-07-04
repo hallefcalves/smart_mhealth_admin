@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Login extends StatelessWidget {
@@ -106,7 +107,23 @@ class Login extends StatelessWidget {
               ),
             ),
             child: const Text('Login'),
-          )
+          ),
+          ElevatedButton(
+            onPressed: () => {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Cadastro_idoso(),
+                ),
+              ),
+            },
+            style: ElevatedButton.styleFrom(
+              primary: MyTheme.defaultTheme.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: const Text('Cadastrar'),
+          ),
         ],
       ),
     );
