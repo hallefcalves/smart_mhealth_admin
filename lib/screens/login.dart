@@ -120,17 +120,20 @@ class Login extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-                top: 12.0, left: 155.0, right: 155.0, bottom: 28.0),
-            child: ElevatedButton(
-              onPressed: () => {},
-              style: ElevatedButton.styleFrom(
-                primary: MyTheme.defaultTheme.primaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+            padding: const EdgeInsets.only(top: 12.0, bottom: 28.0),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () => {},
+                style: ElevatedButton.styleFrom(
+                  primary: MyTheme.defaultTheme.primaryColor,
+                  minimumSize: const Size(80, 40),
+                  maximumSize: const Size(80, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
+                child: const Text('Login'),
               ),
-              child: const Text('Login'),
             ),
           ),
           Row(children: <Widget>[
@@ -139,7 +142,7 @@ class Login extends StatelessWidget {
             Expanded(child: Divider()),
           ]),
           Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
+            padding: const EdgeInsets.only(bottom: 12.0),
             child: Center(
               child: Text(
                 'continue com',
@@ -192,22 +195,24 @@ class Login extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: 35.0,
+              top: 28.0,
               left: 70.0,
               right: 70.0,
             ),
-            child: ElevatedButton(
-              onPressed: () => {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Cadastro_idoso(),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () => {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Cadastro_idoso(),
+                    ),
                   ),
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: MyTheme.defaultTheme.primaryColor,
                 ),
-              },
-              style: ElevatedButton.styleFrom(
-                primary: MyTheme.defaultTheme.primaryColor,
+                child: const Text('Não tem uma conta? Cadastre-se'),
               ),
-              child: const Text('Não tem uma conta? Cadastre-se'),
             ),
           ),
         ],
