@@ -9,6 +9,7 @@ const secondaryColor =  Color.fromARGB(255, 232, 225, 255);
 const background = Color.fromARGB(255, 240, 240, 240);
 const textColor =  Color.fromARGB(255, 0, 0, 0);
 
+const facebookColor =  Color.fromRGBO(59, 89, 152, 1);
 class MyTheme {
   static final ThemeData defaultTheme = _buildMyTheme();
 
@@ -20,7 +21,7 @@ class MyTheme {
         color: appBarColor,
       ),
       primaryColor: primaryColor,
-
+      accentColor: facebookColor,
       buttonTheme: base.buttonTheme.copyWith(
         buttonColor: secondaryColor,
         textTheme: ButtonTextTheme.primary,
