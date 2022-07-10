@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/login.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
@@ -18,6 +19,7 @@ class Smartmhealth extends StatelessWidget {
       routes: {
         '/': (context) => Login(),
         '/cadastro_admin': (context) => Cadastro_admin(),
+        '/agendas': (context) => Agendas()
       },
     );
   }

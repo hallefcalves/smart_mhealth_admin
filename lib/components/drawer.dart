@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/ic.dart';
 import 'package:iconify_flutter/icons/radix_icons.dart';
+import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class DrawerCustom extends StatelessWidget {
@@ -65,7 +66,9 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+
+                },
                 child: Text('Meus Cuidados'),
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
@@ -97,7 +100,13 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => Agendas()
+                    )
+                  );
+                },
                 child: Text('Agendas'),
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,

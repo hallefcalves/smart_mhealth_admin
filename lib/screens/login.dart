@@ -201,12 +201,12 @@ class Login extends StatelessWidget {
             ),
             child: Center(
               child: ElevatedButton(
-                onPressed: () => {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => Cadastro_admin(),
-                    ),
+                onPressed: () => {Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Cadastro_admin(),
                   ),
+                ),
+
                 },
                 style: ElevatedButton.styleFrom(
                   primary: MyTheme.defaultTheme.primaryColor,
