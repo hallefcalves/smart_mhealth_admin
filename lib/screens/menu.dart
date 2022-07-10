@@ -58,7 +58,7 @@ class Menu extends StatelessWidget {
               userIcon,
             ),
             onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
+              Navigator.of(context).pushNamed('/meus_cuidados');
             },
           ),
           IconButton(
@@ -66,7 +66,7 @@ class Menu extends StatelessWidget {
               userIcon,
             ),
             onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
+              Navigator.of(context).pushNamed('/cadastro_admin');//visualizar perfui
             },
           ),
           IconButton(
@@ -74,7 +74,7 @@ class Menu extends StatelessWidget {
               userIcon,
             ),
             onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
+              Navigator.of(context).pushNamed('/listagem_remedios');
             },
           ),
           IconButton(

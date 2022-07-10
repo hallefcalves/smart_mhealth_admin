@@ -47,7 +47,7 @@ class Meus_cuidados extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {Navigator.of(context).pushNamed('/perfil_idoso')},
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
@@ -59,7 +59,7 @@ class Meus_cuidados extends StatelessWidget {
             child: const Text('Ver perfil'),
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {Navigator.of(context).pushNamed('/listagem_remedios')},
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
@@ -68,10 +68,10 @@ class Meus_cuidados extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: const Text('Cadastrar Remédio'),
+            child: const Text('Adicionar Remédio'),
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {Navigator.of(context).pushNamed('/perfil_idoso')},
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),

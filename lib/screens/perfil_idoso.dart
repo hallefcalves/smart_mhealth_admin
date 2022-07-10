@@ -47,7 +47,7 @@ class Perfil_idoso extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {},//popuc code e others
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
@@ -59,7 +59,7 @@ class Perfil_idoso extends StatelessWidget {
             child: const Text('+'),
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {Navigator.of(context).pushNamed('/meus_cuidados')},
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),

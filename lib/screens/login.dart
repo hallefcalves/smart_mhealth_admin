@@ -123,7 +123,7 @@ class Login extends StatelessWidget {
             padding: const EdgeInsets.only(top: 12.0, bottom: 28.0),
             child: Center(
               child: ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => {Navigator.of(context).pushNamed('/menu')},
                 style: ElevatedButton.styleFrom(
                   primary: MyTheme.defaultTheme.primaryColor,
                   minimumSize: const Size(80, 40),
