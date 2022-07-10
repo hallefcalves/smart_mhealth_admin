@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/login.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 

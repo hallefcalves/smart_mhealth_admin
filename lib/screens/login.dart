@@ -5,7 +5,7 @@ import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Login extends StatelessWidget {
