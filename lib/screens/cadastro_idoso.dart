@@ -6,8 +6,8 @@ import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
-class Cadastro_idoso extends StatelessWidget {
-  Cadastro_idoso({Key? key}) : super(key: key);
+class Cadastro_admin extends StatelessWidget {
+  Cadastro_admin({Key? key}) : super(key: key);
   final String image = '../assets/images/logo.svg';
 
   @override
@@ -65,7 +65,8 @@ class Cadastro_idoso extends StatelessWidget {
                       fontWeight: FontWeight.w200,
                       fontFamily: "Roboto"),
                 ),
-              )),
+              )
+          ),
           const Padding(
               padding: EdgeInsets.all(5),
               child: Align(
@@ -75,9 +76,11 @@ class Cadastro_idoso extends StatelessWidget {
                       fontSize: 16.0,
                       color: Color(0xFF000000),
                       fontWeight: FontWeight.w200,
-                      fontFamily: "Roboto"),
+                      fontFamily: "Roboto"
+                  ),
                 ),
-              ))
+              )
+          )
         ],
       ),
     );

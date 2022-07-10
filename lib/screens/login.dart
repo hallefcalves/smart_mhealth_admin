@@ -204,7 +204,7 @@ class Login extends StatelessWidget {
                 onPressed: () => {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => Cadastro_idoso(),
+                      builder: (context) => Cadastro_admin(),
                     ),
                   ),
                 },
