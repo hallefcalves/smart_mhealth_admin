@@ -23,11 +23,7 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
       actions: <Widget>[
         IconButton(
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Dashboard(),
-              ),
-            );
+            Navigator.of(context).pushNamed('/menu');
           },
           icon: Iconify(
             homeIcon,

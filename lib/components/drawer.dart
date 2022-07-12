@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/ic.dart';
+import 'package:iconify_flutter/icons/radix_icons.dart';
+import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class DrawerCustom extends StatelessWidget {
@@ -63,17 +66,9 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: MyTheme.defaultTheme.primaryColor,
-                  primary: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    side: BorderSide(
-                      color: MyTheme.defaultTheme.primaryColor,
-                    ),
-                  ),
-                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/meus_cuidados');
+                },
                 child: Text('Meus Cuidados'),
               ),
             ),
@@ -90,6 +85,14 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
+                child: Text('Sair'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/listagem_remedios');
+                },
                 child: Text('Remédios'),
               ),
             ),
@@ -106,6 +109,14 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
+                child: Text('Sair'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/agendas');
+                },
                 child: Text('Agendas'),
               ),
             ),
@@ -122,6 +133,14 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
+                child: Text('Sair'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/relatorios');
+                },
                 child: Text('Relatórios'),
               ),
             ),
@@ -138,6 +157,14 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
+                child: Text('Sair'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/colaboradores');
+                },
                 child: Text('Colaboradores'),
               ),
             ),
@@ -159,7 +186,9 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/cadastro_admin');
+                },
                 icon: Iconify(
                   userIcon,
                 ),

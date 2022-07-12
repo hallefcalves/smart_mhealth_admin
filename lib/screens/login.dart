@@ -6,8 +6,7 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/logo.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
-import 'package:smart_mhealth_admin/screens/dashboard.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Login extends StatelessWidget {
@@ -101,14 +100,7 @@ class Login extends StatelessWidget {
             padding: const EdgeInsets.only(top: 12.0, bottom: 28.0),
             child: Center(
               child: ElevatedButton(
-                onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Dashboard(),
-                    ),
-                  ),
-                },
+                onPressed: () => {Navigator.of(context).pushNamed('/menu')},
                 style: ElevatedButton.styleFrom(
                   primary: MyTheme.defaultTheme.primaryColor,
                   minimumSize: const Size(80, 40),
@@ -186,12 +178,12 @@ class Login extends StatelessWidget {
             ),
             child: Center(
               child: ElevatedButton(
-                onPressed: () => {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => CadastroIdoso(),
-                    ),
+                onPressed: () => {Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Cadastro_admin(),
                   ),
+                ),
+
                 },
                 style: ElevatedButton.styleFrom(
                   primary: MyTheme.defaultTheme.primaryColor,

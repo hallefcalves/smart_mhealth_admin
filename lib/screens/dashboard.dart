@@ -67,7 +67,7 @@ class Dashboard extends StatelessWidget {
                 Navigator.of(context).pushNamed('/cadastro_idoso');
               },
               icon: Icon(
-                Icons.gear,
+                Icons.add,
                 color: MyTheme.defaultTheme.primaryColor,
               ),
             ),
