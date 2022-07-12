@@ -84,7 +84,9 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/listagem_remedios');
+                },
                 child: Text('Remédios'),
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,

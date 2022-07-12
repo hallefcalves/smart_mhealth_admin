@@ -65,53 +65,17 @@ class Agendas extends StatelessWidget {
               ),
             ),
           ),
-          IconButton(
-            icon: Iconify(
-              userIcon,
+          ElevatedButton(
+            onPressed: () => {Navigator.of(context).pushNamed('/cadastro_agenda')},
+            style: ElevatedButton.styleFrom(
+              primary: MyTheme.defaultTheme.primaryColor,
+              minimumSize: const Size(80, 40),
+              maximumSize: const Size(80, 40),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
             ),
-            onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
-            },
-          ),
-          IconButton(
-            icon: Iconify(
-              userIcon,
-            ),
-            onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
-            },
-          ),
-          IconButton(
-            icon: Iconify(
-              userIcon,
-            ),
-            onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
-            },
-          ),
-          IconButton(
-            icon: Iconify(
-              userIcon,
-            ),
-            onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
-            },
-          ),
-          IconButton(
-            icon: Iconify(
-              userIcon,
-            ),
-            onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
-            },
-          ),
-          IconButton(
-            icon: Iconify(
-              userIcon,
-            ),
-            onPressed: () {
-              //Scaffold.of(context).openEndDrawer();
-            },
+            child: const Text('Cadastrar nova agenda'),
           ),
         ],
       ),

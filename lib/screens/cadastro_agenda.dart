@@ -8,8 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
-class Relatorios extends StatelessWidget {
-  const Relatorios({Key? key}) : super(key: key);
+class Cadastro_agenda extends StatelessWidget {
+  const Cadastro_agenda({Key? key}) : super(key: key);
   final String image = 'lib/assets/images/Logo_Verde.png';
 
   //todo: other icons
@@ -24,23 +24,11 @@ class Relatorios extends StatelessWidget {
       endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Text(
-              'Relatórios',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.rampartOne(
-                fontSize: 30,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
-              ),
-            ),
-          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
-                'O despertador',
+                'Cadastro agenda',
                 style: GoogleFonts.rampartOne(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
@@ -49,23 +37,39 @@ class Relatorios extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Image.asset(
-              image,
-              scale: 2.2,
-            ),
-          ),
-          Center(
-            child: Text(
-              'Deles',
-              style: GoogleFonts.rampartOne(
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
+          ClipOval(
+            child:
+            Center(//mudar para img idoso
+              child: Image.asset(
+                image,
+                scale: 2.2,
               ),
             ),
           ),
-
+          ElevatedButton(
+            onPressed: () => {},//popuc code e others
+            style: ElevatedButton.styleFrom(
+              primary: MyTheme.defaultTheme.primaryColor,
+              minimumSize: const Size(80, 40),
+              maximumSize: const Size(80, 40),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: const Text('+'),
+          ),
+          ElevatedButton(
+            onPressed: () => {Navigator.of(context).pushNamed('/agendas')},
+            style: ElevatedButton.styleFrom(
+              primary: MyTheme.defaultTheme.primaryColor,
+              minimumSize: const Size(80, 40),
+              maximumSize: const Size(80, 40),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: const Text('Concluir'),
+          ),
         ],
       ),
     );
