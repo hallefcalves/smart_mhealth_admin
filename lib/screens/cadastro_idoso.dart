@@ -1,13 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
-class Cadastro_idoso extends StatelessWidget {
-  Cadastro_idoso({Key? key}) : super(key: key);
+class CadastroIdoso extends StatelessWidget {
+  const CadastroIdoso({Key? key}) : super(key: key);
   final String image = '../assets/images/logo.svg';
 
   @override

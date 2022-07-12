@@ -5,12 +5,14 @@ import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/components/logo.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
+import 'package:smart_mhealth_admin/screens/dashboard.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
-  final String image = 'lib/assets/images/Logo_Verde.png';
+  final String image = 'lib/assets/images/Logo.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,35 +20,11 @@ class Login extends StatelessWidget {
       endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
+          const SizedBox(height: 30),
           Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text(
-                'O despertador',
-                style: GoogleFonts.rampartOne(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                  color: MyTheme.defaultTheme.primaryColor,
-                ),
-              ),
-            ),
+            child: Transform.scale(scale: 1.1, child: LogoDeles())
           ),
-          Center(
-            child: Image.asset(
-              image,
-              scale: 2.2,
-            ),
-          ),
-          Center(
-            child: Text(
-              'Deles',
-              style: GoogleFonts.rampartOne(
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
-              ),
-            ),
-          ),
+          const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.only(
                 top: 26.0, right: 28.0, left: 29.0, bottom: 15.0),
@@ -123,7 +101,14 @@ class Login extends StatelessWidget {
             padding: const EdgeInsets.only(top: 12.0, bottom: 28.0),
             child: Center(
               child: ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Dashboard(),
+                    ),
+                  ),
+                },
                 style: ElevatedButton.styleFrom(
                   primary: MyTheme.defaultTheme.primaryColor,
                   minimumSize: const Size(80, 40),
@@ -204,7 +189,7 @@ class Login extends StatelessWidget {
                 onPressed: () => {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => Cadastro_idoso(),
+                      builder: (context) => CadastroIdoso(),
                     ),
                   ),
                 },

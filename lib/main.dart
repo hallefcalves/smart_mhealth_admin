@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
+import 'package:smart_mhealth_admin/screens/dashboard.dart';
 import 'package:smart_mhealth_admin/screens/login.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
@@ -14,10 +15,11 @@ class Smartmhealth extends StatelessWidget {
     return MaterialApp(
       title: 'Smartmhealth',
       theme: MyTheme.defaultTheme,
-      initialRoute: '/',
+      initialRoute: '/dashboard',
       routes: {
         '/': (context) => Login(),
-        '/cadastro_idoso': (context) => Cadastro_idoso(),
+        '/cadastro_idoso': (context) => CadastroIdoso(),
+        '/dashboard': (context) => Dashboard(),
       },
     );
   }

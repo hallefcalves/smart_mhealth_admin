@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/ic.dart';
-import 'package:iconify_flutter/icons/radix_icons.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class DrawerCustom extends StatelessWidget {
@@ -66,7 +64,22 @@ class DrawerCustom extends StatelessWidget {
             Center(
               child: TextButton(
                 onPressed: () {},
+                style: TextButton.styleFrom(
+                  backgroundColor: MyTheme.defaultTheme.primaryColor,
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    side: BorderSide(
+                      color: MyTheme.defaultTheme.primaryColor,
+                    ),
+                  ),
+                ),
                 child: Text('Meus Cuidados'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {},
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -77,12 +90,12 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {},
                 child: Text('Remédios'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {},
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -93,12 +106,12 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {},
                 child: Text('Agendas'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {},
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -109,12 +122,12 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {},
                 child: Text('Relatórios'),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () {},
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -125,28 +138,12 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {},
                 child: Text('Colaboradores'),
-                style: TextButton.styleFrom(
-                  backgroundColor: MyTheme.defaultTheme.primaryColor,
-                  primary: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    side: BorderSide(
-                      color: MyTheme.defaultTheme.primaryColor,
-                    ),
-                  ),
-                ),
               ),
             ),
             Center(
               child: TextButton(
                 onPressed: () {},
-                child: Text('Notificações'),
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -157,6 +154,7 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
+                child: Text('Notificações'),
               ),
             ),
             Center(

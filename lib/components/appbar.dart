@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_mhealth_admin/screens/dashboard.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 
@@ -22,7 +23,11 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
       actions: <Widget>[
         IconButton(
           onPressed: () {
-            Scaffold.of(context).openEndDrawer();
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => Dashboard(),
+              ),
+            );
           },
           icon: Iconify(
             homeIcon,
