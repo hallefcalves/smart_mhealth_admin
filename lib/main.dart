@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_remedio.dart';
+import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/screens/login.dart';
 import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
+import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 void main() => runApp(const Smartmhealth());
@@ -29,7 +31,9 @@ class Smartmhealth extends StatelessWidget {
         '/menu': (context) => Menu(),
         '/meus_cuidados': (context) => Meus_cuidados(),
         '/perfil_idoso': (context) => Perfil_idoso(),
-        '/agendas': (context) => Agendas()
+        '/agendas': (context) => Agendas(),
+        '/relatorios': (context) => Relatorios(),
+        '/colaboradores': (context) => Colaboradores()
       },
     );
   }

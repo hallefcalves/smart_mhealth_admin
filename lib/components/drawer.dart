@@ -101,11 +101,7 @@ class DrawerCustom extends StatelessWidget {
             Center(
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => Agendas()
-                    )
-                  );
+                  Navigator.of(context).pushNamed('/agendas');
                 },
                 child: Text('Agendas'),
                 style: TextButton.styleFrom(
@@ -122,7 +118,9 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/relatorios');
+                },
                 child: Text('Relatórios'),
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
@@ -138,7 +136,9 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/colaboradores');
+                },
                 child: Text('Colaboradores'),
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
@@ -170,7 +170,9 @@ class DrawerCustom extends StatelessWidget {
             ),
             Center(
               child: TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/cadastro_admin');
+                },
                 icon: Iconify(
                   userIcon,
                 ),
