@@ -28,7 +28,7 @@ class Perfil_idoso extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
-                'Meus Cuidados',
+                'Perfil Idoso',
                 style: GoogleFonts.rampartOne(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,

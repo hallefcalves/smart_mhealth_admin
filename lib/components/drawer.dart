@@ -67,7 +67,7 @@ class DrawerCustom extends StatelessWidget {
             Center(
               child: TextButton(
                 onPressed: () {
-
+                  Navigator.of(context).pushNamed('/meus_cuidados');
                 },
                 child: Text('Meus Cuidados'),
                 style: TextButton.styleFrom(

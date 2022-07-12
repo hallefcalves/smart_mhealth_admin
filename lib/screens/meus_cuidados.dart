@@ -24,6 +24,18 @@ class Meus_cuidados extends StatelessWidget {
       endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Text(
+              'Meus Cuidados',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.rampartOne(
+                fontSize: 30,
+                fontWeight: FontWeight.w400,
+                color: MyTheme.defaultTheme.primaryColor,
+              ),
+            ),
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0),
