@@ -6,11 +6,12 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_colaborador.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Colaboradores extends StatelessWidget {
   const Colaboradores({Key? key}) : super(key: key);
-  final String image = 'lib/assets/images/Logo_Verde.png';
+  final String image = 'lib/assets/images/Logo.png';
 
   //todo: other icons
   final String userIcon =
@@ -65,7 +66,12 @@ class Colaboradores extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () => {Navigator.of(context).pushNamed('/cadastro_colaborador')},
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CadastroColaborador()))
+            },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),

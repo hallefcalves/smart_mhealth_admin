@@ -11,7 +11,7 @@ import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
-  final String image = 'lib/assets/images/Logo.png';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,7 +180,7 @@ class Login extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => {Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Cadastro_admin(),
+                    builder: (context) => CadastroAdmin(),
                   ),
                 ),
 

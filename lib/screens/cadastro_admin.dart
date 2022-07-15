@@ -8,11 +8,12 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
+import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
-class Cadastro_admin extends StatelessWidget {
-  Cadastro_admin({Key? key}) : super(key: key);
-  final String image = '../assets/images/logo.svg';
+class CadastroAdmin extends StatelessWidget {
+  CadastroAdmin({Key? key}) : super(key: key);
+  final String image = '../assets/images/Logo.png';
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,12 @@ class Cadastro_admin extends StatelessWidget {
               alignment: Alignment.topRight,
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Menu()),
+                    );
                   },
-                  child: Text(
+                  child: const Text(
                     'Login',
                     style: TextStyle(
                       color: Colors.black,

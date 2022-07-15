@@ -5,6 +5,7 @@ import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:smart_mhealth_admin/components/logo.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Dashboard extends StatelessWidget {
@@ -64,7 +65,10 @@ class Dashboard extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: IconButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/cadastro_idoso');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CadastroIdoso()),
+                );
               },
               icon: Icon(
                 Icons.add,

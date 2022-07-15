@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/components/logo.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Relatorios extends StatelessWidget {
   const Relatorios({Key? key}) : super(key: key);
-  final String image = 'lib/assets/images/Logo_Verde.png';
 
   //todo: other icons
   final String userIcon =
@@ -36,36 +34,7 @@ class Relatorios extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text(
-                'O despertador',
-                style: GoogleFonts.rampartOne(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                  color: MyTheme.defaultTheme.primaryColor,
-                ),
-              ),
-            ),
-          ),
-          Center(
-            child: Image.asset(
-              image,
-              scale: 2.2,
-            ),
-          ),
-          Center(
-            child: Text(
-              'Deles',
-              style: GoogleFonts.rampartOne(
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
-              ),
-            ),
-          ),
-
+          const LogoDeles()
         ],
       ),
     );

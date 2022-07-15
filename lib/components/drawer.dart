@@ -4,6 +4,10 @@ import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/ic.dart';
 import 'package:iconify_flutter/icons/radix_icons.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
+import 'package:smart_mhealth_admin/screens/colaboradores.dart';
+import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
+import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
+import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class DrawerCustom extends StatelessWidget {
@@ -67,14 +71,36 @@ class DrawerCustom extends StatelessWidget {
             Center(
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/meus_cuidados');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MeusCuidados(),
+                    ),
+                  );
                 },
+                style: TextButton.styleFrom(
+                  backgroundColor: MyTheme.defaultTheme.primaryColor,
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    side: BorderSide(
+                      color: MyTheme.defaultTheme.primaryColor,
+                    ),
+                  ),
+                ),
                 child: Text('Meus Cuidados'),
               ),
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ListagemRemedios(),
+                    ),
+                  );
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -85,20 +111,19 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Text('Sair'),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/listagem_remedios');
-                },
                 child: Text('Remédios'),
               ),
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Agendas(),
+                    ),
+                  );
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -109,20 +134,19 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Text('Sair'),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/agendas');
-                },
                 child: Text('Agendas'),
               ),
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Relatorios(),
+                    ),
+                  );
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -133,20 +157,19 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Text('Sair'),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/relatorios');
-                },
                 child: Text('Relatórios'),
               ),
             ),
             Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Colaboradores(),
+                    ),
+                  );
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: MyTheme.defaultTheme.primaryColor,
                   primary: Colors.white,
@@ -157,14 +180,6 @@ class DrawerCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Text('Sair'),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/colaboradores');
-                },
                 child: Text('Colaboradores'),
               ),
             ),
@@ -224,6 +239,7 @@ class DrawerCustom extends StatelessWidget {
                 ),
               ),
             ),
+            
           ],
         ),
       ),

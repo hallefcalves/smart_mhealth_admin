@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
+import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
-class Perfil_idoso extends StatelessWidget {
-  const Perfil_idoso({Key? key}) : super(key: key);
-  final String image = 'lib/assets/images/Logo_Verde.png';
+class PerfilIdoso extends StatelessWidget {
+  const PerfilIdoso({Key? key}) : super(key: key);
+  final String image = 'lib/assets/images/Logo.png';
 
   //todo: other icons
   final String userIcon =
@@ -60,7 +58,12 @@ class Perfil_idoso extends StatelessWidget {
             child: const Text('+'),
           ),
           ElevatedButton(
-            onPressed: () => {Navigator.of(context).pushNamed('/meus_cuidados')},
+            onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => MeusCuidados())));
+                      },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),

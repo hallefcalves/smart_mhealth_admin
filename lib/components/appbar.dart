@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_mhealth_admin/components/logo.dart';
 import 'package:smart_mhealth_admin/screens/dashboard.dart';
+import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 
@@ -20,10 +22,15 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: MyTheme.defaultTheme.appBarTheme.backgroundColor,
       iconTheme: IconThemeData(color: MyTheme.defaultTheme.primaryColor),
       elevation: 0,
-      actions: <Widget>[
+      actions: [
+        Transform.scale(
+          scale: 0.1,
+          child: LogoDeles(),
+        ),
         IconButton(
           onPressed: () {
-            Navigator.of(context).pushNamed('/menu');
+            Navigator.push(
+                context, MaterialPageRoute(builder: ((context) => Menu())));
           },
           icon: Iconify(
             homeIcon,
@@ -38,7 +45,7 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
           },
         ),
         IconButton(
-          icon:  Iconify(
+          icon: Iconify(
             menuIcon,
           ),
           onPressed: () {
