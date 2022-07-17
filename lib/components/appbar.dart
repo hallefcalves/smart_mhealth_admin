@@ -22,11 +22,11 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: MyTheme.defaultTheme.appBarTheme.backgroundColor,
       iconTheme: IconThemeData(color: MyTheme.defaultTheme.primaryColor),
       elevation: 0,
+      title: Image.asset(
+        'lib/assets/images/Logo.png',
+        scale: 5,
+      ),
       actions: [
-        Transform.scale(
-          scale: 0.1,
-          child: LogoDeles(),
-        ),
         IconButton(
           onPressed: () {
             Navigator.push(
