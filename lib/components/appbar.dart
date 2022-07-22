@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_mhealth_admin/components/logo.dart';
-import 'package:smart_mhealth_admin/screens/dashboard.dart';
 import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
