@@ -6,6 +6,7 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/logo.dart';
+import 'package:smart_mhealth_admin/components/notification.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
@@ -43,7 +44,47 @@ class Menu extends StatelessWidget {
             child: const LogoDeles(),
             scale: 1.05,
           ),
-          const SizedBox(height: 350),
+          const SizedBox(height: 45),
+          SizedBox(
+            height: 250,
+            child: ListView(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 26, right: 15),
+                  child: CustomNotification(
+                      errorSurface,
+                      errorDefault,
+                      "Remédio Atrasado",
+                      "Advil às 15h30 ainda não foi tomado"),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 26, right: 15),
+                  child: CustomNotification(
+                      infoSurface,
+                      infoDefault,
+                      "Próximo Alarme em Breve",
+                      "Tome seu Zetia 100mg em 30 minutos"),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 26, right: 15),
+                  child: CustomNotification(
+                      infoSurface,
+                      infoDefault,
+                      "Próximo Alarme em Breve",
+                      "Tome seu Atorvastatina 10mg em 15 minutos"),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 26, right: 15),
+                  child: CustomNotification(
+                      succesfulSurface,
+                      succesfulDefault,
+                      "Próximo Alarme em Breve",
+                      "Tome seu Atorvastatina 10mg em 15 minutos"),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 55),
           Transform.scale(
             scale: 1.75,
             child: Column(

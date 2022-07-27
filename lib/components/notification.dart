@@ -21,8 +21,8 @@ class CustomNotification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 258,
-      height: 140,
+      width: 240,
+      height: 50,
       decoration: BoxDecoration(
         color: corBox,
         borderRadius: BorderRadius.circular(4),
@@ -34,22 +34,22 @@ class CustomNotification extends StatelessWidget {
             top: 10,
             right: 300,
             child: Iconify(Eva.alert_circle_outline,
-                color: corIcone, size: 30),
+                color: corIcone, size: 15),
           ),
           Positioned(
             top: 10,
             left: 15,
             right: -270,
             child: Iconify(Eva.close_circle_outline,
-                color: corIcone, size: 40),
+                color: corIcone, size: 20),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 15, left: 60, right: 45),
-            child: LetfTxt(22, title),
+            padding: EdgeInsets.only(top: 10, left: 50, right: 45),
+            child: LetfTxt(11, FontWeight.w700,  title),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 70, left: 54, right: 24),
-            child: LetfTxt(18, msg),
+            padding: EdgeInsets.only(top: 30, left: 50, right: 24),
+            child: LetfTxt(9, FontWeight.w500, msg),
           )
         ],
       ),

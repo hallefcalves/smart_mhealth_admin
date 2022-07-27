@@ -6,8 +6,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LetfTxt extends StatelessWidget {
-  const LetfTxt(this.tamanhoFont, this.texto);
+  const LetfTxt(this.tamanhoFont,this.fontWeight, this.texto);
   final double tamanhoFont;
+  final FontWeight fontWeight;
   final String texto;
 
   @override
@@ -18,7 +19,7 @@ class LetfTxt extends StatelessWidget {
         textAlign: TextAlign.left,
         style: GoogleFonts.inter(
           fontSize: tamanhoFont,
-          fontWeight: FontWeight.w700,
+          fontWeight: fontWeight,
         ),
         texto,
       ),
