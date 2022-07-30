@@ -33,40 +33,53 @@ class DrawerCustom extends StatelessWidget {
               height: kToolbarHeight * 0.95,
               child: DrawerHeader(
                 decoration: BoxDecoration(
-                  color: MyTheme.defaultTheme.backgroundColor,
+                  color: MyTheme.defaultTheme.appBarTheme.backgroundColor,
                 ),
                 child: Stack(
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
+                    Positioned(
+                      top: 0,
+                      left: 2,
                       child: Icon(
                         Icons.person,
                         color: MyTheme.defaultTheme.primaryColor,
                         size: 20,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 35.0),
+                    Positioned(
+                      top: 0,
+                      left: 30,
                       child: Text(
-                        'Admin',
+                        'Name',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 12,
+                          fontSize: 10,
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          onPressed: () => {
-                            Navigator.pop(context),
-                          },
-                          icon: FaIcon(
-                            FontAwesomeIcons.solidCircleXmark,
-                            color: MyTheme.defaultTheme.primaryColor,
-                          ),
+                    Positioned(
+                      top: 12,
+                      left: 35,
+                      child: Text(
+                        'Title',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: -15,
+                      left: 100,
+                      right: 80,
+                      child: IconButton(
+                        onPressed: () => {
+                          Navigator.pop(context),
+                        },
+                        icon: FaIcon(
+                          FontAwesomeIcons.solidCircleXmark,
+                          color: MyTheme.defaultTheme.primaryColor,
+                          size: 18,
                         ),
                       ),
                     ),
@@ -278,8 +291,21 @@ class DrawerCustom extends StatelessWidget {
               ),
             ),
             SizedBox(
-              child: DecoratedBox(decoration: BoxDecoration(color: MyTheme.defaultTheme.backgroundColor)),
-              height: 70,
+              height: 35,
+            ),
+            SizedBox(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                    color: MyTheme.defaultTheme.appBarTheme.backgroundColor),
+                child: ListView(children: [
+                  Text("Dúvidas"),
+                  Text("Link"),
+                  Text(
+                    
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"),
+                ]),
+              ),
+              height: 120,
             ),
           ],
         ),
