@@ -6,7 +6,7 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_colaborador.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_cuidador.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class Colaboradores extends StatelessWidget {
@@ -67,10 +67,8 @@ class Colaboradores extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CadastroColaborador()))
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CadastroCuidador()))
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,

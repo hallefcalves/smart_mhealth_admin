@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_agenda.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_colaborador.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_remedio.dart';
 import 'package:smart_mhealth_admin/screens/ler_codigo_barras.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
@@ -19,13 +19,12 @@ void main() => runApp(const Smartmhealth());
 class Smartmhealth extends StatelessWidget {
   const Smartmhealth({Key? key}) : super(key: key);
 
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Smartmhealth',
       theme: MyTheme.defaultTheme,
-      initialRoute: '/menu',
+      initialRoute: '/cadastro_cuidador',
       routes: {
         '/': (context) => Login(),
         '/cadastro_admin': (context) => CadastroAdmin(),
@@ -36,7 +35,7 @@ class Smartmhealth extends StatelessWidget {
         '/perfil_idoso': (context) => PerfilIdoso(),
         '/agendas': (context) => Agendas(),
         '/ler_codigo_barras': (context) => LerCodigoBarras(),
-        '/cadastro_colaborador': (context) => CadastroColaborador(),
+        '/cadastro_cuidador': (context) => CadastroCuidador(),
         '/cadastro_agenda': (context) => CadastroAgenda(),
         '/agendas': (context) => Agendas(),
         '/relatorios': (context) => Relatorios(),

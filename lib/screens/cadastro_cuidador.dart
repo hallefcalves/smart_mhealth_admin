@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
+import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,8 +10,8 @@ import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
-class CadastroColaborador extends StatelessWidget {
-  const CadastroColaborador({Key? key}) : super(key: key);
+class CadastroCuidador extends StatelessWidget {
+  const CadastroCuidador({Key? key}) : super(key: key);
   final String image = 'lib/assets/images/Logo.png';
 
   //todo: other icons
@@ -24,7 +25,7 @@ class CadastroColaborador extends StatelessWidget {
       endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
-          Center(
+          /* Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
@@ -57,6 +58,59 @@ class CadastroColaborador extends StatelessWidget {
               ),
             ),
             child: const Text('+'),
+          ),*/
+          Center(
+            child: Card(
+              child: InkWell(
+                onTap: () => {
+                  CustomAlertDialog(
+                      "O que é um Cuidador?",
+                      "É a pessoa que possui esse aplicativo e administra os remédios e alarmes nos aplicativos irmões xxxxx dos seus cuidados, seus entes queridos.",
+                      "OK",
+                      "Cancel",
+                      Icons.info_outline),
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Iconify(
+                            userIcon,
+                            color: MyTheme.defaultTheme.primaryColor,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(children: [
+                            Text(
+                              'Bem vindo Cuidador!',
+                              style: GoogleFonts.inter(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'O que é um cuidador?',
+                              style: GoogleFonts.inter(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ]),
+                        ],
+                      ),
+                      Icon(
+                        FontAwesomeIcons.chevronRight,
+                        color: MyTheme.defaultTheme.primaryColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
           ElevatedButton(
             onPressed: () => {
