@@ -10,6 +10,7 @@ import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
+import 'package:smart_mhealth_admin/screens/perfil_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
@@ -248,8 +249,10 @@ class DrawerCustom extends StatelessWidget {
               padding: EdgeInsets.only(bottom: _spaceBetween),
               child: Center(
                 child: TextButton.icon(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/cadastro_admin');
+                  onPressed: () => {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PerfilCuidador(),
+                    ))
                   },
                   icon: Iconify(
                     userIcon,
@@ -301,7 +304,6 @@ class DrawerCustom extends StatelessWidget {
                   Text("Dúvidas"),
                   Text("Link"),
                   Text(
-                    
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"),
                 ]),
               ),

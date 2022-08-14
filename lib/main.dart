@@ -12,6 +12,7 @@ import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/screens/relatorios.dart';
+import 'package:smart_mhealth_admin/screens/perfil_cuidador.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 void main() => runApp(const Smartmhealth());
@@ -34,6 +35,7 @@ class Smartmhealth extends StatelessWidget {
         '/meus_cuidados': (context) => MeusCuidados(),
         '/perfil_idoso': (context) => PerfilIdoso(),
         '/agendas': (context) => Agendas(),
+        '/perfil_cuidador': (context) => PerfilCuidador(),
         '/ler_codigo_barras': (context) => LerCodigoBarras(),
         '/cadastro_cuidador': (context) => CadastroCuidador(),
         '/cadastro_agenda': (context) => CadastroAgenda(),
