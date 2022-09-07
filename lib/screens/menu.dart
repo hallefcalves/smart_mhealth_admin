@@ -14,6 +14,7 @@ import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
+import 'package:smart_mhealth_admin/http/web.dart';
 
 class Menu extends StatelessWidget {
   const Menu({Key? key}) : super(key: key);
@@ -176,7 +177,7 @@ class Menu extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {orion().obtemVersao();},
               child: FaIcon(
                 FontAwesomeIcons.gear,
                 color: MyTheme.defaultTheme.primaryColor,
