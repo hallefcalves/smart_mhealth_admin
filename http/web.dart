@@ -90,4 +90,11 @@ idoso {
 
 http://{{url}}:1026/v2/entities/?q=name==Advil&type=remedio
 
- */
+*/
+
+/* 
+user: helix
+senha: H3l1xNG 
+*/
+
+// Aumentar parte de relacionamento, uso de localização
