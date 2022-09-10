@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class orion {
+class Orion {
   static var url = "20.163.17.242";
 
   Future<String?> fetchData(codigo) async {
@@ -18,6 +18,7 @@ class orion {
     } else {
       print(response.reasonPhrase);
     }
+    return null;
   }
 
   Future<String?> obtemVersao() async {
@@ -34,6 +35,7 @@ class orion {
     } else {
       print(response.reasonPhrase);
     }
+    return null;
   }
 
   sendData() async {

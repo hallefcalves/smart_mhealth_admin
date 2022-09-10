@@ -1,10 +1,8 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   
-  CustomAlertDialog(this.title, this.content, this.confirmText, this.cancelText, this.symbol, {Key? key}) : super(key: key);
+  const CustomAlertDialog(this.title, this.content, this.confirmText, this.cancelText, this.symbol, {Key? key}) : super(key: key);
 
   final String title;
   final String content;

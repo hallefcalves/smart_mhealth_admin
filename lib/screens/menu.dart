@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/logo.dart';
 import 'package:smart_mhealth_admin/components/notification.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
@@ -42,14 +40,14 @@ class Menu extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           Transform.scale(
-            child: const LogoDeles(),
             scale: 1.05,
+            child: const LogoDeles(),
           ),
           const SizedBox(height: 45),
           SizedBox(
             height: 250,
             child: ListView(
-              children: [
+              children: const [
                 Padding(
                   padding: EdgeInsets.only(top: 10, left: 26, right: 15),
                   child: CustomNotification(
@@ -103,7 +101,7 @@ class Menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => MeusCuidados())));
+                                builder: ((context) => const MeusCuidados())));
                       },
                     ),
                     IconButton(
@@ -114,7 +112,7 @@ class Menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => CadastroAdmin())));
+                                builder: ((context) => const CadastroAdmin())));
                       },
                     ),
                     IconButton(
@@ -125,7 +123,7 @@ class Menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => ListagemRemedios())));
+                                builder: ((context) => const ListagemRemedios())));
                       },
                     ),
                   ],
@@ -142,7 +140,7 @@ class Menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => Relatorios())));
+                                builder: ((context) => const Relatorios())));
                       },
                     ),
                     IconButton(
@@ -153,7 +151,7 @@ class Menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => Agendas())));
+                                builder: ((context) => const Agendas())));
                       },
                     ),
                     IconButton(
@@ -165,7 +163,7 @@ class Menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => Colaboradores())));
+                                builder: ((context) => const Colaboradores())));
                       },
                     ),
                   ],
@@ -177,18 +175,18 @@ class Menu extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: ElevatedButton(
-              onPressed: () {orion().obtemVersao();},
+              onPressed: () {Orion().obtemVersao();},
+              style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(20),
+                  primary:
+                      MyTheme.defaultTheme.backgroundColor // <-- Splash color
+                  ),
               child: FaIcon(
                 FontAwesomeIcons.gear,
                 color: MyTheme.defaultTheme.primaryColor,
                 size: 20,
               ),
-              style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(20),
-                  primary:
-                      MyTheme.defaultTheme.backgroundColor // <-- Splash color
-                  ),
             ),
           ),
         ],

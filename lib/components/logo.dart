@@ -1,6 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/themes/color.dart';
 
 class LogoDeles extends StatelessWidget {
   const LogoDeles({Key? key}) : super(key: key);

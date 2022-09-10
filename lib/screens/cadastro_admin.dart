@@ -1,36 +1,30 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CadastroAdmin extends StatelessWidget {
-  CadastroAdmin({Key? key}) : super(key: key);
+  const CadastroAdmin({Key? key}) : super(key: key);
   final String image = '../assets/images/Logo.png';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCustom(),
-      endDrawer: DrawerCustom(),
+      appBar: const AppBarCustom(),
+      endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(1.0),
+            padding: const EdgeInsets.all(1.0),
             child: Align(
               alignment: Alignment.topRight,
               child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Menu()),
+                      MaterialPageRoute(builder: (context) => const Menu()),
                     );
                   },
                   child: const Text(

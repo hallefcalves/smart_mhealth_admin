@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:smart_mhealth_admin/components/logo.dart';
@@ -23,7 +21,7 @@ class Dashboard extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 2,
               child: const LogoDeles()),
           const SizedBox(height: 47),
-          SizedBox(
+          const SizedBox(
             width: 260,
             height: 200,
           ),
@@ -67,7 +65,7 @@ class Dashboard extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CadastroIdoso()),
+                  MaterialPageRoute(builder: (context) => const CadastroIdoso()),
                 );
               },
               icon: Icon(

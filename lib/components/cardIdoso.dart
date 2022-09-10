@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import '../flutter_flow/flutter_flow_util.dart';
 import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CardIdoso extends StatelessWidget {
-  CardIdoso(this.idoso);
+  CardIdoso(this.idoso, {Key? key}) : super(key: key);
   var idoso;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      color: Color(0xFFF5F5F5),
+      color: const Color(0xFFF5F5F5),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -26,18 +24,18 @@ class CardIdoso extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 21),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 21),
                   child: Container(
                     width: 175,
                     height: 175,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFEEEEEE),
                     ),
                     child: Container(
                       width: 120,
                       height: 120,
                       clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
                       child: Image.network(
@@ -47,7 +45,7 @@ class CardIdoso extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');
@@ -60,7 +58,7 @@ class CardIdoso extends StatelessWidget {
                       textStyle: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily
                       ),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1,
                       ),
@@ -80,7 +78,7 @@ class CardIdoso extends StatelessWidget {
                     textStyle: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily
                     ),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1,
                     ),
@@ -96,7 +94,7 @@ class CardIdoso extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 26, 0, 28),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 26, 0, 28),
                   child: Text(
                     'Severina Pereira',
                     textAlign: TextAlign.center,
@@ -117,22 +115,22 @@ class CardIdoso extends StatelessWidget {
                     ),
                   ),
                   child: Stack(
-                    alignment: AlignmentDirectional(
+                    alignment: const AlignmentDirectional(
                         0.05, 0.05),
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-0.82, -1.07),
+                        alignment: const AlignmentDirectional(-0.82, -1.07),
                         child: Container(
                           width: 140,
                           height: 25,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color:
                             background,
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.77, -1.08),
+                        alignment: const AlignmentDirectional(-0.77, -1.08),
                         child: Text(
                           'Próximos Alarmes',
                           style: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
+// ignore: depend_on_referenced_packages
 import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
@@ -21,7 +22,7 @@ class Login extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: 30),
           Center(
-            child: Transform.scale(scale: 1.1, child: LogoDeles())
+            child: Transform.scale(scale: 1.1, child: const LogoDeles())
           ),
           const SizedBox(height: 18),
           Padding(
@@ -114,9 +115,9 @@ class Login extends StatelessWidget {
             ),
           ),
           Row(children: <Widget>[
-            Expanded(child: Divider()),
+            const Expanded(child: Divider()),
             Text("Ou", style: GoogleFonts.roboto(fontSize: 14)),
-            Expanded(child: Divider()),
+            const Expanded(child: Divider()),
           ]),
           Padding(
             padding: const EdgeInsets.only(bottom: 12.0),
@@ -147,7 +148,7 @@ class Login extends StatelessWidget {
                 ),
                 icon: FaIcon(
                   FontAwesomeIcons.facebook,
-                  color: MyTheme.defaultTheme.accentColor,
+                  color: MyTheme.defaultTheme.colorScheme.secondary,
                 ),
               ),
               const SizedBox(width: 10.0),
@@ -164,7 +165,7 @@ class Login extends StatelessWidget {
                     ),
                   ),
                 ),
-                icon: Iconify(
+                icon: const Iconify(
                   FlatColorIcons.google,
                 ),
               ),
@@ -180,7 +181,7 @@ class Login extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => {Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => CadastroAdmin(),
+                    builder: (context) => const CadastroAdmin(),
                   ),
                 ),
 

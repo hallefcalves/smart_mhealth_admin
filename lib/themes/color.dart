@@ -42,7 +42,6 @@ class MyTheme {
         color: appBarColor,
       ),
       primaryColor: primaryColor,
-      accentColor: facebookColor,
       buttonTheme: base.buttonTheme.copyWith(
         buttonColor: secondaryColor,
         textTheme: ButtonTextTheme.primary,
@@ -50,7 +49,7 @@ class MyTheme {
 
       scaffoldBackgroundColor: background,
       cardColor: background,
-      backgroundColor:background,
+      backgroundColor:background, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: facebookColor),
     );
   }
 }

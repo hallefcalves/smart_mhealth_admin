@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
-import 'package:smart_mhealth_admin/themes/color.dart';
-import 'package:smart_mhealth_admin/http/web.dart';
 import 'meus_cuidados.dart';
 
 class CadastroIdoso extends StatelessWidget {
@@ -15,8 +12,8 @@ class CadastroIdoso extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCustom(),
-      endDrawer: DrawerCustom(),
+      appBar: const AppBarCustom(),
+      endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
           // Padding(
@@ -88,7 +85,7 @@ class CadastroIdoso extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => /*orion().sendData()*/MeusCuidados())));
+                      builder: ((context) => /*orion().sendData()*/const MeusCuidados())));
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,

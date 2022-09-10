@@ -1,11 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/ic.dart';
-import 'package:iconify_flutter/icons/radix_icons.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
@@ -47,7 +43,7 @@ class DrawerCustom extends StatelessWidget {
                         size: 20,
                       ),
                     ),
-                    Positioned(
+                    const Positioned(
                       top: 0,
                       left: 30,
                       child: Text(
@@ -58,7 +54,7 @@ class DrawerCustom extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
+                    const Positioned(
                       top: 12,
                       left: 35,
                       child: Text(
@@ -97,7 +93,7 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MeusCuidados(),
+                        builder: (context) => const MeusCuidados(),
                       ),
                     );
                   },
@@ -111,7 +107,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text('Meus Cuidados'),
+                  child: const Text('Meus Cuidados'),
                 ),
               ),
             ),
@@ -123,7 +119,7 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ListagemRemedios(),
+                        builder: (context) => const ListagemRemedios(),
                       ),
                     );
                   },
@@ -141,7 +137,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text('Remédios'),
+                  child: const Text('Remédios'),
                 ),
               ),
             ),
@@ -153,7 +149,7 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Agendas(),
+                        builder: (context) => const Agendas(),
                       ),
                     );
                   },
@@ -167,7 +163,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text('Agendas'),
+                  child: const Text('Agendas'),
                 ),
               ),
             ),
@@ -179,7 +175,7 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Relatorios(),
+                        builder: (context) => const Relatorios(),
                       ),
                     );
                   },
@@ -193,7 +189,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text('Relatórios'),
+                  child: const Text('Relatórios'),
                 ),
               ),
             ),
@@ -205,7 +201,7 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Colaboradores(),
+                        builder: (context) => const Colaboradores(),
                       ),
                     );
                   },
@@ -219,7 +215,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text('Colaboradores'),
+                  child: const Text('Colaboradores'),
                 ),
               ),
             ),
@@ -238,7 +234,7 @@ class DrawerCustom extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text('Notificações'),
+                  child: const Text('Notificações'),
                 ),
               ),
             ),
@@ -251,13 +247,13 @@ class DrawerCustom extends StatelessWidget {
                 child: TextButton.icon(
                   onPressed: () => {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => PerfilCuidador(),
+                      builder: (context) => const PerfilCuidador(),
                     ))
                   },
                   icon: Iconify(
                     userIcon,
                   ),
-                  label: Text('Meu Perfil'),
+                  label: const Text('Meu Perfil'),
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.white,
                     primary: MyTheme.defaultTheme.primaryColor,
@@ -293,21 +289,21 @@ class DrawerCustom extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
             SizedBox(
+              height: 120,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                     color: MyTheme.defaultTheme.appBarTheme.backgroundColor),
-                child: ListView(children: [
+                child: ListView(children: const [
                   Text("Dúvidas"),
                   Text("Link"),
                   Text(
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"),
                 ]),
               ),
-              height: 120,
             ),
           ],
         ),

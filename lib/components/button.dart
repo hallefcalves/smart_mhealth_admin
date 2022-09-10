@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/themes/color.dart';
+
 
 class CustomBtn extends StatelessWidget {
-  CustomBtn(this.btntext, this.themeColor, this.child);
+  // ignore: use_key_in_widget_constructors
+  const CustomBtn(this.btntext, this.themeColor, this.child);
   final String btntext;
   final Color themeColor;
   final Widget child;

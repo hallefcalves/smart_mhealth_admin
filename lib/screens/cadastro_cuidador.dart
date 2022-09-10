@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
@@ -63,7 +61,7 @@ class CadastroCuidador extends StatelessWidget {
             child: Card(
               child: InkWell(
                 onTap: () => {
-                  CustomAlertDialog(
+                  const CustomAlertDialog(
                       "O que é um Cuidador?",
                       "É a pessoa que possui esse aplicativo e administra os remédios e alarmes nos aplicativos irmões xxxxx dos seus cuidados, seus entes queridos.",
                       "OK",
@@ -81,7 +79,7 @@ class CadastroCuidador extends StatelessWidget {
                             userIcon,
                             color: MyTheme.defaultTheme.primaryColor,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Column(children: [
@@ -115,7 +113,7 @@ class CadastroCuidador extends StatelessWidget {
           ElevatedButton(
             onPressed: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Colaboradores()))
+                  MaterialPageRoute(builder: (context) => const Colaboradores()))
             }, //popuc code e others
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
