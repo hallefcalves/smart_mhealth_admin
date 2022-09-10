@@ -9,6 +9,8 @@ import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_remedio.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
+import '../components/cardRemedio.dart';
+
 class ListagemRemedios extends StatelessWidget {
   const ListagemRemedios({Key? key}) : super(key: key);
   final String image = 'lib/assets/images/Logo.png';
@@ -36,44 +38,7 @@ class ListagemRemedios extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text(
-                'Meus Cuidados',
-                style: GoogleFonts.rampartOne(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                  color: MyTheme.defaultTheme.primaryColor,
-                ),
-              ),
-            ),
-          ),
-          ClipOval(
-            child: Center(
-              //mudar para img remedio
-              child: Image.asset(
-                image,
-                scale: 2.2,
-              ),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CadastroRemedio()))
-            },
-            //ver infos
-            style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
-              minimumSize: const Size(80, 40),
-              maximumSize: const Size(80, 40),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-            child: const Text('Mais info'),
-          ),
+          CardRemedio(null),
           ElevatedButton(
             onPressed: () => {
               Navigator.push(context,

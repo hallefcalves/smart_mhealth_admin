@@ -9,6 +9,7 @@ import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
 
 class MeusCuidados extends StatelessWidget {
   const MeusCuidados({Key? key}) : super(key: key);
@@ -96,7 +97,7 @@ class MeusCuidados extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => PerfilIdoso())));
+                                builder: ((context) => CadastroIdoso())));
                       },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
