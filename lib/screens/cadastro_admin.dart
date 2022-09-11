@@ -40,7 +40,7 @@ class CadastroAdmin extends StatelessWidget {
             'Cadastro',
             textDirection: TextDirection.ltr,
             textAlign: TextAlign.center,
-            style: GoogleFonts.rampartOne(
+            style: GoogleFonts.inter(
               fontSize: 40,
               fontWeight: FontWeight.w400,
               color: MyTheme.defaultTheme.primaryColor,
@@ -50,7 +50,7 @@ class CadastroAdmin extends StatelessWidget {
             'Nome',
             textDirection: TextDirection.ltr,
             textAlign: TextAlign.left,
-            style: GoogleFonts.rampartOne(
+            style: GoogleFonts.inter(
               fontSize: 14,
               fontWeight: FontWeight.w400,
               color: MyTheme.defaultTheme.primaryColor,

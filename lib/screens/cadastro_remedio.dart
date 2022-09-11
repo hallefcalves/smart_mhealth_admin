@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/bi.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
+import 'package:smart_mhealth_admin/components/barcodescanner.dart';
 
 class CadastroRemedio extends StatelessWidget {
   const CadastroRemedio({Key? key}) : super(key: key);
@@ -25,7 +28,7 @@ class CadastroRemedio extends StatelessWidget {
             child: Text(
               'Cadastro Remédio',
               textAlign: TextAlign.center,
-              style: GoogleFonts.rampartOne(
+              style: GoogleFonts.inter(
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
                 color: MyTheme.defaultTheme.primaryColor,
@@ -37,7 +40,7 @@ class CadastroRemedio extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
                 'Meus Cuidados',
-                style: GoogleFonts.rampartOne(
+                style: GoogleFonts.inter(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
                   color: MyTheme.defaultTheme.primaryColor,
@@ -54,6 +57,7 @@ class CadastroRemedio extends StatelessWidget {
               ),
             ),
           ),
+          BarcodeScanner(),
           ElevatedButton(
             onPressed: () => {
               Navigator.push(

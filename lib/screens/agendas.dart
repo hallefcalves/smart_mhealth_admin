@@ -25,7 +25,7 @@ class Agendas extends StatelessWidget {
             child: Text(
               'Agendas',
               textAlign: TextAlign.center,
-              style: GoogleFonts.rampartOne(
+              style: GoogleFonts.inter(
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
                 color: MyTheme.defaultTheme.primaryColor,
@@ -37,7 +37,7 @@ class Agendas extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
                 'O despertador',
-                style: GoogleFonts.rampartOne(
+                style: GoogleFonts.inter(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
                   color: MyTheme.defaultTheme.primaryColor,
@@ -54,7 +54,7 @@ class Agendas extends StatelessWidget {
           Center(
             child: Text(
               'Deles',
-              style: GoogleFonts.rampartOne(
+              style: GoogleFonts.inter(
                 fontSize: 22,
                 fontWeight: FontWeight.w400,
                 color: MyTheme.defaultTheme.primaryColor,

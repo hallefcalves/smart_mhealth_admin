@@ -40,7 +40,7 @@ class CadastroIdoso extends StatelessWidget {
             'Cadastro do Cuidado',
             textDirection: TextDirection.ltr,
             textAlign: TextAlign.center,
-            style: GoogleFonts.rampartOne(
+            style: GoogleFonts.inter(
               fontSize: 36,
               fontWeight: FontWeight.w400,
               color: MyTheme.defaultTheme.primaryColor,
@@ -50,7 +50,7 @@ class CadastroIdoso extends StatelessWidget {
             'Nome',
             textDirection: TextDirection.ltr,
             textAlign: TextAlign.center,
-            style: GoogleFonts.rampartOne(
+            style: GoogleFonts.inter(
               fontSize: 14,
               fontWeight: FontWeight.w400,
               color: MyTheme.defaultTheme.primaryColor,
@@ -85,7 +85,8 @@ class CadastroIdoso extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => /*orion().sendData()*/const MeusCuidados())));
+                      builder:
+                          ((context) => /*orion().sendData()*/ const MeusCuidados())));
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,

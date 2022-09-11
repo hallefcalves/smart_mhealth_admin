@@ -25,7 +25,7 @@ class CadastroAgenda extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
                 'Cadastro agenda',
-                style: GoogleFonts.rampartOne(
+                style: GoogleFonts.inter(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
                   color: MyTheme.defaultTheme.primaryColor,
@@ -56,8 +56,8 @@ class CadastroAgenda extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () => {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Agendas()))
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Agendas()))
             }, //popuc code e others
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,

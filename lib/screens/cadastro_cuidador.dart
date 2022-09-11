@@ -28,7 +28,7 @@ class CadastroCuidador extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
                 'Cadastro colaborador',
-                style: GoogleFonts.rampartOne(
+                style: GoogleFonts.inter(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
                   color: MyTheme.defaultTheme.primaryColor,
@@ -112,8 +112,10 @@ class CadastroCuidador extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Colaboradores()))
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Colaboradores()))
             }, //popuc code e others
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,

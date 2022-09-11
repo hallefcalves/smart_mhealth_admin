@@ -27,7 +27,7 @@ class MeusCuidados extends StatelessWidget {
             child: Text(
               'Meus Cuidados',
               textAlign: TextAlign.center,
-              style: GoogleFonts.rampartOne(
+              style: GoogleFonts.inter(
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
                 color: MyTheme.defaultTheme.primaryColor,
@@ -39,7 +39,7 @@ class MeusCuidados extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
                 'Meus Cuidados',
-                style: GoogleFonts.rampartOne(
+                style: GoogleFonts.inter(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
                   color: MyTheme.defaultTheme.primaryColor,
@@ -58,8 +58,10 @@ class MeusCuidados extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => const PerfilIdoso())));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const PerfilIdoso())));
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
@@ -90,11 +92,11 @@ class MeusCuidados extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => const CadastroIdoso())));
-                      },
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const CadastroIdoso())));
+            },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),

@@ -34,7 +34,7 @@ class Dashboard extends StatelessWidget {
                     'Dashboard',
                     textDirection: TextDirection.ltr,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.rampartOne(
+                    style: GoogleFonts.inter(
                       fontSize: 40,
                       fontWeight: FontWeight.w400,
                       color: MyTheme.defaultTheme.primaryColor,
@@ -49,7 +49,7 @@ class Dashboard extends StatelessWidget {
                     'Bem-vindo',
                     textDirection: TextDirection.ltr,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.rampartOne(
+                    style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: MyTheme.defaultTheme.primaryColor,
@@ -65,7 +65,8 @@ class Dashboard extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CadastroIdoso()),
+                  MaterialPageRoute(
+                      builder: (context) => const CadastroIdoso()),
                 );
               },
               icon: Icon(

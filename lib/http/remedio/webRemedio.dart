@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:smart_mhealth_admin/http/remedio.dart';
+import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/http/web.dart';
 
 Future<String?> obtemRemedio(id) async {

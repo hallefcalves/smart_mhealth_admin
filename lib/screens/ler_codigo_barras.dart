@@ -25,7 +25,7 @@ class LerCodigoBarras extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
                 'Tirar foto remédio',
-                style: GoogleFonts.rampartOne(
+                style: GoogleFonts.inter(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
                   color: MyTheme.defaultTheme.primaryColor,
@@ -42,8 +42,10 @@ class LerCodigoBarras extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ListagemRemedios()))
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ListagemRemedios()))
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,

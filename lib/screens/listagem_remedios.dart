@@ -27,7 +27,7 @@ class ListagemRemedios extends StatelessWidget {
             child: Text(
               'Listagem remédios',
               textAlign: TextAlign.center,
-              style: GoogleFonts.rampartOne(
+              style: GoogleFonts.inter(
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
                 color: MyTheme.defaultTheme.primaryColor,
@@ -37,8 +37,10 @@ class ListagemRemedios extends StatelessWidget {
           CardRemedio(null),
           ElevatedButton(
             onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const CadastroRemedio()))
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CadastroRemedio()))
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
