@@ -93,10 +93,7 @@ class Orion {
       print(response.reasonPhrase);
     }
   }
-
-
 }
-
 
 
 /* todos> dataCriacao:data
