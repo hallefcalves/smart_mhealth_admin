@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/screens/placeholder.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CustomBtnIcon extends StatelessWidget {
-  CustomBtnIcon(this.icone,this.btntext, this.themeColor, this.child);
+  CustomBtnIcon(this.icone,this.btntext, this.themeColor, this.child, {Key? key}) : super(key: key);
   final String btntext;
   final Color themeColor;
   final Widget child;

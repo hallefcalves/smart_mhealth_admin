@@ -10,8 +10,9 @@ class ExternalApi {
 
     var url = Uri.parse('https://api.cosmos.bluesoft.com.br/gtins/$gtin.json');
     var res = await http.get(url, headers: headers);
-    if (res.statusCode != 200)
+    if (res.statusCode != 200) {
       throw Exception('http.get error: statusCode= ${res.statusCode}');
+    }
     return(res.body);
   }
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/bi.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,7 +55,7 @@ class CadastroRemedio extends StatelessWidget {
               ),
             ),
           ),
-          BarcodeScanner(),
+          const BarcodeScanner(),
           ElevatedButton(
             onPressed: () => {
               Navigator.push(

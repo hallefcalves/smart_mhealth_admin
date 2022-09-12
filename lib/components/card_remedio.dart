@@ -8,7 +8,7 @@ import '../screens/cadastro_remedio.dart';
 
 class CardRemedio extends StatelessWidget {
   CardRemedio(this.remedio, {Key? key}) : super(key: key);
-  var remedio;
+  var remedio = "";
 
   @override
   Widget build(BuildContext context) {

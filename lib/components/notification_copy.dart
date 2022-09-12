@@ -1,18 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/fa.dart';
-import 'package:smart_mhealth_admin/components/button.dart';
-import 'package:smart_mhealth_admin/components/center_text.dart';
 import 'package:smart_mhealth_admin/components/left_text.dart';
-import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:iconify_flutter/icons/eva.dart';
 
 class CustomNotification extends StatelessWidget {
-  CustomNotification(this.corBox, this.corIcone, this.title, this.msg);
+  const CustomNotification(this.corBox, this.corIcone, this.title, this.msg, {Key? key}) : super(key: key);
   final Color corBox;
   final Color corIcone;
   final String msg;

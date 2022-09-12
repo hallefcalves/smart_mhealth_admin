@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_remedio.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
-import '../components/cardRemedio.dart';
+import '../components/card_remedio.dart';
 
 class ListagemRemedios extends StatelessWidget {
   const ListagemRemedios({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class ListagemRemedios extends StatelessWidget {
               ),
             ),
           ),
-          CardRemedio(null),
+          CardRemedio("null"),
           ElevatedButton(
             onPressed: () => {
               Navigator.push(
