@@ -17,7 +17,7 @@ class BarcodeScanner extends StatefulWidget {
 class _BarcodeScannerState extends State<BarcodeScanner> {
   String _scanBarcode = 'Unknown';
   late String? _result;
-  ExternalApi p = ExternalApi();
+  
   @override
   void initState() {
     super.initState();
@@ -30,7 +30,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-      _result = p.verRemedioAPI(barcodeScanRes) as String?;
+      _result = verRemedioAPI(barcodeScanRes) as String?;
       print(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
@@ -42,7 +42,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
     if (!mounted) return;
 
     setState(() {
-      if (_result != null) {
+      if (_result == null) {
         _scanBarcode = _result!;
       } else {
         _scanBarcode = barcodeScanRes;

@@ -40,7 +40,7 @@ class ListagemRemedios extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CadastroRemedio()))
+                      builder: (context) =>  CadastroRemedio()))
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,

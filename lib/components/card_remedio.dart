@@ -62,7 +62,7 @@ class CardRemedio extends StatelessWidget {
                   child: FFButtonWidget(
                       onPressed: () => {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const CadastroRemedio()))
+                            MaterialPageRoute(builder: (context) => CadastroRemedio()))
                       },
                     text: '+ Mais informações',
                     options: FFButtonOptions(
