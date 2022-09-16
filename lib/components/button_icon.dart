@@ -12,7 +12,7 @@ class CustomBtnIcon extends StatelessWidget {
   final Iconify icone;
 
   var routes = {
-    '/placeholder': (BuildContext context) => PlaceholderWidget(),
+    '/placeholder': (BuildContext context) => const PlaceholderWidget(),
   };
   @override
   Widget build(BuildContext context) {
