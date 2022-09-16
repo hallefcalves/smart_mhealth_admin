@@ -27,7 +27,7 @@ class CadastroCuidador extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
-                'Cadastro colaborador',
+                'Cadastro Cuidador',
                 style: GoogleFonts.inter(
                   fontSize: 22,
                   fontWeight: FontWeight.w400,
@@ -58,74 +58,207 @@ class CadastroCuidador extends StatelessWidget {
             child: const Text('+'),
           ),*/
           Center(
-            child: Card(
-              child: InkWell(
-                onTap: () => {
-                  const CustomAlertDialog(
-                      "O que é um Cuidador?",
-                      "É a pessoa que possui esse aplicativo e administra os remédios e alarmes nos aplicativos irmões xxxxx dos seus cuidados, seus entes queridos.",
-                      "OK",
-                      "Cancel",
-                      Icons.info_outline),
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Iconify(
-                            userIcon,
-                            color: MyTheme.defaultTheme.primaryColor,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(children: [
-                            Text(
-                              'Bem vindo Cuidador!',
-                              style: GoogleFonts.inter(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                              ),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+              child: Card(
+                color: Colors.white,
+                child: InkWell(
+                  onTap: () => {
+                    const CustomAlertDialog(
+                        "O que é um Cuidador?",
+                        "É a pessoa que possui esse aplicativo e administra os remédios e alarmes nos aplicativos irmões xxxxx dos seus cuidados, seus entes queridos.",
+                        "OK",
+                        "Cancel",
+                        Icons.info_outline),
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Iconify(
+                              userIcon,
+                              color: MyTheme.defaultTheme.primaryColor,
                             ),
-                            Text(
-                              'O que é um cuidador?',
-                              style: GoogleFonts.inter(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                              ),
+                            const SizedBox(
+                              width: 10,
                             ),
-                          ]),
-                        ],
-                      ),
-                      Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: MyTheme.defaultTheme.primaryColor,
-                      ),
-                    ],
+                            Column(children: [
+                              Text(
+                                'Bem vindo Cuidador!',
+                                style: GoogleFonts.inter(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                'O que é um cuidador?',
+                                style: GoogleFonts.inter(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ]),
+                          ],
+                        ),
+                        Icon(
+                          FontAwesomeIcons.chevronRight,
+                          color: MyTheme.defaultTheme.primaryColor,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const Colaboradores()))
-            }, //popuc code e others
-            style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
-              minimumSize: const Size(80, 40),
-              maximumSize: const Size(80, 40),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+          Padding(
+            padding: EdgeInsets.all(25.0),
+            child: Container(
+              width: 120,
+              height: 120,
+              clipBehavior: Clip.antiAlias,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                'https://picsum.photos/seed/364/600',
               ),
             ),
-            child: const Text('Concluir'),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            child: TextFormField(
+              autofocus: true,
+              obscureText: false,
+              decoration: InputDecoration(
+                labelText: 'Nome',
+                hintText: 'Ana Clara',
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4.0),
+                    topRight: Radius.circular(4.0),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            child: TextFormField(
+              autofocus: true,
+              obscureText: false,
+              decoration: InputDecoration(
+                labelText: 'E-mail',
+                hintText: 'ana.clara@exemplo.com',
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4.0),
+                    topRight: Radius.circular(4.0),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            child: TextFormField(
+              autofocus: true,
+              obscureText: false,
+              decoration: InputDecoration(
+                labelText: 'Número de Telefone',
+                hintText: '(xx) xxxxx-xxxx',
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4.0),
+                    topRight: Radius.circular(4.0),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            child: TextFormField(
+              autofocus: true,
+              obscureText: false,
+              decoration: InputDecoration(
+                labelText: 'Telefone secundário',
+                hintText: '(xx) xxxxx-xxxx',
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4.0),
+                    topRight: Radius.circular(4.0),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+          Column(
+            children: [
+              Center(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
+                  child: Row(
+                    children: [
+                      ElevatedButton(
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Colaboradores()))
+                              }, //popuc code e others
+                          style: ElevatedButton.styleFrom(
+                              primary: MyTheme.defaultTheme.primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 35, vertical: 15)),
+                          child: const Text('Concluir')),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),
