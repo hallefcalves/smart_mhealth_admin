@@ -15,7 +15,7 @@ class Idoso {
   static String obtemJson(dado) {
     return json.encode({
       "id": dado.id,
-      "type": "remedio",
+      "type": "idoso",
       "name": {"type": "string", "value": dado.name},
       "email": {"type": "string", "value": dado.email},
       "tel": {"type": "Text", "value": dado.tel},

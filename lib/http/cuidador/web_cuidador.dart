@@ -20,6 +20,25 @@ Future<String?> obtemCuidador(id) async {
   return null;
 }
 
+Future<String?> obtemCuidadorPorEmail(email) async {
+  var request = http.Request(
+      'GET',
+      Uri.parse(
+          'http://${Orion.url}:1026/v2/entities/?q=email==$email&type=cuidador'));
+  request.body = '''''';
+
+  http.StreamedResponse response = await request.send();
+
+  if (response.statusCode == 200) {
+    /*response.stream.bytesToString().then((String value) => );*/
+    return response.stream.bytesToString();
+  } else {
+    print(response.reasonPhrase);
+  }
+  return null;
+}
+
+
 alteraCuidador(dadosCuidador) async {
   var headers = {'Content-Type': 'application/json'};
   var request =
@@ -38,12 +57,18 @@ alteraCuidador(dadosCuidador) async {
 
 //todo: check
 criaCuidador(dadosCuidador) async {
-  var headers = {'Content-Type': 'application/json'};
+  var headers = {
+    'Content-Type': 'application/json',
+    'fiware-service': 'helixiot',
+    'fiware-servicepath': '/'
+  };
+  var urll = 'http://${Orion.url}:1026/v2/entities';
+  print(urll);
   var request =
-  http.Request('POST', Uri.parse('http://${Orion.url}:1026/v2/op/update'));
+  http.Request('POST', Uri.parse(urll));
   request.body = Cuidador.obtemJson(dadosCuidador);
   request.headers.addAll(headers);
-
+  print(request.body);
   http.StreamedResponse response = await request.send();
 
   if (response.statusCode == 200) {
