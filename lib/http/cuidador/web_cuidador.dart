@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
-import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
+import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
 import 'package:smart_mhealth_admin/http/web.dart';
 
-Future<String?> obtemRemedio(id) async {
+Future<String?> obtemCuidador(id) async {
   var request = http.Request(
       'GET',
       Uri.parse(
@@ -20,11 +20,11 @@ Future<String?> obtemRemedio(id) async {
   return null;
 }
 
-alteraRemedio(dadosRemedio) async {
+alteraCuidador(dadosCuidador) async {
   var headers = {'Content-Type': 'application/json'};
   var request =
   http.Request('POST', Uri.parse('http://${Orion.url}:1026/v2/op/update'));
-  request.body = Remedio.obtemJson(dadosRemedio);
+  request.body = Cuidador.obtemJson(dadosCuidador);
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();
@@ -37,11 +37,11 @@ alteraRemedio(dadosRemedio) async {
 }
 
 //todo: check
-criaRemedio(dadosRemedio) async {
+criaCuidador(dadosCuidador) async {
   var headers = {'Content-Type': 'application/json'};
   var request =
   http.Request('POST', Uri.parse('http://${Orion.url}:1026/v2/op/update'));
-  request.body = Remedio.obtemJson(dadosRemedio);
+  request.body = Cuidador.obtemJson(dadosCuidador);
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();
@@ -53,7 +53,7 @@ criaRemedio(dadosRemedio) async {
   }
 }
 
-deletaRemedio(id) async {
+deletaCuidador(id) async {
   var headers = {'Content-Type': 'application/json'};
   var request =
   http.Request('DELETE', Uri.parse('http://${Orion.url}:1026/v2/entities/?q=id==$id&type=remedio'));

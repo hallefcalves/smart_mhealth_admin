@@ -5,7 +5,7 @@ import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CardIdoso extends StatelessWidget {
-  CardIdoso(this.idoso, {Key? key}) : super(key: key);
+   CardIdoso(this.idoso, {Key? key}) : super(key: key);
   var idoso;
 
   @override

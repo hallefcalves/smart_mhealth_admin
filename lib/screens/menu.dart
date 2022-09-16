@@ -175,7 +175,10 @@ class Menu extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: ElevatedButton(
-              onPressed: () {Orion().obtemVersao();},
+              onPressed: () {Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => CadastroAdmin())));},
               style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(20),

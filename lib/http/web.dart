@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class Orion {
@@ -19,6 +20,10 @@ class Orion {
       print(response.reasonPhrase);
     }
     return null;
+  }
+
+  static createUniqueId() {
+    return UniqueKey().toString();
   }
 
   Future<String?> obtemVersao() async {

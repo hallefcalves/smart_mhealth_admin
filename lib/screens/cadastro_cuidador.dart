@@ -138,7 +138,7 @@ class CadastroCuidador extends StatelessWidget {
                 hintText: 'Ana Clara',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -146,9 +146,9 @@ class CadastroCuidador extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: MyTheme.defaultTheme.primaryColor,
-                  width: 2,
-                )),
+                      color: MyTheme.defaultTheme.primaryColor,
+                      width: 2,
+                    )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -164,7 +164,7 @@ class CadastroCuidador extends StatelessWidget {
                 hintText: 'ana.clara@exemplo.com',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -172,9 +172,9 @@ class CadastroCuidador extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: MyTheme.defaultTheme.primaryColor,
-                  width: 2,
-                )),
+                      color: MyTheme.defaultTheme.primaryColor,
+                      width: 2,
+                    )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -190,7 +190,7 @@ class CadastroCuidador extends StatelessWidget {
                 hintText: '(xx) xxxxx-xxxx',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -198,9 +198,9 @@ class CadastroCuidador extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: MyTheme.defaultTheme.primaryColor,
-                  width: 2,
-                )),
+                      color: MyTheme.defaultTheme.primaryColor,
+                      width: 2,
+                    )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -216,7 +216,7 @@ class CadastroCuidador extends StatelessWidget {
                 hintText: '(xx) xxxxx-xxxx',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -224,9 +224,9 @@ class CadastroCuidador extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: MyTheme.defaultTheme.primaryColor,
-                  width: 2,
-                )),
+                      color: MyTheme.defaultTheme.primaryColor,
+                      width: 2,
+                    )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -241,12 +241,12 @@ class CadastroCuidador extends StatelessWidget {
                     children: [
                       ElevatedButton(
                           onPressed: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Colaboradores()))
-                              }, //popuc code e others
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const Colaboradores()))
+                          }, //popuc code e others
                           style: ElevatedButton.styleFrom(
                               primary: MyTheme.defaultTheme.primaryColor,
                               shape: RoundedRectangleBorder(
