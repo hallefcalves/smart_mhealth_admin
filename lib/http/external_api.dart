@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:http/http.dart' as http;
 
 Future<String> verRemedioAPI(gtin) async {
@@ -28,8 +26,6 @@ class TextUp extends StatefulWidget {
 class _TextUpState extends State<TextUp> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Text('10'),
-    );
+    return const Text('10');
   }
 }

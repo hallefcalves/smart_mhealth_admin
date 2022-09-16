@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:g_json/g_json.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:smart_mhealth_admin/http/external_api.dart';
 
@@ -17,7 +18,7 @@ class BarcodeScanner extends StatefulWidget {
 class _BarcodeScannerState extends State<BarcodeScanner> {
   String _scanBarcode = 'Unknown';
   late String? _result;
-  
+
   @override
   void initState() {
     super.initState();
@@ -26,12 +27,15 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
+    dynamic decoded;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-      _result = verRemedioAPI(barcodeScanRes) as String;
+      _result = await verRemedioAPI(barcodeScanRes);
+      decoded = await JSON.parse(_result!);
       print(barcodeScanRes);
+      print(decoded.description);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -42,11 +46,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
     if (!mounted) return;
 
     setState(() {
-      if (_result == null) {
-        _scanBarcode = _result!;
-      } else {
-        _scanBarcode = barcodeScanRes;
-      }
+      _scanBarcode = decoded["description"].toString();
     });
   }
 
