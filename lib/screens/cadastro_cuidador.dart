@@ -136,18 +136,53 @@ class _CadastroCuidador extends State<CadastroCuidador> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(25.0),
-            child: Container(
-              width: 120,
-              height: 120,
-              clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Image.network(
-                'https://picsum.photos/seed/364/600',
-              ),
-            ),
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 35, 0, 35),
+            child: Row(mainAxisSize: MainAxisSize.max, children: [
+              SizedBox(
+                width: 380,
+                height: 150,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: const AlignmentDirectional(-1.02, -0.33),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(130, 0, 0, 0),
+                        child: Container(
+                          width: 130,
+                          height: 130,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.network(
+                            'https://picsum.photos/seed/834/600',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: const AlignmentDirectional(-1.02, 0.93),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(215, 0, 0, 5),
+                        child: Container(
+                          width: 45,
+                          height: 45,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.network(
+                            'https://picsum.photos/seed/16/600',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ]),
           ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
