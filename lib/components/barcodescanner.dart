@@ -17,7 +17,7 @@ class BarcodeScanner extends StatefulWidget {
 class _BarcodeScannerState extends State<BarcodeScanner> {
   String _scanBarcode = 'Unknown';
   late String? _result;
-  ExternalApi p = ExternalApi();
+  
   @override
   void initState() {
     super.initState();
@@ -42,11 +42,11 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
     if (!mounted) return;
 
     setState(() {
-      //if (_result != null) {
-        //_scanBarcode = _result!;
-      //} else {
+      if (_result == null) {
+        _scanBarcode = _result!;
+      } else {
         _scanBarcode = barcodeScanRes;
-      //}
+      }
     });
   }
 

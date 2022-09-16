@@ -6,7 +6,7 @@ import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CardIdoso extends StatelessWidget {
   CardIdoso(this.idoso, {Key? key}) : super(key: key);
-  var idoso = "";
+  var idoso;
 
   @override
   Widget build(BuildContext context) {
