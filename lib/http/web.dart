@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
 
 class Orion {
   static var url = "20.163.17.242";
@@ -23,14 +24,11 @@ class Orion {
   }
 
   static createUniqueId() {
-    return UniqueKey().toString();
+    return Uuid().v1();
   }
 
   Future<String?> obtemVersao() async {
-    var request = http.Request(
-        'GET',
-        Uri.parse(
-            'http://$url:4041/iot/about'));
+    var request = http.Request('GET', Uri.parse('http://$url:4041/iot/about'));
     request.body = '''''';
 
     http.StreamedResponse response = await request.send();
@@ -45,7 +43,8 @@ class Orion {
 
   sendData() async {
     var headers = {'Content-Type': 'application/json'};
-    var request = http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
+    var request =
+        http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
     request.body = json.encode({
       "id": "urn:ngsi-ld:remedio:001",
       "type": "remedio",
@@ -73,7 +72,8 @@ class Orion {
 
   criaIdoso() async {
     var headers = {'Content-Type': 'application/json'};
-    var request = http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
+    var request =
+        http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
     request.body = json.encode({
       "id": "urn:ngsi-ld:remedio:001",
       "type": "remedio",
@@ -81,7 +81,7 @@ class Orion {
       "imagem": {
         "type": "string",
         "value":
-        "https://www.erifarma.com.br/medicamentos/advil-400mg-20-capsulas"
+            "https://www.erifarma.com.br/medicamentos/advil-400mg-20-capsulas"
       },
       "lote": {"type": "Text", "value": "AR750"},
       "qtdPilulas": {"type": "Integer", "value": 8},

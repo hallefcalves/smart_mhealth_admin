@@ -39,7 +39,7 @@ class Smartmhealth extends StatelessWidget {
         '/ler_codigo_barras': (context) => const LerCodigoBarras(),
         '/cadastro_cuidador': (context) => const CadastroCuidador(),
         '/cadastro_agenda': (context) => const CadastroAgenda(),
-        '/relatorios': (context) => const Relatorios(),
+        '/relatorios': (context) =>  Relatorios(),
         '/colaboradores': (context) => const Colaboradores()
       },
     );

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       _result = await verRemedioAPI(barcodeScanRes);
-      decoded = await JSON.parse(_result!);
+      decoded = JSON.parse(_result!);
       print(barcodeScanRes);
       print(decoded.description);
     } on PlatformException {

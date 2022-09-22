@@ -17,13 +17,14 @@ class Cuidador {
   static String obtemJson(dado) {
     var txtIdosos = [];
 
-    for (var item in dado.refIdosos){
+    for (var item in dado.refIdosos) {
       txtIdosos.add({"type": "Relationship", "value": item});
     }
     /*if(dado?.id.isEmpty){
       dado.id = Orion.createUniqueId();
     }*/
-    dado.id = Orion.createUniqueId();
+    
+    dado.id = "urn:ngsi-ld:cuidador:${Orion.createUniqueId()}";
     //dado.id = "teste99999";
     return json.encode({
       "id": dado.id,
@@ -31,8 +32,8 @@ class Cuidador {
       "name": {"type": "string", "value": dado.name},
       "email": {"type": "string", "value": dado.email},
       "senha": {"type": "string", "value": dado.senha},
-      "tel": {"type": "Text", "value": dado.tel??""},
-      "tel2": {"type": "Text", "value": dado.tel2??""},
+      "tel": {"type": "Text", "value": dado.tel ?? ""},
+      "tel2": {"type": "Text", "value": dado.tel2 ?? ""},
       /*"refIdosos": txtIdosos,*/
       "codigo": {"type": "Integer", "value": "106283"}
     });
