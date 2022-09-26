@@ -5,9 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_cuidador.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
+import '../components/card_colaborador.dart';
+
 class Colaboradores extends StatelessWidget {
   const Colaboradores({Key? key}) : super(key: key);
   final String image = 'lib/assets/images/Logo.png';
+  static const IconData info = IconData(0xe33c, fontFamily: 'MaterialIcons');
 
   //todo: other icons
   final String userIcon =
@@ -32,35 +35,32 @@ class Colaboradores extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text(
-                'O despertador',
-                style: GoogleFonts.inter(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(115.0, 0, 5.0, 0),
+                child: Icon(
+                  info,
                   color: MyTheme.defaultTheme.primaryColor,
+                  size: 16.0,
                 ),
               ),
-            ),
-          ),
-          Center(
-            child: Image.asset(
-              image,
-              scale: 2.2,
-            ),
-          ),
-          Center(
-            child: Text(
-              'Deles',
-              style: GoogleFonts.inter(
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
+              Padding(
+                padding: const EdgeInsets.only(top: 1.0),
+                child: Text(
+                  'O que são colaboradores?',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inter(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: MyTheme.defaultTheme.primaryColor,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
+          CardColaborador(""),
+          CardColaborador(""),
           ElevatedButton(
             onPressed: () => {
               Navigator.push(
