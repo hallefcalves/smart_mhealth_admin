@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 //import '../flutter_flow/flutter_flow_util.dart';
 import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CardColaborador extends StatelessWidget {
   CardColaborador(this.remedio, {Key? key}) : super(key: key);
@@ -70,21 +71,14 @@ class CardColaborador extends StatelessWidget {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.02, 0.93),
+                  alignment: const AlignmentDirectional(-1.02, -0.33),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(80, 70, 0, 5),
-                    child: Container(
-                        width: 100,
-                        height: 100,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          mode_edit_rounded,
-                          color: Colors.white,
-                          size: 20.0,
-                        )),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(123, 72, 0, 12),
+                    child: FaIcon(
+                      FontAwesomeIcons.edit,
+                      size: 15,
+                    ),
                   ),
                 ),
               ],
