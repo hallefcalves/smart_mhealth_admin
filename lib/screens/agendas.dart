@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_agenda.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
+import '../components/card_agendas.dart';
+
 class Agendas extends StatelessWidget {
   const Agendas({Key? key}) : super(key: key);
   final String image = 'lib/assets/images/Logo.png';
@@ -32,35 +34,8 @@ class Agendas extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text(
-                'O despertador',
-                style: GoogleFonts.inter(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                  color: MyTheme.defaultTheme.primaryColor,
-                ),
-              ),
-            ),
-          ),
-          Center(
-            child: Image.asset(
-              image,
-              scale: 2.2,
-            ),
-          ),
-          Center(
-            child: Text(
-              'Deles',
-              style: GoogleFonts.inter(
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
-              ),
-            ),
-          ),
+          CardAgendas(""),
+          CardAgendas(""),
           ElevatedButton(
             onPressed: () => {
               Navigator.push(
