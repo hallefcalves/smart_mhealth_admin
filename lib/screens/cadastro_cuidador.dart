@@ -44,40 +44,6 @@ class _CadastroCuidador extends State<CadastroCuidador> {
       endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
-          /* Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text(
-                'Cadastro Cuidador',
-                style: GoogleFonts.inter(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                  color: MyTheme.defaultTheme.primaryColor,
-                ),
-              ),
-            ),
-          ),
-          ClipOval(
-            child: Center(
-              //mudar para img idoso
-              child: Image.asset(
-                image,
-                scale: 2.2,
-              ),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () => {}, //popuc code e others
-            style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
-              minimumSize: const Size(80, 40),
-              maximumSize: const Size(80, 40),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-            child: const Text('+'),
-          ),*/
           Center(
             child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
