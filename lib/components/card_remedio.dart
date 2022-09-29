@@ -107,15 +107,6 @@ class CardRemedio extends StatelessWidget {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: const AlignmentDirectional(7.21, -0.11),
-                  child: Text(
-                    'Atorvastatina',
-                    style: TextStyle(
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        color: textColor),
-                  ),
-                ),
               ],
             ),
           ),
