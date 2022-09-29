@@ -23,7 +23,7 @@ class ListagemRemedios extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 30, 0, 30),
             child: Text(
               'Listagem remédios',
               textAlign: TextAlign.center,
@@ -35,22 +35,27 @@ class ListagemRemedios extends StatelessWidget {
             ),
           ),
           CardRemedio("null"),
-          ElevatedButton(
-            onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>  CadastroRemedio()))
-            },
-            style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
-              minimumSize: const Size(80, 40),
-              maximumSize: const Size(80, 40),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+          CardRemedio("null"),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
+            child: ElevatedButton(
+              onPressed: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CadastroRemedio()))
+              },
+              style: ElevatedButton.styleFrom(
+                primary: MyTheme.defaultTheme.primaryColor,
+                minimumSize: const Size(80, 40),
+                maximumSize: const Size(80, 40),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: const Text(
+                '+ Cadastrar novo Remédio',
+                style: TextStyle(fontSize: 17),
               ),
             ),
-            child: const Text('Cadastrar novo Remédio'),
           ),
         ],
       ),

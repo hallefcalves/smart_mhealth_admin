@@ -19,7 +19,6 @@ class CadastroCuidador extends StatefulWidget {
 }
 
 class _CadastroCuidador extends State<CadastroCuidador> {
-
   @override
   void initState() {
     super.initState();
@@ -35,7 +34,6 @@ class _CadastroCuidador extends State<CadastroCuidador> {
   TextEditingController emailController = TextEditingController();
   //TextEditingController telefoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -130,20 +128,13 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                     Align(
                       alignment: const AlignmentDirectional(-1.02, 0.93),
                       child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(215, 0, 0, 5),
-                        child: Container(
-                          width: 45,
-                          height: 45,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/16/600',
-                          ),
-                        ),
-                      ),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              215, 0, 0, 5),
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: MyTheme.defaultTheme.primaryColor,
+                            size: 40,
+                          )),
                     ),
                   ],
                 ),
@@ -161,7 +152,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 hintText: 'Ana Clara',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -169,9 +160,9 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: MyTheme.defaultTheme.primaryColor,
-                      width: 2,
-                    )),
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -188,7 +179,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 hintText: 'ana.clara@exemplo.com',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -196,9 +187,9 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: MyTheme.defaultTheme.primaryColor,
-                      width: 2,
-                    )),
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -217,7 +208,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 hintText: '*************',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -225,9 +216,9 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: MyTheme.defaultTheme.primaryColor,
-                      width: 2,
-                    )),
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -243,7 +234,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 hintText: '(xx) xxxxx-xxxx',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                  BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(4.0),
                     topRight: Radius.circular(4.0),
@@ -251,9 +242,9 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: MyTheme.defaultTheme.primaryColor,
-                      width: 2,
-                    )),
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
                 filled: true,
                 fillColor: Colors.white,
               ),
@@ -267,9 +258,8 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                   child: Row(
                     children: [
                       ElevatedButton(
-                          onPressed: () => {
-                            RealizaCadastro()
-                          }, //popuc code e others
+                          onPressed: () =>
+                              {RealizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
                               primary: MyTheme.defaultTheme.primaryColor,
                               shape: RoundedRectangleBorder(
@@ -288,7 +278,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
     );
   }
 
-  RealizaCadastro(){
+  RealizaCadastro() {
     var dadosCuidador = Cuidador();
     dadosCuidador.senha = passwordController.text;
     dadosCuidador.email = emailController.text;
@@ -296,13 +286,9 @@ class _CadastroCuidador extends State<CadastroCuidador> {
     criaCuidador(dadosCuidador);
     showDialog<void>(
         context: context,
-        builder: (context) => CustomAlertDialog("teste", "teste", "confirma", "teste",
-            IconData(0x41, fontFamily: 'Roboto')));
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-            const Colaboradores()));
+        builder: (context) => CustomAlertDialog("teste", "teste", "confirma",
+            "teste", IconData(0x41, fontFamily: 'Roboto')));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const Colaboradores()));
   }
-
 }
