@@ -7,6 +7,7 @@ import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/components/barcodescanner.dart';
 import 'package:smart_mhealth_admin/http/external_api.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CadastroRemedio extends StatelessWidget {
   CadastroRemedio({Key? key}) : super(key: key);
@@ -30,15 +31,58 @@ class CadastroRemedio extends StatelessWidget {
       endDrawer: const DrawerCustom(),
       body: ListView(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Text(
-              'Cadastro Remédio',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.inter(
-                fontSize: 30,
-                fontWeight: FontWeight.w400,
-                color: MyTheme.defaultTheme.primaryColor,
+          Center(
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+              child: Card(
+                color: Colors.white,
+                child: InkWell(
+                  onTap: () => {},
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            const Icon(
+                              Icons.camera_alt,
+                              color: Colors.black,
+                              size: 35,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Column(children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
+                                child: Text(
+                                  'Novo Remédio',
+                                  style: GoogleFonts.inter(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'Ler código de barra',
+                                style: GoogleFonts.inter(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ]),
+                          ],
+                        ),
+                        Icon(
+                          FontAwesomeIcons.chevronRight,
+                          color: MyTheme.defaultTheme.primaryColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -50,21 +94,22 @@ class CadastroRemedio extends StatelessWidget {
                 height: 160,
                 child: Stack(
                   children: [
-                    Align(
-                      alignment: const AlignmentDirectional(-1.02, -0.33),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(130, 0, 0, 0),
-                        child: Container(
-                          width: 150,
-                          height: 150,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.asset(
-                            'lib/assets/images/medicine.png',
-                            scale: 2.0,
+                    Center(
+                      child: Align(
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              110, 0, 0, 5),
+                          child: Container(
+                            width: 180,
+                            height: 180,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                              'lib/assets/images/medicine.png',
+                              scale: 2.0,
+                            ),
                           ),
                         ),
                       ),
