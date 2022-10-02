@@ -159,7 +159,7 @@ class CadastroRemedio extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
-            child: TextFormField(
+            child: TextField(
               controller: emailController,
               autofocus: true,
               obscureText: false,
@@ -191,7 +191,7 @@ class CadastroRemedio extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 10, 20),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 10, 0),
                     child: TextFormField(
                       controller: textController2,
                       autofocus: true,
@@ -221,7 +221,7 @@ class CadastroRemedio extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 20, 0, 20),
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 20, 0, 0),
                     child: TextFormField(
                       controller: textController3,
                       autofocus: true,
@@ -250,6 +250,31 @@ class CadastroRemedio extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 170, 0),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+              child: ElevatedButton(
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ListagemRemedios(),
+                    ),
+                  )
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    foregroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent),
+                child: const Text(
+                  'Onde encontrar o lote?',
+                  style: TextStyle(
+                      color: Colors.grey, decoration: TextDecoration.underline),
+                ),
+              ),
             ),
           ),
           Padding(
