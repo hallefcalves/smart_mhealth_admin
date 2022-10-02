@@ -41,7 +41,10 @@ class Agendas extends StatelessWidget {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
             child: ElevatedButton(
-              onPressed: () => {},
+              onPressed: () => {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CadastroAgenda()))
+              },
               style: ElevatedButton.styleFrom(
                 primary: MyTheme.defaultTheme.primaryColor,
                 minimumSize: const Size(80, 40),

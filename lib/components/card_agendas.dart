@@ -11,6 +11,11 @@ class CardAgendas extends StatelessWidget {
   static const IconData mode_edit_rounded =
       IconData(0xf8ca, fontFamily: 'MaterialIcons');
 
+  //Texto que virá da criação de agendas
+  final String txtAgenda = "Todos os dias\n\n"
+      "de 4h em 4h\n\n"
+      "começando às 08h00\n\n";
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,20 +42,14 @@ class CardAgendas extends StatelessWidget {
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-0.70, 0.67),
-                        child: Text('começando às 08h00'),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(-0.70, 0.67),
-                        child: Text('começando às 08h00'),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(-0.70, 0.03),
-                        child: Text('de 4h em 4h'),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(-0.70, -0.62),
-                        child: Text('Todos os dias'),
+                        alignment: AlignmentDirectional(-0.70, 1.0),
+                        child: Text(txtAgenda,
+                            // ignore: prefer_const_constructors
+                            style: TextStyle(
+                                fontSize: 14,
+                                height:
+                                    0.5 //You can set your custom height here
+                                )),
                       ),
                       Align(
                         alignment: AlignmentDirectional(0.94, 0.6),
