@@ -28,7 +28,7 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
         IconButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: ((context) => const Menu())));
+                context, MaterialPageRoute(builder: ((context) => Menu())));
           },
           icon: Iconify(
             homeIcon,

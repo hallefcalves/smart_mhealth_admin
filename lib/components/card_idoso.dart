@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import '../flutter_flow/flutter_flow_util.dart';
 import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
+import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CardIdoso extends StatelessWidget {
    CardIdoso(this.idoso, {Key? key}) : super(key: key);
-  var idoso;
+  Idoso idoso;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class CardIdoso extends StatelessWidget {
                     options: FFButtonOptions(
                       width: 146,
                       height: 57,
-                      color: secondaryColor,
+                      color: primaryColor,
                       textStyle: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily
                       ),
@@ -74,7 +75,7 @@ class CardIdoso extends StatelessWidget {
                   options: FFButtonOptions(
                     width: 177,
                     height: 57,
-                    color: secondaryColor,
+                    color: primaryColor,
                     textStyle: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily
                     ),
@@ -96,7 +97,7 @@ class CardIdoso extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 26, 0, 28),
                   child: Text(
-                    'Severina Pereira',
+                    idoso.name??'Severina Pereira',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: GoogleFonts.inter().fontFamily,

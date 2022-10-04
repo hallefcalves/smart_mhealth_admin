@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
+import 'package:smart_mhealth_admin/http/idoso/web_idoso.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
 
 import '../components/card_idoso.dart';
-
-class MeusCuidados extends StatelessWidget {
+import '../http/cuidador/cuidador.dart';
+class MeusCuidados extends StatefulWidget {
   const MeusCuidados({Key? key}) : super(key: key);
+
+  @override
+  _MeusCuidados createState() => _MeusCuidados();
+}
+
+class _MeusCuidados extends State<MeusCuidados> {
+  @override
+  void initState() {
+    super.initState();
+    carregaIdosos();
+  }
+  List<Idoso> idosos = [];
   final String image = 'lib/assets/images/Logo.png';
 
   //todo: other icons
@@ -36,8 +51,69 @@ class MeusCuidados extends StatelessWidget {
               ),
             ),
           ),
-          CardIdoso(null),
-          CardIdoso(null),
+          /*Container(
+            child:ListView(
+                children: idosos.map((strone){
+                return Container(
+                    child: CardIdoso(strone)
+                );
+              }).toList(),
+            ),),*/
+          //CardIdoso(null),
+              FutureBuilder(
+              future: carregaIdosos(),
+              initialData : "[]",
+              builder: (context, AsyncSnapshot<String?> snapshot) {
+                List<Widget> children;
+                if (snapshot.hasData) {
+                  List<Idoso> lista = Idoso.obtemIdosos(snapshot.data);
+                  
+                  children = lista.map((strone){
+                        return CardIdoso(strone);
+                      }).toList();
+                } else if (snapshot.hasError) {
+                  children = <Widget>[
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  ];
+                } else {
+                  children = const <Widget>[
+                    SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: CircularProgressIndicator(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: Text('Carregando...'),
+                    ),
+                  ];
+                }
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: children,
+                  ),
+                );
+                
+                if (snapshot.hasData) {
+                  List<Idoso> lista = Idoso.obtemIdosos(snapshot.data);
+                  
+                  return CardIdoso(lista[0]);
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              }),
+
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -58,5 +134,12 @@ class MeusCuidados extends StatelessWidget {
         ],
       ),
     );
+  }
+  
+  Future<String?> carregaIdosos() async {
+      dynamic user = await SessionManager().get("user");
+      var idCuidador = Cuidador.obtemIdSession(user.toString());
+      print(idCuidador);
+      return obtemListaIdosos(idCuidador);
   }
 }

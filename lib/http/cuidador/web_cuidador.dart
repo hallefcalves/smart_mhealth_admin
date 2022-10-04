@@ -1,3 +1,4 @@
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
 import 'package:smart_mhealth_admin/http/web.dart';
@@ -24,7 +25,7 @@ Future<String?> obtemCuidadorPorEmail(email) async {
   var request = http.Request(
       'GET',
       Uri.parse(
-          'http://${Orion.url}:1026/v2/entities/?q=email==$email&type=cuidador'));
+          'http://${Orion.url}:1026/v2/entities/?email=$email&type=cuidador'));
   request.body = '''''';
 
   http.StreamedResponse response = await request.send();
@@ -55,7 +56,7 @@ alteraCuidador(dadosCuidador) async {
   }
 }
 
-//todo: check
+
 criaCuidador(dadosCuidador) async {
   var headers = {
     'Content-Type': 'application/json',
@@ -66,15 +67,17 @@ criaCuidador(dadosCuidador) async {
   print(urll);
   var request =
   http.Request('POST', Uri.parse(urll));
-  request.body = Cuidador.obtemJson(dadosCuidador);
+  String jsonCuidador = Cuidador.obtemJson(dadosCuidador);
+  request.body = jsonCuidador;
   request.headers.addAll(headers);
   print(request.body);
   http.StreamedResponse response = await request.send();
 
+  await SessionManager().set("user", "-$jsonCuidador");
   if (response.statusCode == 200) {
-    response.stream.bytesToString().then((String value) => print(value));
+    response.stream.bytesToString().then((String value) => print("Status 200:$value"));
   } else {
-    print(response.reasonPhrase);
+    print("Status ${response.statusCode}:${response.reasonPhrase}");
   }
 }
 

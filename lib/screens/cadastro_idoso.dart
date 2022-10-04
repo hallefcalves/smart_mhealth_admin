@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
@@ -9,7 +10,8 @@ import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 import '../http/cuidador/cuidador.dart';
-import '../http/cuidador/web_cuidador.dart';
+import '../http/idoso/idoso.dart';
+import '../http/idoso/web_idoso.dart';
 
 class CadastroIdoso extends StatefulWidget {
   const CadastroIdoso({Key? key}) : super(key: key);
@@ -266,7 +268,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                     children: [
                       ElevatedButton(
                           onPressed: () =>
-                              {RealizaCadastro()}, //popuc code e others
+                              {realizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
                               primary: MyTheme.defaultTheme.primaryColor,
                               shape: RoundedRectangleBorder(
@@ -285,17 +287,24 @@ class _CadastroIdoso extends State<CadastroIdoso> {
     );
   }
 
-  RealizaCadastro() {
-    var dadosCuidador = Cuidador();
-    dadosCuidador.senha = passwordController.text;
-    dadosCuidador.email = emailController.text;
-    dadosCuidador.name = nameController.text;
-    criaCuidador(dadosCuidador);
-    showDialog<void>(
-        context: context,
-        builder: (context) => CustomAlertDialog("teste", "teste", "confirma",
-            "teste", IconData(0x41, fontFamily: 'Roboto')));
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const Colaboradores()));
+  realizaCadastro() async {
+    var dadosIdoso = Idoso();
+    //dadosIdoso.senha = passwordController.text;
+    dadosIdoso.email = emailController.text;
+    dadosIdoso.name = nameController.text;
+    //todo obter id do cuidador logado
+    //
+    dynamic user = await SessionManager().get("user");
+    dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());
+    criaIdoso(dadosIdoso).then((value) => 
+      showDialog<void>(
+          context: context,
+          builder: (context) => CustomAlertDialog("Sucesso", "Criado com sucesso", "confirma",
+              "cancel", IconData(0x41, fontFamily: 'Roboto'))
+          )
+        );
+    
+    /*Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const Colaboradores()));*/
   }
 }

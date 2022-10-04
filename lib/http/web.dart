@@ -6,19 +6,50 @@ import 'package:uuid/uuid.dart';
 class Orion {
   static var url = "20.163.17.242";
 
-  Future<String?> fetchData(codigo) async {
+  static Future<String?> obtemDados(codigo) async {
+    var headers = {
+        'Accept': 'application/json',
+        'fiware-service': 'helixiot',
+        'fiware-servicepath': '/'
+      };
     var request = http.Request(
         'GET',
         Uri.parse(
-            'http://$url:1026/v2/entities/urn:ngsi-ld:Shelf:unit001/?options=values&attrs=refStore'));
-    request.body = '''''';
-
+            'http://$url:1026/v2/entities/?id=$codigo/'));
+    //request.body = '''''';
+    request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      response.stream.bytesToString().then((String value) => print(value));
+      print("Sucesso obtendo");
+      return response.stream.bytesToString();
     } else {
-      print(response.reasonPhrase);
+      print("Erro get: ${response.statusCode}: ${response.reasonPhrase}");
+    }
+    return null;
+  }
+
+  static Future<String?> obtemDadosQuery(query) async {
+    var headers = {
+        'Accept': 'application/json',
+        'fiware-service': 'helixiot',
+        'fiware-servicepath': '/'
+      };
+    var urlAux = 'http://$url:1026/v2/entities/$query/';
+    print(urlAux);
+    var request = http.Request(
+        'GET',
+        Uri.parse(
+            urlAux));
+    //request.body = '''''';
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print("Sucesso obtendo");
+      return response.stream.bytesToString();
+    } else {
+      print("Erro get: ${response.statusCode}: ${response.reasonPhrase}");
     }
     return null;
   }
@@ -41,68 +72,155 @@ class Orion {
     return null;
   }
 
-  sendData() async {
-    var headers = {'Content-Type': 'application/json'};
+  static fazUpdate(id, requestBody) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'fiware-service': 'helixiot',
+      'fiware-servicepath': '/'
+    };
+    var urll = 'http://${Orion.url}:1026/v2/entities/$id/attrs';
+    print(urll);
     var request =
-        http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
-    request.body = json.encode({
-      "id": "urn:ngsi-ld:remedio:001",
-      "type": "remedio",
-      "name": {"type": "string", "value": "Advil"},
-      "imagem": {
-        "type": "string",
-        "value":
-            "https://www.erifarma.com.br/medicamentos/advil-400mg-20-capsulas"
-      },
-      "lote": {"type": "Text", "value": "AR750"},
-      "qtdPilulas": {"type": "Integer", "value": 8},
-      "dataValidade": {"type": "date", "value": "22/07/2029"},
-      "refIdoso": {"type": "Relationship", "value": "urn:ngsi-ld:Idoso:001"}
-    });
+      http.Request('POST', Uri.parse(urll));
+    request.body = requestBody;
     request.headers.addAll(headers);
-
+    print(request.body);
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      response.stream.bytesToString().then((String value) => print(value));
     } else {
       print(response.reasonPhrase);
     }
   }
 
-  criaIdoso() async {
-    var headers = {'Content-Type': 'application/json'};
+  static criaEntidade(requestBody) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'fiware-service': 'helixiot',
+      'fiware-servicepath': '/'
+    };
+    var urll = 'http://${Orion.url}:1026/v2/entities';
+    print(urll);
     var request =
-        http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
-    request.body = json.encode({
-      "id": "urn:ngsi-ld:remedio:001",
-      "type": "remedio",
-      "name": {"type": "string", "value": "Advil"},
-      "imagem": {
-        "type": "string",
-        "value":
-            "https://www.erifarma.com.br/medicamentos/advil-400mg-20-capsulas"
-      },
-      "lote": {"type": "Text", "value": "AR750"},
-      "qtdPilulas": {"type": "Integer", "value": 8},
-      "dataValidade": {"type": "date", "value": "22/07/2029"},
-      "refIdoso": {"type": "Relationship", "value": "urn:ngsi-ld:Idoso:001"}
-    });
+    http.Request('POST', Uri.parse(urll));
+    request.body = requestBody;
     request.headers.addAll(headers);
-
+    print(request.body);
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      return response.stream.bytesToString();//.then((String value) => print(value));
     } else {
       print(response.reasonPhrase);
     }
   }
+
+  static deletaEntidade(id, tipo) async {
+    var headers = {
+        'Content-Type': 'application/json',
+        'fiware-service': 'helixiot',
+        'fiware-servicepath': '/'
+      };
+    var urll = 'http://${Orion.url}:1026/v2/entities/?q=id==$id&type=$tipo';
+    print(urll);
+    var request =
+    http.Request('DELETE', Uri.parse(urll));
+    request.body = '''''';
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      response.stream.bytesToString().then((String value) => print(value));
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
 }
 
 
+/*criaIdoso() async {
+    var headers = {'Content-Type': 'application/json'};
+    var request =
+        http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
+    request.body = json.encode({
+      "id": "urn:ngsi-ld:remedio:001",
+      "type": "remedio",
+      "name": {"type": "string", "value": "Advil"},
+      "imagem": {
+        "type": "string",
+        "value":
+            "https://www.erifarma.com.br/medicamentos/advil-400mg-20-capsulas"
+      },
+      "lote": {"type": "Text", "value": "AR750"},
+      "qtdPilulas": {"type": "Integer", "value": 8},
+      "dataValidade": {"type": "date", "value": "22/07/2029"},
+      "refIdoso": {"type": "Relationship", "value": "urn:ngsi-ld:Idoso:001"}
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
+  } 
+  
+  Future<String?> fetchData(codigo) async {
+    var request = http.Request(
+        'GET',
+        Uri.parse(
+            'http://$url:1026/v2/entities/urn:ngsi-ld:Shelf:unit001/?options=values&attrs=refStore'));
+    request.body = '''''';
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      response.stream.bytesToString().then((String value) => print(value));
+    } else {
+      print(response.reasonPhrase);
+    }
+    return null;
+  }
+
+sendData() async {
+    var headers = {'Content-Type': 'application/json'};
+    var request =
+        http.Request('POST', Uri.parse('http://$url:1026/v2/op/update'));
+    request.body = json.encode({
+      "id": "urn:ngsi-ld:remedio:001",
+      "type": "remedio",
+      "name": {"type": "string", "value": "Advil"},
+      "imagem": {
+        "type": "string",
+        "value":
+            "https://www.erifarma.com.br/medicamentos/advil-400mg-20-capsulas"
+      },
+      "lote": {"type": "Text", "value": "AR750"},
+      "qtdPilulas": {"type": "Integer", "value": 8},
+      "dataValidade": {"type": "date", "value": "22/07/2029"},
+      "refIdoso": {"type": "Relationship", "value": "urn:ngsi-ld:Idoso:001"}
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  */
+
 /* todos> dataCriacao:data
 ?todos> ultimaAtualizacao:data
+
+
 
 remedios: {
     id: string,

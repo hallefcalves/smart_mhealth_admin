@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
@@ -14,9 +15,23 @@ import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/http/web.dart';
 
-class Menu extends StatelessWidget {
+import '../http/cuidador/cuidador.dart';
+class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
+
+  @override
+  _Menu createState() => _Menu();
+}
+
+class _Menu extends State<Menu> {
+  @override
+  void initState() {
+    super.initState();
+    obtemLogado();
+  }
   final String image = 'lib/assets/images/Logo_Verde.png';
+
+  String userLogado = "";
 
   //todo: other icons
   final String userIcon =
@@ -47,13 +62,13 @@ class Menu extends StatelessWidget {
           SizedBox(
             height: 250,
             child: ListView(
-              children: const [
+              children: [
                 Padding(
                   padding: EdgeInsets.only(top: 10, left: 26, right: 15),
                   child: CustomNotification(
                       errorSurface,
                       errorDefault,
-                      "Remédio Atrasado",
+                      (userLogado=="" ? userLogado:"Remédio Atrasado"),
                       "Advil às 15h30 ainda não foi tomado"),
                 ),
                 Padding(
@@ -196,4 +211,21 @@ class Menu extends StatelessWidget {
       ),
     );
   }
+
+  obtemLogado() async {
+    dynamic user = await SessionManager().get("user");
+    //print(user.id);
+    userLogado = Cuidador.obtemIdSession(user.toString());
+    
+    //SessionManager().get("user").then((valor) => );
+  }
+
+  setLogado(valor){
+    print("Valor:");
+    print(valor);
+    userLogado = Cuidador.obtemIdSession(valor);
+    print("Id user:");
+    print(userLogado);
+  }
+
 }
