@@ -86,7 +86,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
             children: <Widget>[
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: MyTheme.defaultTheme.primaryColor,
+                      backgroundColor: MyTheme.defaultTheme.primaryColor,
                       textStyle: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily,
                         fontSize: 20,
@@ -102,7 +102,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
               ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: MyTheme.defaultTheme.primaryColor,
+                      backgroundColor: MyTheme.defaultTheme.primaryColor,
                       textStyle: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily,
                         fontSize: 20,
@@ -118,7 +118,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
               ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: MyTheme.defaultTheme.primaryColor,
+                      backgroundColor: MyTheme.defaultTheme.primaryColor,
                       textStyle: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily,
                         fontSize: 20,

@@ -8,25 +8,23 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CardColaborador extends StatelessWidget {
   CardColaborador(this.remedio, {Key? key}) : super(key: key);
   var remedio = "";
-  static const IconData mode_edit_rounded =
-      IconData(0xf8ca, fontFamily: 'MaterialIcons');
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0, 48, 0, 48),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 15),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
             width: 380,
-            height: 110,
+            height: 180,
             child: Stack(
               children: [
                 Align(
                   alignment: const AlignmentDirectional(-1.03, 0.02),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(183, 0, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(183, 0, 0, 5),
                     child: Text(
                       'Mariana Pereira',
                       style: TextStyle(
@@ -47,8 +45,9 @@ class CardColaborador extends StatelessWidget {
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
-                      child: Image.network(
-                        'https://picsum.photos/seed/834/600',
+                      child: Image.asset(
+                        'lib/assets/images/marianapereira.jpg',
+                        scale: 2.0,
                       ),
                     ),
                   ),
@@ -57,10 +56,10 @@ class CardColaborador extends StatelessWidget {
                   alignment: const AlignmentDirectional(-1.02, 0.93),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(80, 70, 0, 12),
+                        const EdgeInsetsDirectional.fromSTEB(115, 50, 0, 40),
                     child: Container(
-                        width: 100,
-                        height: 100,
+                        width: 33,
+                        height: 33,
                         clipBehavior: Clip.antiAlias,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
@@ -74,10 +73,10 @@ class CardColaborador extends StatelessWidget {
                   alignment: const AlignmentDirectional(-1.02, -0.33),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(123, 72, 0, 12),
+                        const EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
                     child: FaIcon(
                       FontAwesomeIcons.edit,
-                      size: 15,
+                      size: 20,
                     ),
                   ),
                 ),
