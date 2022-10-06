@@ -30,7 +30,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+          '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
       _result = await verRemedioAPI(barcodeScanRes);
       decoded = JSON.parse(_result!);
       print(barcodeScanRes);
