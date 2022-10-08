@@ -7,7 +7,7 @@ Future<String?> obtemIdoso(id) async {
 }
 
 Future<String?> obtemListaIdosos(idCuidador) async {
-  return Orion.obtemDadosQuery('?type=idoso&refCuidador=$idCuidador');
+  return Orion.obtemDadosQuery('?type=idoso&q=refCuidador==$idCuidador');
 }
 
 alteraIdoso(dadosIdoso) async {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
@@ -43,16 +45,55 @@ class DrawerCustom extends StatelessWidget {
                         size: 20,
                       ),
                     ),
-                    const Positioned(
+                    Positioned(
                       top: 0,
                       left: 30,
-                      child: Text(
-                        'Name',
-                        style: TextStyle(
+                      child: FutureBuilder(
+              future: carregaUserLogado(),
+              initialData : "{}",
+              builder: (context, AsyncSnapshot<String?> snapshot) {
+                List<Widget> children;
+                if (snapshot.hasData) {
+                  Cuidador user = Cuidador.obtemCuidador(snapshot.data);
+
+                  children = <Widget>[Text(
+                        user.name??"Name",
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 10,
-                        ),
-                      ),
+                        ))];
+                } else if (snapshot.hasError) {
+                  children = <Widget>[
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  ];
+                } else {
+                  children = const <Widget>[
+                    SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: CircularProgressIndicator(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: Text('Carregando...'),
+                    ),
+                  ];
+                }
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: children,
+                  ),
+                );
+              }),
                     ),
                     const Positioned(
                       top: 12,
@@ -310,4 +351,11 @@ class DrawerCustom extends StatelessWidget {
       ),
     );
   }
+
+  Future<String?> carregaUserLogado() async {
+    dynamic user = await SessionManager().get("user");
+      Cuidador usuario = Cuidador.obtemCuidador(user.toString());   
+      return usuario.name;
+  }
+
 }

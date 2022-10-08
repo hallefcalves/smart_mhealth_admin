@@ -37,6 +37,18 @@ alteraRemedio(dadosRemedio) async {
 }
 
 //todo: check
+
+criaRemedio(dadosRemedio) async {
+  return Orion.criaEntidade(Remedio.obtemJson(dadosRemedio));
+}
+
+deletaRemedio(id) async {
+  return Orion.deletaEntidade(id, "remedio");
+}
+
+
+
+/*
 criaRemedio(dadosRemedio) async {
   var headers = {'Content-Type': 'application/json'};
   var request =
@@ -66,9 +78,6 @@ deletaRemedio(id) async {
   } else {
     print(response.reasonPhrase);
   }
-}
-
-
-
+}*/
 
 

@@ -30,13 +30,13 @@ class Remedio {
   static Remedio obtemRemedio(json){
     var dados = jsonDecode(json);
     Remedio r = Remedio();
-    r.id = dados.id;
-    r.name = dados.name.value;
-    r.imagem = dados.imagem.value;
-    r.lote = dados.lote.value;
-    r.qtdPilulas = dados.qtdPilulas.value;
-    r.dataValidade = dados.dataValidade.value;
-    r.refIdoso = dados.refIdoso.value;
+    r.id = dados['id'];
+    r.name = dados['name']['value'];
+    r.imagem = dados['imagem']['value'];
+    r.lote = dados['lote']['value'];
+    r.qtdPilulas = dados['qtdPilulas']['value'];
+    r.dataValidade = dados['dataValidade']['value'];
+    r.refIdoso = dados['refIdoso']['value'];
     return r;
   }
 

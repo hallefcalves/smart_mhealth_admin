@@ -30,13 +30,13 @@ class Alarme {
   static Alarme obtemRemedio(json){
     var dados = jsonDecode(json);
     Alarme r = Alarme();
-    r.id = dados.id;
-    r.name = dados.name.value;
-    r.horarioInicio = dados.imagem.value;
-    r.remedio = dados.lote.value;
-    r.qtdPilulas = dados.qtdPilulas.value;
-    r.dataValidade = dados.dataValidade.value;
-    r.refIdoso = dados.refIdoso.value;
+    r.id = dados['id'];
+    r.name = dados['name']['value'];
+    r.horarioInicio = dados['imagem']['value'];
+    r.remedio = dados['lote']['value'];
+    r.qtdPilulas = dados['qtdPilulas']['value'];
+    r.dataValidade = dados['dataValidade']['value'];
+    r.refIdoso = dados['refIdoso']['value'];
     return r;
   }
 

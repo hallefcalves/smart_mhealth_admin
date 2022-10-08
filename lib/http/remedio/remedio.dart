@@ -7,7 +7,7 @@ class Remedio {
   String? lote;
   int? qtdPilulas;
   String? dataValidade;
-  String? refIdoso;
+  String? refCuidador;
 
 
   static String obtemJson(dado){
@@ -17,26 +17,25 @@ class Remedio {
       "name": {"type": "string", "value": dado.name},
       "imagem": {
         "type": "string",
-        "value":
-        dado.imagem
+        "value": dado.imagem
       },
       "lote": {"type": "Text", "value": dado.lote},
       "qtdPilulas": {"type": "Integer", "value": dado.qtdPilulas},
       "dataValidade": {"type": "date", "value": dado.dataValidade},
-      "refIdoso": {"type": "Relationship", "value": dado.refIdoso}
+      "refCuidador": {"type": "Relationship", "value": dado.refCuidador}
     });
   }
 
   static Remedio obtemRemedio(json){
     var dados = jsonDecode(json);
     Remedio r = Remedio();
-    r.id = dados.id;
-    r.name = dados.name.value;
-    r.imagem = dados.imagem.value;
-    r.lote = dados.lote.value;
-    r.qtdPilulas = dados.qtdPilulas.value;
-    r.dataValidade = dados.dataValidade.value;
-    r.refIdoso = dados.refIdoso.value;
+    r.id = dados['id'];
+    r.name = dados['name']['value'];
+    r.imagem = dados['imagem']['value'];
+    r.lote = dados['lote']['value'];
+    r.qtdPilulas = dados['qtdPilulas']['value'];
+    r.dataValidade = dados['dataValidade']['value'];
+    r.refCuidador = dados['refCuidador']['value'];
     return r;
   }
 

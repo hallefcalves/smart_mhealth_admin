@@ -25,7 +25,7 @@ Future<String?> obtemCuidadorPorEmail(email) async {
   var request = http.Request(
       'GET',
       Uri.parse(
-          'http://${Orion.url}:1026/v2/entities/?email=$email&type=cuidador'));
+          'http://${Orion.url}:1026/v2/entities/?type=cuidador&q=email==$email'));
   request.body = '''''';
 
   http.StreamedResponse response = await request.send();

@@ -25,7 +25,7 @@ class Smartmhealth extends StatelessWidget {
     return MaterialApp(
       title: 'Smartmhealth',
       theme: MyTheme.defaultTheme,
-      initialRoute: '/cadastro_cuidador',
+      initialRoute: '/',
       routes: {
         '/': (context) => const Login(),
         '/cadastro_admin': (context) => const CadastroAdmin(),
