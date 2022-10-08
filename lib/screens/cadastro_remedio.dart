@@ -8,6 +8,7 @@ import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/components/barcodescanner.dart';
 import 'package:smart_mhealth_admin/http/external_api.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../components/barcodescanner.dart';
 
 class CadastroRemedio extends StatelessWidget {
   CadastroRemedio({Key? key}) : super(key: key);
