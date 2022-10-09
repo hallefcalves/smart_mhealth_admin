@@ -55,7 +55,11 @@ class Cuidador {
   }
 
   static String obtemIdSession(json){
-    var objeto = jsonDecode(json.substring(1));
+    //print(json[0]['id']);
+    var objeto = jsonDecode(json);
+    if(objeto is List){
+      objeto = objeto[0];
+    }
     //Cuidador r = objeto;
     //print(objeto);
     print(objeto['id']);
@@ -65,12 +69,17 @@ class Cuidador {
   static Cuidador obtemCuidador(json) {
     var dados = jsonDecode(json);
     Cuidador r = Cuidador();
+    //print("dados: $dados");
+    if (dados is List){
+      dados = dados[0];
+    }
     r.id = dados['id'];
     r.name = dados['name']['value'];
     r.email = dados['email']['value'];
-    r.tel = dados['lote']['value'];
-    r.tel2 = dados['qtdPilulas']['value'];
-    r.imagem = dados['imagem']['value'];
+    r.senha = dados['senha']['value'];
+    r.tel = dados['tel']['value'];
+    //r.tel2 = dados['qtdPilulas']['value'];
+    //r.imagem = dados['imagem']['value'];
     //for each idoso
     return r;
   }

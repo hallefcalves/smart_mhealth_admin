@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
+import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_remedio.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 import '../components/card_remedio.dart';
+import '../http/cuidador/cuidador.dart';
+import '../util/sessao.dart';
 
 class ListagemRemedios extends StatelessWidget {
   const ListagemRemedios({Key? key}) : super(key: key);
@@ -34,8 +38,63 @@ class ListagemRemedios extends StatelessWidget {
               ),
             ),
           ),
-          CardRemedio("null"),
-          CardRemedio("null"),
+          FutureBuilder(
+              future: carregaRemedios(),
+              initialData : "[]",
+              builder: (context, AsyncSnapshot<String?> snapshot) {
+                List<Widget> children;
+                if (snapshot.hasData) {
+                  List<Remedio> lista = Remedio.obtemRemedios(snapshot.data);
+                  
+                  children = lista.map((strone){
+                        return CardRemedio(strone);
+                      }).toList();
+                } else if (snapshot.hasError) {
+                  children = <Widget>[
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  ];
+                } else {
+                  children = const <Widget>[
+                    SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: CircularProgressIndicator(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: Text('Carregando...'),
+                    ),
+                  ];
+                }
+                if(children.isEmpty){
+                  return Center(
+                  child: Padding(
+                      padding: EdgeInsets.only(top: 22, bottom: 22),
+                      child: Text(
+                    'Cadastre remédios para começar!',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: MyTheme.defaultTheme.primaryColor,
+                      ),),
+                  ));
+                }
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: children,
+                  ),
+                );
+              }),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
             child: ElevatedButton(
@@ -61,4 +120,14 @@ class ListagemRemedios extends StatelessWidget {
       ),
     );
   }
+
+  Future<String?> carregaRemedios() async {
+      /*dynamic user = await SessionManager().get("user");
+      var idCuidador = Cuidador.obtemIdSession(user.toString());
+      print(idCuidador);*/
+      Cuidador user = await Sessao.obterUser();
+      print(user.id);
+      return obtemListaRemedios(user.id);
+  }
+
 }

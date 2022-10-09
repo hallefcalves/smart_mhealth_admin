@@ -35,7 +35,7 @@ class Orion {
         'fiware-service': 'helixiot',
         'fiware-servicepath': '/'
       };
-    var urlAux = 'http://$url:1026/v2/entities/$query/';
+    var urlAux = 'http://$url:1026/v2/entities/$query';
     print(urlAux);
     var request = http.Request(
         'GET',

@@ -50,6 +50,10 @@ class CardIdoso extends StatelessWidget {
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');
+                      /* //a navegação será algo assim
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => PerfilIdoso(idoso)));
+                      */
                     },
                     text: 'Ver Perfil',
                     options: FFButtonOptions(

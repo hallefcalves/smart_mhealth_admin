@@ -7,10 +7,12 @@ import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
+import 'package:smart_mhealth_admin/screens/login.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/screens/perfil_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
+import 'package:smart_mhealth_admin/util/sessao.dart';
 
 class DrawerCustom extends StatelessWidget {
   const DrawerCustom({Key? key}) : super(key: key);
@@ -50,14 +52,12 @@ class DrawerCustom extends StatelessWidget {
                       left: 30,
                       child: FutureBuilder(
               future: carregaUserLogado(),
-              initialData : "{}",
+              //initialData : "{}",
               builder: (context, AsyncSnapshot<String?> snapshot) {
                 List<Widget> children;
                 if (snapshot.hasData) {
-                  Cuidador user = Cuidador.obtemCuidador(snapshot.data);
-
                   children = <Widget>[Text(
-                        user.name??"Name",
+                        snapshot.data??"Name",
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 10,
@@ -279,8 +279,27 @@ class DrawerCustom extends StatelessWidget {
                 ),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.only(bottom: _spaceBetween),
+              child: Center(
+                child: TextButton(
+                  onPressed: () {realizaLogOff(context);},
+                  style: TextButton.styleFrom(
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    primary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      side: BorderSide(
+                        color: MyTheme.defaultTheme.primaryColor,
+                      ),
+                    ),
+                  ),
+                  child: const Text('LogOff'),
+                ),
+              ),
+            ),
             const SizedBox(
-              height: 70,
+              height: 30,
             ),
             Padding(
               padding: EdgeInsets.only(bottom: _spaceBetween),
@@ -353,9 +372,15 @@ class DrawerCustom extends StatelessWidget {
   }
 
   Future<String?> carregaUserLogado() async {
-    dynamic user = await SessionManager().get("user");
-      Cuidador usuario = Cuidador.obtemCuidador(user.toString());   
+      Cuidador usuario = await Sessao.obterUser();  
       return usuario.name;
+  }
+
+  realizaLogOff(context){
+      Sessao.logOff();
+      Navigator.push( context,
+      MaterialPageRoute(
+        builder: ((context) => const Login())));
   }
 
 }

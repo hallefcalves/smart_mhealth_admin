@@ -7,7 +7,9 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
+import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
+import 'package:smart_mhealth_admin/util/sessao.dart';
 
 import '../http/cuidador/cuidador.dart';
 import '../http/idoso/idoso.dart';
@@ -51,12 +53,14 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                 color: Colors.white,
                 child: InkWell(
                   onTap: () => {
-                    const CustomAlertDialog(
+                    showDialog<void>(
+                      context: context,
+                      builder: (context) => const CustomAlertDialog(
                         "O que é um Cuidado?",
                         "É a pessoa que vai utlizar o aplicativo de lembrete de tomar os remédios",
                         "OK",
-                        "Cancel",
-                        Icons.info_outline),
+                        "",
+                        Icons.info_outline, null)),
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -294,17 +298,20 @@ class _CadastroIdoso extends State<CadastroIdoso> {
     dadosIdoso.name = nameController.text;
     //todo obter id do cuidador logado
     //
-    dynamic user = await SessionManager().get("user");
-    dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());
+    /*dynamic user = await SessionManager().get("user");
+    dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());*/
+    Cuidador user = await Sessao.obterUser();
+    dadosIdoso.refCuidador = user.id;
     criaIdoso(dadosIdoso).then((value) => 
       showDialog<void>(
           context: context,
-          builder: (context) => CustomAlertDialog("Sucesso", "Criado com sucesso", "confirma",
-              "cancel", IconData(0x41, fontFamily: 'Roboto'))
+          builder: (context) => CustomAlertDialog("Sucesso", "Criado com sucesso", "Ok",
+              "", IconData(0x41, fontFamily: 'Roboto'), navegaConclui)
           )
         );
-    
-    /*Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const Colaboradores()));*/
+  }
+  navegaConclui(){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const MeusCuidados()));
   }
 }

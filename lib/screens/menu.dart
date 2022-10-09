@@ -11,9 +11,11 @@ import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
+import 'package:smart_mhealth_admin/screens/perfil_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/http/web.dart';
+import 'package:smart_mhealth_admin/util/sessao.dart';
 
 import '../http/cuidador/cuidador.dart';
 class Menu extends StatefulWidget {
@@ -62,13 +64,13 @@ class _Menu extends State<Menu> {
           SizedBox(
             height: 250,
             child: ListView(
-              children: [
+              children: const [
                 Padding(
                   padding: EdgeInsets.only(top: 10, left: 26, right: 15),
                   child: CustomNotification(
                       errorSurface,
                       errorDefault,
-                      (userLogado=="" ? userLogado:"Remédio Atrasado"),
+                      "Remédio Atrasado",
                       "Advil às 15h30 ainda não foi tomado"),
                 ),
                 Padding(
@@ -127,7 +129,7 @@ class _Menu extends State<Menu> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => const CadastroAdmin())));
+                                builder: ((context) => const PerfilCuidador())));
                       },
                     ),
                     IconButton(
@@ -213,9 +215,9 @@ class _Menu extends State<Menu> {
   }
 
   obtemLogado() async {
-    dynamic user = await SessionManager().get("user");
+    Cuidador user = await Sessao.obterUser();
     //print(user.id);
-    userLogado = Cuidador.obtemIdSession(user.toString());
+    userLogado = user.name??"Nome";
     
     //SessionManager().get("user").then((valor) => );
   }

@@ -20,6 +20,10 @@ Future<String?> obtemRemedio(id) async {
   return null;
 }
 
+Future<String?> obtemListaRemedios(idCuidador) async {
+  return Orion.obtemDadosQuery('?type=remedio&q=refCuidador==$idCuidador');
+}
+
 alteraRemedio(dadosRemedio) async {
   var headers = {'Content-Type': 'application/json'};
   var request =
@@ -35,8 +39,6 @@ alteraRemedio(dadosRemedio) async {
     print(response.reasonPhrase);
   }
 }
-
-//todo: check
 
 criaRemedio(dadosRemedio) async {
   return Orion.criaEntidade(Remedio.obtemJson(dadosRemedio));

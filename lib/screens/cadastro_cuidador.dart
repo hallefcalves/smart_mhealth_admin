@@ -47,12 +47,15 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 color: Colors.white,
                 child: InkWell(
                   onTap: () => {
-                    const CustomAlertDialog(
-                        "O que é um Cuidador?",
-                        "É a pessoa que possui esse aplicativo e administra os remédios e alarmes nos aplicativos irmões xxxxx dos seus cuidados, seus entes queridos.",
-                        "OK",
-                        "Cancel",
-                        Icons.info_outline),
+                    showDialog<void>(
+                      context: context,
+                      builder: (context) => 
+                        const CustomAlertDialog(
+                          "O que é um Cuidador?",
+                          "É a pessoa que possui esse aplicativo e administra os remédios e alarmes nos aplicativos irmões xxxxx dos seus cuidados, seus entes queridos.",
+                          "OK",
+                          "",
+                          Icons.info_outline, null)),
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -286,9 +289,14 @@ class _CadastroCuidador extends State<CadastroCuidador> {
     criaCuidador(dadosCuidador);
     showDialog<void>(
         context: context,
-        builder: (context) => CustomAlertDialog("teste", "teste", "confirma",
-            "teste", IconData(0x41, fontFamily: 'Roboto')));
+        builder: (context) => CustomAlertDialog("Cadastrado", "Sucesso ao cadastrar!", "confirma",
+            "", IconData(0x41, fontFamily: 'Roboto'), navegaConclui));
+    
+  }
+
+  navegaConclui(){
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => const Colaboradores()));
   }
+
 }

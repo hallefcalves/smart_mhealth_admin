@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class Remedio {
+class RemedioIngestao {
   String? id;
   String? name;
   String? imagem;
@@ -27,9 +27,9 @@ class Remedio {
     });
   }
 
-  static Remedio obtemRemedio(json){
+  static RemedioIngestao obtemRemedio(json){
     var dados = jsonDecode(json);
-    Remedio r = Remedio();
+    RemedioIngestao r = RemedioIngestao();
     r.id = dados['id'];
     r.name = dados['name']['value'];
     r.imagem = dados['imagem']['value'];

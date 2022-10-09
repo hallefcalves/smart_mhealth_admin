@@ -12,6 +12,7 @@ import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
 
 import '../components/card_idoso.dart';
 import '../http/cuidador/cuidador.dart';
+import '../util/sessao.dart';
 class MeusCuidados extends StatefulWidget {
   const MeusCuidados({Key? key}) : super(key: key);
 
@@ -96,22 +97,26 @@ class _MeusCuidados extends State<MeusCuidados> {
                     ),
                   ];
                 }
+                if(children.isEmpty){
+                  return Center(
+                  child: Padding(
+                      padding: EdgeInsets.only(top: 22, bottom: 22),
+                      child: Text(
+                    'Cadastre cuidados para começar!',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: MyTheme.defaultTheme.primaryColor,
+                      ),),
+                  ));
+                }
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: children,
                   ),
                 );
-                
-                if (snapshot.hasData) {
-                  List<Idoso> lista = Idoso.obtemIdosos(snapshot.data);
-                  
-                  return CardIdoso(lista[0]);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
               }),
 
           ElevatedButton(
@@ -137,9 +142,11 @@ class _MeusCuidados extends State<MeusCuidados> {
   }
   
   Future<String?> carregaIdosos() async {
-      dynamic user = await SessionManager().get("user");
+      /*dynamic user = await SessionManager().get("user");
       var idCuidador = Cuidador.obtemIdSession(user.toString());
-      print(idCuidador);
-      return obtemListaIdosos(idCuidador);
+      print(idCuidador);*/
+      Cuidador user = await Sessao.obterUser();
+      print(user.id);
+      return obtemListaIdosos(user.id);
   }
 }

@@ -4,11 +4,12 @@ import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../http/remedio/remedio.dart';
 import '../screens/cadastro_remedio.dart';
 
 class CardRemedio extends StatelessWidget {
   CardRemedio(this.remedio, {Key? key}) : super(key: key);
-  var remedio = "";
+  Remedio remedio;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class CardRemedio extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(183, 0, 0, 0),
                     child: Text(
-                      'Paracetamol 10mg',
+                      remedio.name??"Paracetamol",
                       style: TextStyle(
                           fontFamily: GoogleFonts.inter().fontFamily,
                           fontSize: 20,

@@ -124,7 +124,7 @@ class _Login extends State<Login> {
             padding: const EdgeInsets.only(top: 12.0, bottom: 28.0),
             child: Center(
               child: ElevatedButton(
-                onPressed: () => {RealizaLogin()},
+                onPressed: () => realizaLogin(),
                 style: ElevatedButton.styleFrom(
                   primary: MyTheme.defaultTheme.primaryColor,
                   minimumSize: const Size(80, 40),
@@ -221,35 +221,58 @@ class _Login extends State<Login> {
     );
   }
 
-   RealizaLogin() {
+   realizaLogin() async {
     //var dadosCuidador = Cuidador();
+    print('logando...');
     var senha = passwordController.text;
     //dadosCuidador.email = emailController.text;
-    Cuidador c = Sessao.obterUserTeste();
+    /*Cuidador c = Sessao.obterUserTeste();
 
     CustomAlertDialog(c.name??"vazio", "sucesso", "confirma",
-            "voltar", IconData(0x41, fontFamily: 'Roboto'));
-
-/*    obtemCuidadorPorEmail(emailController.text).then((value) => 
+            "voltar", IconData(0x41, fontFamily: 'Roboto'));*/
+    
+    /*obtemCuidadorPorEmail(emailController.text).then((value) => 
     {
-      ValidaUserObtido(value, senha)
+      validaUserObtido(value, senha)
     });*/
+
+    String? jsonUser = await obtemCuidadorPorEmail(emailController.text);
+    Cuidador c = Cuidador.obtemCuidador(jsonUser);
+    if(c.senha == senha){
+        showDialog<void>(
+        context: context,
+        builder: (context) => CustomAlertDialog("Logado com sucesso", "sucesso", "ok",
+            "", IconData(0x41, fontFamily: 'Roboto'), navegaConclui));
+        Sessao.salvarUser(jsonUser);
+    }
+    else{
+         showDialog<void>(
+        context: context,
+        builder: (context) => const CustomAlertDialog("Falha com login", "Inválido", "ok",
+            "", IconData(0x41, fontFamily: 'Roboto'), null));
+    }
 
    //   Navigator.push(context,
    //     MaterialPageRoute(builder: (context) => const Menu()));
   }
-
-  ValidaUserObtido(String? value, String senha) async {
+  navegaConclui(){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const Menu()));
+  }
+  /*validaUserObtido(String? value, String senha) async {
     Cuidador c = Cuidador.obtemCuidador(value);
+    print(value);
+    print(c.senha);
+    print(senha);
     if(c.senha == senha){
         const CustomAlertDialog("Logado com sucesso", "sucesso", "confirma",
             "voltar", IconData(0x41, fontFamily: 'Roboto'));
-        await SessionManager().set("user", "-$value");
+        Sessao.salvarUser(value);
     }
     else{
          const CustomAlertDialog("Falha com login", "Inválido", "ok",
             "voltar", IconData(0x41, fontFamily: 'Roboto'));
     }
-  }
+  }*/
 
 }

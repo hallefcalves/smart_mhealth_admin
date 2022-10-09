@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/http/agenda/web_agenda.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_agenda.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 import '../components/card_agendas.dart';
+import '../http/agenda/agenda.dart';
+import '../http/cuidador/cuidador.dart';
+import '../util/sessao.dart';
 
 class Agendas extends StatelessWidget {
   const Agendas({Key? key}) : super(key: key);
@@ -34,10 +38,10 @@ class Agendas extends StatelessWidget {
               ),
             ),
           ),
-          CardAgendas(""),
-          CardAgendas(""),
-          CardAgendas(""),
-          CardAgendas(""),
+          CardAgendas(Agenda()),
+          CardAgendas(Agenda()),
+          CardAgendas(Agenda()),
+          CardAgendas(Agenda()),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
             child: ElevatedButton(
@@ -61,4 +65,12 @@ class Agendas extends StatelessWidget {
       ),
     );
   }
+
+  Future<String?> carregaAgendas() async {
+    
+      Cuidador user = await Sessao.obterUser();
+      //print(user.id);
+      return obtemListaAgendas(user.id);
+  }
+
 }

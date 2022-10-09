@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import '../web.dart';
+
 class Remedio {
   String? id;
   String? name;
@@ -7,10 +9,16 @@ class Remedio {
   String? lote;
   int? qtdPilulas;
   String? dataValidade;
+  String? mensagem;
   String? refCuidador;
 
 
   static String obtemJson(dado){
+
+    if(dado.id==null || dado.id==""){
+      dado.id = "urn:ngsi-ld:remedio:${Orion.createUniqueId()}";
+    }
+
     return json.encode({
       "id": dado.id,
       "type": "remedio",
@@ -22,6 +30,7 @@ class Remedio {
       "lote": {"type": "Text", "value": dado.lote},
       "qtdPilulas": {"type": "Integer", "value": dado.qtdPilulas},
       "dataValidade": {"type": "date", "value": dado.dataValidade},
+      "mensagem": {"type": "Relationship", "value": dado.mensagem},
       "refCuidador": {"type": "Relationship", "value": dado.refCuidador}
     });
   }
@@ -35,8 +44,30 @@ class Remedio {
     r.lote = dados['lote']['value'];
     r.qtdPilulas = dados['qtdPilulas']['value'];
     r.dataValidade = dados['dataValidade']['value'];
+    r.mensagem = dados['mensagem']['value'];
     r.refCuidador = dados['refCuidador']['value'];
     return r;
+  }
+
+  static List<Remedio> obtemRemedios(json) {
+    var dados = jsonDecode(json);
+    List<Remedio> remedios = [];
+    
+    for(final dado in dados){
+      Remedio r = Remedio();
+      //print(dado);
+      //print(dado['name']);
+      r.id = dado['id'];
+      r.name = dado['name']['value'];
+      r.imagem = dado['imagem']['value'];
+      r.lote = dado['lote']['value'];
+      r.qtdPilulas = dado['qtdPilulas']['value'];
+      r.dataValidade = dado['dataValidade']['value'];
+      r.mensagem = dado['mensagem']['value'];
+      r.refCuidador = dado['refCuidador']['value'];
+      remedios.add(r);
+    }
+    return remedios;
   }
 
 }

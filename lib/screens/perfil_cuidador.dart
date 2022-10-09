@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
@@ -42,7 +43,7 @@ class PerfilCuidador extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton(
+          /*ElevatedButton(
             onPressed: () => {}, //popuc code e others
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
@@ -53,13 +54,13 @@ class PerfilCuidador extends StatelessWidget {
               ),
             ),
             child: const Text('+'),
-          ),
+          ),*/
           ElevatedButton(
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => const MeusCuidados())));
+                      builder: ((context) => const Menu())));
             },
             style: ElevatedButton.styleFrom(
               primary: MyTheme.defaultTheme.primaryColor,
@@ -69,7 +70,7 @@ class PerfilCuidador extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: const Text('Concluir'),
+            child: const Text('Voltar'),
           ),
         ],
       ),

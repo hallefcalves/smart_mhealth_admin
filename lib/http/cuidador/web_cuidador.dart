@@ -2,13 +2,14 @@ import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
 import 'package:smart_mhealth_admin/http/web.dart';
+import 'package:smart_mhealth_admin/util/sessao.dart';
 
 Future<String?> obtemCuidador(id) async {
   var request = http.Request(
       'GET',
       Uri.parse(
           'http://${Orion.url}:1026/v2/entities/$id'));
-  request.body = '''''';
+  //request.body = '''''';
 
   http.StreamedResponse response = await request.send();
 
@@ -22,12 +23,17 @@ Future<String?> obtemCuidador(id) async {
 }
 
 Future<String?> obtemCuidadorPorEmail(email) async {
+   var headers = {
+        'Accept': 'application/json',
+        'fiware-service': 'helixiot',
+        'fiware-servicepath': '/'
+      };
   var request = http.Request(
       'GET',
       Uri.parse(
           'http://${Orion.url}:1026/v2/entities/?type=cuidador&q=email==$email'));
-  request.body = '''''';
-
+  //request.body = '''''';
+  request.headers.addAll(headers);
   http.StreamedResponse response = await request.send();
 
   if (response.statusCode == 200) {
@@ -73,7 +79,8 @@ criaCuidador(dadosCuidador) async {
   print(request.body);
   http.StreamedResponse response = await request.send();
 
-  await SessionManager().set("user", "-$jsonCuidador");
+  await Sessao.salvarUser(jsonCuidador);
+  
   if (response.statusCode == 200) {
     response.stream.bytesToString().then((String value) => print("Status 200:$value"));
   } else {

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import '../flutter_flow/flutter_flow_util.dart';
 import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
+import 'package:smart_mhealth_admin/http/agenda/agenda.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CardAgendas extends StatelessWidget {
-  CardAgendas(this.remedio, {Key? key}) : super(key: key);
-  var remedio = "";
+  CardAgendas(this.agenda, {Key? key}) : super(key: key);
+  Agenda agenda;
   static const IconData mode_edit_rounded =
       IconData(0xf8ca, fontFamily: 'MaterialIcons');
 
