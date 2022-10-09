@@ -9,6 +9,7 @@ import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/logo.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
+import 'package:smart_mhealth_admin/screens/cadastro_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
@@ -204,7 +205,7 @@ class _Login extends State<Login> {
               child: ElevatedButton(
                 onPressed: () => {Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const CadastroAdmin(),
+                    builder: (context) => const CadastroCuidador(),
                   ),
                 ),
 
