@@ -155,7 +155,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             ]),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: nameController,
               autofocus: true,
@@ -182,7 +182,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: emailController,
               autofocus: true,
@@ -209,7 +209,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: passwordController,
               obscureText: true,
@@ -238,7 +238,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               autofocus: true,
               obscureText: false,
@@ -267,7 +267,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             children: [
               Center(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
+                  padding: const EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
                   child: Row(
                     children: [
                       ElevatedButton(
