@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import '../web.dart';
@@ -17,7 +18,7 @@ class Cuidador {
   String? senha;
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> user = Map<String, dynamic>();
+    final Map<String, dynamic> user = <String, dynamic>{};
     user["id"] = id;
     user["name"] = name;
     user["email"] = email;
@@ -62,7 +63,7 @@ class Cuidador {
     }
     //Cuidador r = objeto;
     //print(objeto);
-    print(objeto['id']);
+    debugPrint(objeto['id']);
     return objeto['id'];
   }
 

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 //import '../flutter_flow/flutter_flow_util.dart';
+// ignore: unused_import
 import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/http/agenda/agenda.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CardAgendas extends StatelessWidget {
-  CardAgendas(this.agenda, {Key? key}) : super(key: key);
-  Agenda agenda;
-  static const IconData mode_edit_rounded =
-      IconData(0xf8ca, fontFamily: 'MaterialIcons');
+  const CardAgendas(this.agenda, {Key? key}) : super(key: key);
+  final Agenda agenda;
+  final IconData modeEditRounded =
+      const IconData(0xf8ca, fontFamily: 'MaterialIcons');
 
   //Texto que virá da criação de agendas
   final String txtAgenda = "Todos os dias\n\n"
@@ -28,22 +28,22 @@ class CardAgendas extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                 child: Container(
                   width: 280,
                   height: 70,
                   decoration: BoxDecoration(
-                    color: Color(0x41B9DFD9),
+                    color: const Color(0x41B9DFD9),
                     borderRadius: BorderRadius.circular(3),
                     border: Border.all(
-                      color: Color(0xFF82C5BB),
+                      color: const Color(0xFF82C5BB),
                       width: 2,
                     ),
                   ),
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-0.70, 1.0),
+                        alignment: const AlignmentDirectional(-0.70, 1.0),
                         child: Text(txtAgenda,
                             // ignore: prefer_const_constructors
                             style: TextStyle(
@@ -53,8 +53,8 @@ class CardAgendas extends StatelessWidget {
                                 )),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.94, 0.6),
-                        child: Container(
+                        alignment: const AlignmentDirectional(0.94, 0.6),
+                        child: SizedBox(
                           width: 20,
                           height: 20,
                           child: FaIcon(
@@ -65,12 +65,12 @@ class CardAgendas extends StatelessWidget {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.94, -0.65),
-                        child: Container(
+                        alignment: const AlignmentDirectional(0.94, -0.65),
+                        child: SizedBox(
                           width: 20,
                           height: 20,
                           child: FaIcon(
-                            FontAwesomeIcons.edit,
+                            FontAwesomeIcons.penToSquare,
                             color: MyTheme.defaultTheme.primaryColor,
                             size: 20,
                           ),

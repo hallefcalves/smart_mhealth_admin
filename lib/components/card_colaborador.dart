@@ -5,9 +5,10 @@ import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// ignore: must_be_immutable
 class CardColaborador extends StatelessWidget {
   CardColaborador(this.remedio, {Key? key}) : super(key: key);
-  var remedio = "";
+  String remedio = "";
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +70,13 @@ class CardColaborador extends StatelessWidget {
                         )),
                   ),
                 ),
-                Align(
-                  alignment: const AlignmentDirectional(-1.02, -0.33),
+                const Align(
+                  alignment: AlignmentDirectional(-1.02, -0.33),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
+                        EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
                     child: FaIcon(
-                      FontAwesomeIcons.edit,
+                      FontAwesomeIcons.penToSquare,
                       size: 20,
                     ),
                   ),

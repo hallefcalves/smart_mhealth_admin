@@ -77,7 +77,7 @@ class ListagemRemedios extends StatelessWidget {
                 if(children.isEmpty){
                   return Center(
                   child: Padding(
-                      padding: EdgeInsets.only(top: 22, bottom: 22),
+                      padding: const EdgeInsets.only(top: 22, bottom: 22),
                       child: Text(
                     'Cadastre remédios para começar!',
                     textAlign: TextAlign.center,
@@ -96,14 +96,14 @@ class ListagemRemedios extends StatelessWidget {
                 );
               }),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
             child: ElevatedButton(
               onPressed: () => {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CadastroRemedio()))
+                    MaterialPageRoute(builder: (context) => const CadastroRemedio()))
               },
               style: ElevatedButton.styleFrom(
-                primary: MyTheme.defaultTheme.primaryColor,
+                backgroundColor: MyTheme.defaultTheme.primaryColor,
                 minimumSize: const Size(80, 40),
                 maximumSize: const Size(80, 40),
                 shape: RoundedRectangleBorder(
@@ -126,7 +126,7 @@ class ListagemRemedios extends StatelessWidget {
       var idCuidador = Cuidador.obtemIdSession(user.toString());
       print(idCuidador);*/
       Cuidador user = await Sessao.obterUser();
-      print(user.id);
+      debugPrint(user.id);
       return obtemListaRemedios(user.id);
   }
 

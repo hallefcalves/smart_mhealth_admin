@@ -5,20 +5,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
-import 'package:smart_mhealth_admin/components/barcodescanner.dart';
-import 'package:smart_mhealth_admin/http/external_api.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/alertdialog.dart';
-import '../components/barcodescanner.dart';
 import '../util/sessao.dart';
 
 class CadastroRemedio extends StatefulWidget {
   const CadastroRemedio({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CadastroRemedio createState() => _CadastroRemedio();
 }
 
@@ -73,7 +70,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
                             Column(children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
                                 child: Text(
                                   'Novo Remédio',
                                   style: GoogleFonts.inter(
@@ -148,7 +145,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
             ]),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
             child: TextFormField(
               controller: nameController,
               autofocus: true,
@@ -175,7 +172,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextField(
               controller: dataValidadeController,
               autofocus: true,
@@ -202,13 +199,13 @@ class _CadastroRemedio extends State<CadastroRemedio> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 10, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 10, 0),
                     child: TextFormField(
                       controller: loteController,
                       autofocus: true,
@@ -238,7 +235,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 20, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 0, 0),
                     child: TextFormField(
                       controller: qtdController,
                       autofocus: true,
@@ -270,9 +267,9 @@ class _CadastroRemedio extends State<CadastroRemedio> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 170, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 170, 0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
               child: ElevatedButton(
                 onPressed: () => {
                   Navigator.push(
@@ -295,7 +292,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
             child: TextFormField(
               autofocus: true,
               obscureText: false,
@@ -323,13 +320,13 @@ class _CadastroRemedio extends State<CadastroRemedio> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(130, 20, 130, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(130, 20, 130, 0),
             child: ElevatedButton(
               onPressed: () => {
                 realizaCadastro(context)
               },
               style: ElevatedButton.styleFrom(
-                primary: MyTheme.defaultTheme.primaryColor,
+                backgroundColor: MyTheme.defaultTheme.primaryColor,
                 minimumSize: const Size(80, 40),
                 maximumSize: const Size(80, 40),
                 shape: RoundedRectangleBorder(
@@ -359,7 +356,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
       showDialog<void>(
           context: context,
           builder: (context) => CustomAlertDialog("Sucesso", "Criado com sucesso", "Ok",
-              "", IconData(0x41, fontFamily: 'Roboto'), navegaConclui)
+              "", const IconData(0x41, fontFamily: 'Roboto'), navegaConclui)
           )
         );
   }

@@ -29,9 +29,9 @@ class Smartmhealth extends StatelessWidget {
       routes: {
         '/': (context) => const Login(),
         '/cadastro_admin': (context) => const CadastroAdmin(),
-        '/cadastro_remedio': (context) =>  CadastroRemedio(),
+        '/cadastro_remedio': (context) =>  const CadastroRemedio(),
         '/listagem_remedios': (context) => const ListagemRemedios(),
-        '/menu': (context) => Menu(),
+        '/menu': (context) => const Menu(),
         '/meus_cuidados': (context) => const MeusCuidados(),
         '/perfil_idoso': (context) => const PerfilIdoso(),
         '/agendas': (context) => const Agendas(),
@@ -39,7 +39,7 @@ class Smartmhealth extends StatelessWidget {
         '/ler_codigo_barras': (context) => const LerCodigoBarras(),
         '/cadastro_cuidador': (context) => const CadastroCuidador(),
         '/cadastro_agenda': (context) => const CadastroAgenda(),
-        '/relatorios': (context) =>  Relatorios(),
+        '/relatorios': (context) =>  const Relatorios(),
         '/colaboradores': (context) => const Colaboradores()
       },
     );

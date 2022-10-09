@@ -42,6 +42,8 @@ dependencies:
   uuid: ^3.0.6
   flutter_session_manager: ^1.0.3
   sqflite: ^2.1.0
+  iconify: ^0.0.1
+  colorful_iconify_flutter: ^0.0.2
 
 dev_dependencies:
   flutter_test:

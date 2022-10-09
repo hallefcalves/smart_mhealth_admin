@@ -6,7 +6,6 @@ import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/util/sessao.dart';
@@ -19,6 +18,7 @@ class CadastroIdoso extends StatefulWidget {
   const CadastroIdoso({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CadastroIdoso createState() => _CadastroIdoso();
 }
 
@@ -274,7 +274,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                           onPressed: () =>
                               {realizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
-                              primary: MyTheme.defaultTheme.primaryColor,
+                              backgroundColor: MyTheme.defaultTheme.primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
@@ -306,7 +306,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
       showDialog<void>(
           context: context,
           builder: (context) => CustomAlertDialog("Sucesso", "Criado com sucesso", "Ok",
-              "", IconData(0x41, fontFamily: 'Roboto'), navegaConclui)
+              "", const IconData(0x41, fontFamily: 'Roboto'), navegaConclui)
           )
         );
   }

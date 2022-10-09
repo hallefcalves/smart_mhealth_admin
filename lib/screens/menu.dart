@@ -14,7 +14,6 @@ import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/screens/perfil_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/relatorios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
-import 'package:smart_mhealth_admin/http/web.dart';
 import 'package:smart_mhealth_admin/util/sessao.dart';
 
 import '../http/cuidador/cuidador.dart';
@@ -22,6 +21,7 @@ class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _Menu createState() => _Menu();
 }
 
@@ -157,7 +157,7 @@ class _Menu extends State<Menu> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => Relatorios())));
+                                builder: ((context) => const Relatorios())));
                       },
                     ),
                     IconButton(
@@ -195,12 +195,10 @@ class _Menu extends State<Menu> {
               onPressed: () {Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => CadastroAdmin())));},
+                      builder: ((context) => const CadastroAdmin())));},
               style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(20),
-                  primary:
-                      MyTheme.defaultTheme.backgroundColor // <-- Splash color
+                  shape: const CircleBorder(), backgroundColor: MyTheme.defaultTheme.backgroundColor,
+                  padding: const EdgeInsets.all(20) // <-- Splash color
                   ),
               child: FaIcon(
                 FontAwesomeIcons.gear,
@@ -223,11 +221,11 @@ class _Menu extends State<Menu> {
   }
 
   setLogado(valor){
-    print("Valor:");
-    print(valor);
+    debugPrint("Valor:");
+    debugPrint(valor);
     userLogado = Cuidador.obtemIdSession(valor);
-    print("Id user:");
-    print(userLogado);
+    debugPrint("Id user:");
+    debugPrint(userLogado);
   }
 
 }

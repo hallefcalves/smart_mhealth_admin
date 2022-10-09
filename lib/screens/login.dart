@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
-// ignore: depend_on_referenced_packages
 import 'package:colorful_iconify_flutter/icons/flat_color_icons.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/logo.dart';
-import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/menu.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
@@ -22,6 +20,7 @@ class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _Login createState() => _Login();
 }
 
@@ -30,7 +29,6 @@ class _Login extends State<Login> {
   void initState() {
     super.initState();
   }
-
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -43,9 +41,7 @@ class _Login extends State<Login> {
       body: ListView(
         children: <Widget>[
           const SizedBox(height: 30),
-          Center(
-            child: Transform.scale(scale: 1.1, child: const LogoDeles())
-          ),
+          Center(child: Transform.scale(scale: 1.1, child: const LogoDeles())),
           const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.only(
@@ -127,7 +123,7 @@ class _Login extends State<Login> {
               child: ElevatedButton(
                 onPressed: () => realizaLogin(),
                 style: ElevatedButton.styleFrom(
-                  primary: MyTheme.defaultTheme.primaryColor,
+                  backgroundColor: MyTheme.defaultTheme.primaryColor,
                   minimumSize: const Size(80, 40),
                   maximumSize: const Size(80, 40),
                   shape: RoundedRectangleBorder(
@@ -161,8 +157,8 @@ class _Login extends State<Login> {
                 onPressed: () => {},
                 label: const Text('Facebook'),
                 style: ElevatedButton.styleFrom(
-                  onPrimary: MyTheme.defaultTheme.primaryColor,
-                  primary: MyTheme.defaultTheme.backgroundColor,
+                  foregroundColor: MyTheme.defaultTheme.primaryColor,
+                  backgroundColor: MyTheme.defaultTheme.backgroundColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                     side: BorderSide(
@@ -180,8 +176,8 @@ class _Login extends State<Login> {
                 onPressed: () => {},
                 label: const Text('Google'),
                 style: ElevatedButton.styleFrom(
-                  onPrimary: MyTheme.defaultTheme.primaryColor,
-                  primary: MyTheme.defaultTheme.backgroundColor,
+                  foregroundColor: MyTheme.defaultTheme.primaryColor, 
+                  backgroundColor: MyTheme.defaultTheme.backgroundColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                     side: BorderSide(
@@ -203,15 +199,15 @@ class _Login extends State<Login> {
             ),
             child: Center(
               child: ElevatedButton(
-                onPressed: () => {Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const CadastroCuidador(),
+                onPressed: () => {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CadastroCuidador(),
+                    ),
                   ),
-                ),
-
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: MyTheme.defaultTheme.primaryColor,
+                  backgroundColor: MyTheme.defaultTheme.primaryColor,
                 ),
                 child: const Text('Não tem uma conta? Cadastre-se'),
               ),
@@ -222,16 +218,16 @@ class _Login extends State<Login> {
     );
   }
 
-   realizaLogin() async {
+  realizaLogin() async {
     //var dadosCuidador = Cuidador();
-    print('logando...');
+    debugPrint('logando...');
     var senha = passwordController.text;
     //dadosCuidador.email = emailController.text;
     /*Cuidador c = Sessao.obterUserTeste();
 
     CustomAlertDialog(c.name??"vazio", "sucesso", "confirma",
             "voltar", IconData(0x41, fontFamily: 'Roboto'));*/
-    
+
     /*obtemCuidadorPorEmail(emailController.text).then((value) => 
     {
       validaUserObtido(value, senha)
@@ -239,26 +235,36 @@ class _Login extends State<Login> {
 
     String? jsonUser = await obtemCuidadorPorEmail(emailController.text);
     Cuidador c = Cuidador.obtemCuidador(jsonUser);
-    if(c.senha == senha){
-        showDialog<void>(
-        context: context,
-        builder: (context) => CustomAlertDialog("Logado com sucesso", "sucesso", "ok",
-            "", IconData(0x41, fontFamily: 'Roboto'), navegaConclui));
-        Sessao.salvarUser(jsonUser);
-    }
-    else{
-         showDialog<void>(
-        context: context,
-        builder: (context) => const CustomAlertDialog("Falha com login", "Inválido", "ok",
-            "", IconData(0x41, fontFamily: 'Roboto'), null));
+    if (c.senha == senha) {
+      showDialog<void>(
+          context: context,
+          builder: (context) => CustomAlertDialog(
+              "Logado com sucesso",
+              "sucesso",
+              "ok",
+              "",
+              const IconData(0x41, fontFamily: 'Roboto'),
+              navegaConclui));
+      Sessao.salvarUser(jsonUser);
+    } else {
+      showDialog<void>(
+          context: context,
+          builder: (context) => const CustomAlertDialog(
+              "Falha com login",
+              "Inválido",
+              "ok",
+              "",
+              IconData(0x41, fontFamily: 'Roboto'),
+              null));
     }
 
-   //   Navigator.push(context,
-   //     MaterialPageRoute(builder: (context) => const Menu()));
+    //   Navigator.push(context,
+    //     MaterialPageRoute(builder: (context) => const Menu()));
   }
-  navegaConclui(){
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const Menu()));
+
+  navegaConclui() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Menu()));
   }
   /*validaUserObtido(String? value, String senha) async {
     Cuidador c = Cuidador.obtemCuidador(value);

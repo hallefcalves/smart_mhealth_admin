@@ -24,7 +24,7 @@ class CadastroAdmin extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Menu()),
+                      MaterialPageRoute(builder: (context) => const Menu()),
                     );
                   },
                   child: const Text(

@@ -48,7 +48,7 @@ class LerCodigoBarras extends StatelessWidget {
                       builder: (context) => const ListagemRemedios()))
             },
             style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
+              backgroundColor: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
               maximumSize: const Size(80, 40),
               shape: RoundedRectangleBorder(
@@ -60,7 +60,7 @@ class LerCodigoBarras extends StatelessWidget {
           ElevatedButton(
             onPressed: () => {},
             style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
+              backgroundColor: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
               maximumSize: const Size(80, 40),
               shape: RoundedRectangleBorder(

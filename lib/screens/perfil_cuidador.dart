@@ -3,7 +3,6 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/menu.dart';
-import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class PerfilCuidador extends StatelessWidget {
@@ -63,7 +62,7 @@ class PerfilCuidador extends StatelessWidget {
                       builder: ((context) => const Menu())));
             },
             style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
+              backgroundColor: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
               maximumSize: const Size(80, 40),
               shape: RoundedRectangleBorder(

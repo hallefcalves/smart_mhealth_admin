@@ -38,7 +38,7 @@ class Colaboradores extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(115.0, 0, 5.0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(115.0, 0, 5.0, 0),
                 child: Icon(
                   info,
                   color: MyTheme.defaultTheme.primaryColor,
@@ -62,7 +62,7 @@ class Colaboradores extends StatelessWidget {
           CardColaborador(""),
           CardColaborador(""),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
             child: ElevatedButton(
               onPressed: () => {
                 Navigator.push(
@@ -71,7 +71,7 @@ class Colaboradores extends StatelessWidget {
                         builder: (context) => const CadastroCuidador()))
               },
               style: ElevatedButton.styleFrom(
-                primary: MyTheme.defaultTheme.primaryColor,
+                backgroundColor: MyTheme.defaultTheme.primaryColor,
                 minimumSize: const Size(80, 40),
                 maximumSize: const Size(80, 40),
                 shape: RoundedRectangleBorder(

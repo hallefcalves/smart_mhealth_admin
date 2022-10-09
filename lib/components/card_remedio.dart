@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../http/remedio/remedio.dart';
 import '../screens/cadastro_remedio.dart';
 
+// ignore: must_be_immutable
 class CardRemedio extends StatelessWidget {
   CardRemedio(this.remedio, {Key? key}) : super(key: key);
   Remedio remedio;
@@ -61,7 +62,7 @@ class CardRemedio extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CadastroRemedio()))
+                              builder: (context) => const CadastroRemedio()))
                     },
                     text: '+ Mais informações',
                     options: FFButtonOptions(
@@ -96,13 +97,13 @@ class CardRemedio extends StatelessWidget {
                         )),
                   ),
                 ),
-                Align(
-                  alignment: const AlignmentDirectional(-1.02, -0.33),
+                const Align(
+                  alignment: AlignmentDirectional(-1.02, -0.33),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
+                        EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
                     child: FaIcon(
-                      FontAwesomeIcons.edit,
+                      FontAwesomeIcons.penToSquare,
                       size: 20,
                     ),
                   ),

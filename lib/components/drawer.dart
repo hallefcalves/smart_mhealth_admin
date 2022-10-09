@@ -139,8 +139,7 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: MyTheme.defaultTheme.primaryColor,
-                    primary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -165,8 +164,7 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: MyTheme.defaultTheme.primaryColor,
-                    primary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
                     textStyle: TextStyle(
                       fontFamily: GoogleFonts.inter().fontFamily,
                       fontSize: 14,
@@ -195,8 +193,7 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: MyTheme.defaultTheme.primaryColor,
-                    primary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -216,13 +213,12 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  Relatorios(),
+                        builder: (context) =>  const Relatorios(),
                       ),
                     );
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: MyTheme.defaultTheme.primaryColor,
-                    primary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -247,8 +243,7 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: MyTheme.defaultTheme.primaryColor,
-                    primary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -266,8 +261,7 @@ class DrawerCustom extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
-                    backgroundColor: MyTheme.defaultTheme.primaryColor,
-                    primary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -285,8 +279,7 @@ class DrawerCustom extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {realizaLogOff(context);},
                   style: TextButton.styleFrom(
-                    backgroundColor: MyTheme.defaultTheme.primaryColor,
-                    primary: Colors.white,
+                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -315,8 +308,7 @@ class DrawerCustom extends StatelessWidget {
                   ),
                   label: const Text('Meu Perfil'),
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    primary: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: MyTheme.defaultTheme.primaryColor, backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -337,8 +329,7 @@ class DrawerCustom extends StatelessWidget {
                   ),
                   label: const Text('Configurações'),
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    primary: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: MyTheme.defaultTheme.primaryColor, backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(

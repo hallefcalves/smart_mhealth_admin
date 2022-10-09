@@ -6,7 +6,7 @@ import 'package:smart_mhealth_admin/components/center_text.dart';
 
 class IconDialog extends StatelessWidget {
   const IconDialog(this.icone, this.corCaixa, this.corIcone, this.titulo, this.descricao,
-      this.texto);
+      this.texto, {super.key});
   final Color corCaixa;
   final Color corIcone;
   final String titulo;

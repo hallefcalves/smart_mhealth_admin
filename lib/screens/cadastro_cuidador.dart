@@ -15,6 +15,7 @@ class CadastroCuidador extends StatefulWidget {
   const CadastroCuidador({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CadastroCuidador createState() => _CadastroCuidador();
 }
 
@@ -144,7 +145,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
             ]),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: nameController,
               autofocus: true,
@@ -171,7 +172,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: emailController,
               autofocus: true,
@@ -198,7 +199,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: passwordController,
               obscureText: true,
@@ -227,7 +228,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: telefoneController,
               autofocus: true,
@@ -257,14 +258,14 @@ class _CadastroCuidador extends State<CadastroCuidador> {
             children: [
               Center(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
+                  padding: const EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
                   child: Row(
                     children: [
                       ElevatedButton(
                           onPressed: () =>
-                              {RealizaCadastro()}, //popuc code e others
+                              {realizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
-                              primary: MyTheme.defaultTheme.primaryColor,
+                              backgroundColor: MyTheme.defaultTheme.primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
@@ -281,7 +282,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
     );
   }
 
-  RealizaCadastro() {
+  realizaCadastro() {
     var dadosCuidador = Cuidador();
     dadosCuidador.senha = passwordController.text;
     dadosCuidador.email = emailController.text;
@@ -290,7 +291,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
     showDialog<void>(
         context: context,
         builder: (context) => CustomAlertDialog("Cadastrado", "Sucesso ao cadastrar!", "confirma",
-            "", IconData(0x41, fontFamily: 'Roboto'), navegaConclui));
+            "", const IconData(0x41, fontFamily: 'Roboto'), navegaConclui));
     
   }
 

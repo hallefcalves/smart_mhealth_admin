@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/http/web.dart';
@@ -15,7 +16,7 @@ Future<String?> obtemRemedio(id) async {
     /*response.stream.bytesToString().then((String value) => );*/
     return response.stream.bytesToString();
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
   return null;
 }
@@ -34,9 +35,9 @@ alteraRemedio(dadosRemedio) async {
   http.StreamedResponse response = await request.send();
 
   if (response.statusCode == 200) {
-    response.stream.bytesToString().then((String value) => print(value));
+    response.stream.bytesToString().then((String value) => debugPrint(value));
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
 }
 
@@ -61,9 +62,9 @@ criaRemedio(dadosRemedio) async {
   http.StreamedResponse response = await request.send();
 
   if (response.statusCode == 200) {
-    response.stream.bytesToString().then((String value) => print(value));
+    response.stream.bytesToString().then((String value) => debugPrint(value));
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
 }
 
@@ -76,9 +77,9 @@ deletaRemedio(id) async {
   http.StreamedResponse response = await request.send();
 
   if (response.statusCode == 200) {
-    response.stream.bytesToString().then((String value) => print(value));
+    response.stream.bytesToString().then((String value) => debugPrint(value));
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
 }*/
 

@@ -1,4 +1,3 @@
-import 'package:http/http.dart' as http;
 import 'package:smart_mhealth_admin/http/agenda/agenda.dart';
 import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
 import 'package:smart_mhealth_admin/http/web.dart';

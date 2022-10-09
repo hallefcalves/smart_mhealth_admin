@@ -14,7 +14,7 @@ class CustomBtn extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => child)),
       style: ElevatedButton.styleFrom(
-        primary: themeColor,
+        backgroundColor: themeColor,
         textStyle: TextStyle(
           fontFamily: GoogleFonts.inter().fontFamily,
           fontSize: 25,

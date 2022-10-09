@@ -45,7 +45,7 @@ class PerfilIdoso extends StatelessWidget {
           ElevatedButton(
             onPressed: () => {}, //popuc code e others
             style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
+              backgroundColor: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
               maximumSize: const Size(80, 40),
               shape: RoundedRectangleBorder(
@@ -62,7 +62,7 @@ class PerfilIdoso extends StatelessWidget {
                       builder: ((context) => const MeusCuidados())));
             },
             style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
+              backgroundColor: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
               maximumSize: const Size(80, 40),
               shape: RoundedRectangleBorder(

@@ -43,14 +43,14 @@ class Agendas extends StatelessWidget {
           CardAgendas(Agenda()),
           CardAgendas(Agenda()),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(70, 30, 70, 0),
             child: ElevatedButton(
               onPressed: () => {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CadastroAgenda()))
+                    MaterialPageRoute(builder: (context) => const CadastroAgenda()))
               },
               style: ElevatedButton.styleFrom(
-                primary: MyTheme.defaultTheme.primaryColor,
+                backgroundColor: MyTheme.defaultTheme.primaryColor,
                 minimumSize: const Size(80, 40),
                 maximumSize: const Size(80, 40),
                 shape: RoundedRectangleBorder(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/screens/placeholder.dart';
-import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CustomBtnIcon extends StatelessWidget {
   CustomBtnIcon(this.icone,this.btntext, this.themeColor, this.child, {Key? key}) : super(key: key);
@@ -11,7 +10,7 @@ class CustomBtnIcon extends StatelessWidget {
   final Widget child;
   final Iconify icone;
 
-  var routes = {
+  final routes = {
     '/placeholder': (BuildContext context) => const PlaceholderWidget(),
   };
   @override
@@ -21,7 +20,7 @@ class CustomBtnIcon extends StatelessWidget {
           context, MaterialPageRoute(builder: (context) => child)),
       icon: icone,
       style: ElevatedButton.styleFrom(
-        primary: themeColor,
+        backgroundColor: themeColor,
         textStyle: TextStyle(
           fontFamily: GoogleFonts.inter().fontFamily,
           fontSize: 25,

@@ -11,6 +11,7 @@ class BarcodeScanner extends StatefulWidget {
   const BarcodeScanner({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _BarcodeScannerState createState() => _BarcodeScannerState();
 }
 
@@ -33,8 +34,8 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
           '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
       _result = await verRemedioAPI(barcodeScanRes);
       decoded = JSON.parse(_result!);
-      print(barcodeScanRes);
-      print(decoded.description);
+      debugPrint(barcodeScanRes);
+      debugPrint(decoded.description);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -55,7 +56,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
-      print(barcodeScanRes);
+      debugPrint(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -73,7 +74,7 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
   Future<void> startBarcodeScanStream() async {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
             '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
-        .listen((barcode) => print(barcode));
+        .listen((barcode) => debugPrint(barcode));
   }
 
   @override

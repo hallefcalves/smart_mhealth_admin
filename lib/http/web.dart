@@ -1,5 +1,5 @@
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
@@ -21,10 +21,10 @@ class Orion {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print("Sucesso obtendo");
+      debugPrint("Sucesso obtendo");
       return response.stream.bytesToString();
     } else {
-      print("Erro get: ${response.statusCode}: ${response.reasonPhrase}");
+      debugPrint("Erro get: ${response.statusCode}: ${response.reasonPhrase}");
     }
     return null;
   }
@@ -36,7 +36,7 @@ class Orion {
         'fiware-servicepath': '/'
       };
     var urlAux = 'http://$url:1026/v2/entities/$query';
-    print(urlAux);
+    debugPrint(urlAux);
     var request = http.Request(
         'GET',
         Uri.parse(
@@ -46,16 +46,16 @@ class Orion {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print("Sucesso obtendo");
+      debugPrint("Sucesso obtendo");
       return response.stream.bytesToString();
     } else {
-      print("Erro get: ${response.statusCode}: ${response.reasonPhrase}");
+      debugPrint("Erro get: ${response.statusCode}: ${response.reasonPhrase}");
     }
     return null;
   }
 
   static createUniqueId() {
-    return Uuid().v1();
+    return const Uuid().v1();
   }
 
   Future<String?> obtemVersao() async {
@@ -65,9 +65,9 @@ class Orion {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      response.stream.bytesToString().then((String value) => print(value));
+      response.stream.bytesToString().then((String value) => debugPrint(value));
     } else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
     return null;
   }
@@ -79,18 +79,18 @@ class Orion {
       'fiware-servicepath': '/'
     };
     var urll = 'http://${Orion.url}:1026/v2/entities/$id/attrs';
-    print(urll);
+    debugPrint(urll);
     var request =
       http.Request('POST', Uri.parse(urll));
     request.body = requestBody;
     request.headers.addAll(headers);
-    print(request.body);
+    debugPrint(request.body);
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      response.stream.bytesToString().then((String value) => print(value));
+      response.stream.bytesToString().then((String value) => debugPrint(value));
     } else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
 
@@ -101,18 +101,18 @@ class Orion {
       'fiware-servicepath': '/'
     };
     var urll = 'http://${Orion.url}:1026/v2/entities';
-    print(urll);
+    debugPrint(urll);
     var request =
     http.Request('POST', Uri.parse(urll));
     request.body = requestBody;
     request.headers.addAll(headers);
-    print(request.body);
+    debugPrint(request.body);
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      return response.stream.bytesToString();//.then((String value) => print(value));
+      return response.stream.bytesToString();//.then((String value) => debugPrint(value));
     } else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
 
@@ -123,7 +123,7 @@ class Orion {
         'fiware-servicepath': '/'
       };
     var urll = 'http://${Orion.url}:1026/v2/entities/?q=id==$id&type=$tipo';
-    print(urll);
+    debugPrint(urll);
     var request =
     http.Request('DELETE', Uri.parse(urll));
     request.body = '''''';
@@ -131,9 +131,9 @@ class Orion {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      response.stream.bytesToString().then((String value) => print(value));
+      response.stream.bytesToString().then((String value) => debugPrint(value));
     } else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
 
@@ -163,9 +163,9 @@ class Orion {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     } else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   } 
   
@@ -179,9 +179,9 @@ class Orion {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      response.stream.bytesToString().then((String value) => print(value));
+      response.stream.bytesToString().then((String value) => debugPrint(value));
     } else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
     return null;
   }
@@ -209,9 +209,9 @@ sendData() async {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
+      debugPrint(await response.stream.bytesToString());
     } else {
-      print(response.reasonPhrase);
+      debugPrint(response.reasonPhrase);
     }
   }
 

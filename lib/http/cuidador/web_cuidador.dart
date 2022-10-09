@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
@@ -17,7 +18,7 @@ Future<String?> obtemCuidador(id) async {
     /*response.stream.bytesToString().then((String value) => );*/
     return response.stream.bytesToString();
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
   return null;
 }
@@ -40,7 +41,7 @@ Future<String?> obtemCuidadorPorEmail(email) async {
     /*response.stream.bytesToString().then((String value) => );*/
     return response.stream.bytesToString();
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
   return null;
 }
@@ -56,9 +57,9 @@ alteraCuidador(dadosCuidador) async {
   http.StreamedResponse response = await request.send();
 
   if (response.statusCode == 200) {
-    response.stream.bytesToString().then((String value) => print(value));
+    response.stream.bytesToString().then((String value) => debugPrint(value));
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
 }
 
@@ -70,21 +71,21 @@ criaCuidador(dadosCuidador) async {
     'fiware-servicepath': '/'
   };
   var urll = 'http://${Orion.url}:1026/v2/entities';
-  print(urll);
+  debugPrint(urll);
   var request =
   http.Request('POST', Uri.parse(urll));
   String jsonCuidador = Cuidador.obtemJson(dadosCuidador);
   request.body = jsonCuidador;
   request.headers.addAll(headers);
-  print(request.body);
+  debugPrint(request.body);
   http.StreamedResponse response = await request.send();
 
   await Sessao.salvarUser(jsonCuidador);
   
   if (response.statusCode == 200) {
-    response.stream.bytesToString().then((String value) => print("Status 200:$value"));
+    response.stream.bytesToString().then((String value) => debugPrint("Status 200:$value"));
   } else {
-    print("Status ${response.statusCode}:${response.reasonPhrase}");
+    debugPrint("Status ${response.statusCode}:${response.reasonPhrase}");
   }
 }
 
@@ -97,9 +98,9 @@ deletaCuidador(id) async {
   http.StreamedResponse response = await request.send();
 
   if (response.statusCode == 200) {
-    response.stream.bytesToString().then((String value) => print(value));
+    response.stream.bytesToString().then((String value) => debugPrint(value));
   } else {
-    print(response.reasonPhrase);
+    debugPrint(response.reasonPhrase);
   }
 }
 

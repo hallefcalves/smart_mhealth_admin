@@ -5,8 +5,6 @@ import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
 import 'package:smart_mhealth_admin/http/idoso/web_idoso.dart';
-import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
-import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_idoso.dart';
 
@@ -17,6 +15,7 @@ class MeusCuidados extends StatefulWidget {
   const MeusCuidados({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MeusCuidados createState() => _MeusCuidados();
 }
 
@@ -100,7 +99,7 @@ class _MeusCuidados extends State<MeusCuidados> {
                 if(children.isEmpty){
                   return Center(
                   child: Padding(
-                      padding: EdgeInsets.only(top: 22, bottom: 22),
+                      padding: const EdgeInsets.only(top: 22, bottom: 22),
                       child: Text(
                     'Cadastre cuidados para começar!',
                     textAlign: TextAlign.center,
@@ -127,7 +126,7 @@ class _MeusCuidados extends State<MeusCuidados> {
                       builder: ((context) => const CadastroIdoso())));
             },
             style: ElevatedButton.styleFrom(
-              primary: MyTheme.defaultTheme.primaryColor,
+              backgroundColor: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
               maximumSize: const Size(80, 40),
               shape: RoundedRectangleBorder(
@@ -146,7 +145,7 @@ class _MeusCuidados extends State<MeusCuidados> {
       var idCuidador = Cuidador.obtemIdSession(user.toString());
       print(idCuidador);*/
       Cuidador user = await Sessao.obterUser();
-      print(user.id);
+      debugPrint(user.id);
       return obtemListaIdosos(user.id);
   }
 }

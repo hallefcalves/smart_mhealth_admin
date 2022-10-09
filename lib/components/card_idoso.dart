@@ -6,8 +6,8 @@ import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CardIdoso extends StatelessWidget {
-   CardIdoso(this.idoso, {Key? key}) : super(key: key);
-  Idoso idoso;
+  const CardIdoso(this.idoso, {Key? key}) : super(key: key);
+  final Idoso idoso;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class CardIdoso extends StatelessWidget {
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                   child: FFButtonWidget(
                     onPressed: () {
-                      print('Button pressed ...');
+                      debugPrint('Button pressed ...');
                       /* //a navegação será algo assim
                         Navigator.push(context,
                           MaterialPageRoute(builder: (context) => PerfilIdoso(idoso)));
@@ -60,9 +60,8 @@ class CardIdoso extends StatelessWidget {
                       width: 146,
                       height: 57,
                       color: primaryColor,
-                      textStyle: TextStyle(
-                        fontFamily: GoogleFonts.inter().fontFamily
-                      ),
+                      textStyle:
+                          TextStyle(fontFamily: GoogleFonts.inter().fontFamily),
                       borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1,
@@ -73,16 +72,15 @@ class CardIdoso extends StatelessWidget {
                 ),
                 FFButtonWidget(
                   onPressed: () {
-                    print('Button pressed ...');
+                    debugPrint('Button pressed ...');
                   },
                   text: '+ Remédios',
                   options: FFButtonOptions(
                     width: 177,
                     height: 57,
                     color: primaryColor,
-                    textStyle: TextStyle(
-                        fontFamily: GoogleFonts.inter().fontFamily
-                    ),
+                    textStyle:
+                        TextStyle(fontFamily: GoogleFonts.inter().fontFamily),
                     borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1,
@@ -101,13 +99,12 @@ class CardIdoso extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 26, 0, 28),
                   child: Text(
-                    idoso.name??'Severina Pereira',
+                    idoso.name ?? 'Severina Pereira',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: GoogleFonts.inter().fontFamily,
-                      fontSize: 24,
-                      color: textColor
-                    ),
+                        fontFamily: GoogleFonts.inter().fontFamily,
+                        fontSize: 24,
+                        color: textColor),
                   ),
                 ),
                 Container(
@@ -120,8 +117,7 @@ class CardIdoso extends StatelessWidget {
                     ),
                   ),
                   child: Stack(
-                    alignment: const AlignmentDirectional(
-                        0.05, 0.05),
+                    alignment: const AlignmentDirectional(0.05, 0.05),
                     children: [
                       Align(
                         alignment: const AlignmentDirectional(-0.82, -1.07),
@@ -129,8 +125,7 @@ class CardIdoso extends StatelessWidget {
                           width: 140,
                           height: 25,
                           decoration: const BoxDecoration(
-                            color:
-                            background,
+                            color: background,
                           ),
                         ),
                       ),
@@ -139,9 +134,8 @@ class CardIdoso extends StatelessWidget {
                         child: Text(
                           'Próximos Alarmes',
                           style: TextStyle(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            color: textColor
-                          ),
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              color: textColor),
                         ),
                       ),
                     ],
