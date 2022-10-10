@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
@@ -7,6 +8,7 @@ import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 
 import '../http/cuidador/cuidador.dart';
 import '../http/cuidador/web_cuidador.dart';
@@ -33,7 +35,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
   TextEditingController emailController = TextEditingController();
   TextEditingController telefoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,14 +51,14 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                 child: InkWell(
                   onTap: () => {
                     showDialog<void>(
-                      context: context,
-                      builder: (context) => 
-                        const CustomAlertDialog(
-                          "O que é um Cuidador?",
-                          "É a pessoa que possui esse aplicativo e administra os remédios e alarmes nos aplicativos irmões xxxxx dos seus cuidados, seus entes queridos.",
-                          "OK",
-                          "",
-                          Icons.info_outline, null)),
+                        context: context,
+                        builder: (context) => const CustomAlertDialog(
+                            "O que é um Cuidador?",
+                            "É a pessoa que possui esse aplicativo e administra os remédios e alarmes no aplicativo adicional dos seus cuidandos, seus entes queridos.",
+                            "OK",
+                            "",
+                            Icons.info_outline,
+                            null)),
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -233,6 +235,10 @@ class _CadastroCuidador extends State<CadastroCuidador> {
               controller: telefoneController,
               autofocus: true,
               obscureText: false,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                TelefoneInputFormatter(),
+              ],
               decoration: InputDecoration(
                 labelText: 'Telefone',
                 hintText: '(xx) xxxxx-xxxx',
@@ -258,14 +264,16 @@ class _CadastroCuidador extends State<CadastroCuidador> {
             children: [
               Center(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
                   child: Row(
                     children: [
                       ElevatedButton(
                           onPressed: () =>
                               {realizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: MyTheme.defaultTheme.primaryColor,
+                              backgroundColor:
+                                  MyTheme.defaultTheme.primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
@@ -290,14 +298,17 @@ class _CadastroCuidador extends State<CadastroCuidador> {
     criaCuidador(dadosCuidador);
     showDialog<void>(
         context: context,
-        builder: (context) => CustomAlertDialog("Cadastrado", "Sucesso ao cadastrar!", "confirma",
-            "", const IconData(0x41, fontFamily: 'Roboto'), navegaConclui));
-    
+        builder: (context) => CustomAlertDialog(
+            "Cadastrado",
+            "Sucesso ao cadastrar!",
+            "confirma",
+            "",
+            const IconData(0x41, fontFamily: 'Roboto'),
+            navegaConclui));
   }
 
-  navegaConclui(){
+  navegaConclui() {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => const Colaboradores()));
   }
-
 }

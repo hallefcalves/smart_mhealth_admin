@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
+import 'package:smart_mhealth_admin/components/barcodescanner.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
@@ -8,6 +9,7 @@ import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../globals.dart' as globals;
 import '../components/alertdialog.dart';
 import '../util/sessao.dart';
 
@@ -23,7 +25,25 @@ class _CadastroRemedio extends State<CadastroRemedio> {
   @override
   void initState() {
     super.initState();
+    nameController.addListener(_checkIfFieldIsEmpty);
+    qtdController.addListener(_checkIfFieldIsEmpty);
   }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the widget tree.
+    // This also removes the _checkIfFieldIsEmpty listener.
+    nameController.dispose();
+    super.dispose();
+  }
+
+  _checkIfFieldIsEmpty() {
+    if (globals.remedioNome != '' && globals.qtd != '') {
+      nameController.text = globals.remedioNome;
+      qtdController.text = globals.qtd;
+    }
+  }
+
   final String image = 'lib/assets/images/Logo.png';
   final int gtin = 7891203059413;
   String data = "unknown";
@@ -37,7 +57,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
   TextEditingController loteController = TextEditingController();
   TextEditingController qtdController = TextEditingController();
   TextEditingController msgController = TextEditingController();
-
+  BarcodeScanner scan = BarcodeScanner();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +71,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
               child: Card(
                 color: Colors.white,
                 child: InkWell(
-                  onTap: () => {},
+                  onTap: () => {scan.scanBarcodeNormal()},
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -69,8 +89,8 @@ class _CadastroRemedio extends State<CadastroRemedio> {
                             ),
                             Column(children: [
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 0, 15, 0),
                                 child: Text(
                                   'Novo Remédio',
                                   style: GoogleFonts.inter(
@@ -322,9 +342,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(130, 20, 130, 0),
             child: ElevatedButton(
-              onPressed: () => {
-                realizaCadastro(context)
-              },
+              onPressed: () => {realizaCadastro(context)},
               style: ElevatedButton.styleFrom(
                 backgroundColor: MyTheme.defaultTheme.primaryColor,
                 minimumSize: const Size(80, 40),
@@ -341,9 +359,9 @@ class _CadastroRemedio extends State<CadastroRemedio> {
     );
   }
 
-   realizaCadastro(context) async {
+  realizaCadastro(context) async {
     var dadosRemedio = Remedio();
-    
+
     dadosRemedio.name = nameController.text;
     dadosRemedio.dataValidade = dataValidadeController.text;
     dadosRemedio.lote = loteController.text;
@@ -352,16 +370,18 @@ class _CadastroRemedio extends State<CadastroRemedio> {
 
     Cuidador user = await Sessao.obterUser();
     dadosRemedio.refCuidador = user.id;
-    criaRemedio(dadosRemedio).then((value) => 
-      showDialog<void>(
-          context: context,
-          builder: (context) => CustomAlertDialog("Sucesso", "Criado com sucesso", "Ok",
-              "", const IconData(0x41, fontFamily: 'Roboto'), navegaConclui)
-          )
-        );
+    criaRemedio(dadosRemedio).then((value) => showDialog<void>(
+        context: context,
+        builder: (context) => CustomAlertDialog(
+            "Sucesso",
+            "Criado com sucesso",
+            "Ok",
+            "",
+            const IconData(0x41, fontFamily: 'Roboto'),
+            navegaConclui)));
   }
-  
-  navegaConclui(){
+
+  navegaConclui() {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => const ListagemRemedios()));
   }

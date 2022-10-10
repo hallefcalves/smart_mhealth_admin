@@ -1,4 +1,6 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
@@ -242,6 +244,10 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             child: TextFormField(
               autofocus: true,
               obscureText: false,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                TelefoneInputFormatter()
+              ],
               decoration: InputDecoration(
                 labelText: 'Telefone',
                 hintText: '(xx) xxxxx-xxxx',

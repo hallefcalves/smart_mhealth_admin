@@ -81,8 +81,6 @@ class Idoso {
     
     for(final dado in dados){
       Idoso r = Idoso();
-      //print(dado);
-      //print(dado['name']);
       r.id = dado['id'];
       r.name = dado['name']['value'];
       r.email = dado['email']['value'];

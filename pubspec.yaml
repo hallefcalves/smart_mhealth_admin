@@ -44,6 +44,7 @@ dependencies:
   sqflite: ^2.1.0
   iconify: ^0.0.1
   colorful_iconify_flutter: ^0.0.2
+  brasil_fields: ^1.6.0
 
 dev_dependencies:
   flutter_test:
