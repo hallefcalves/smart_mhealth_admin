@@ -4,9 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
+import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
+import 'package:smart_mhealth_admin/screens/visualizar_remedio.dart';
 import 'package:smart_mhealth_admin/screens/login.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/screens/perfil_cuidador.dart';
@@ -51,49 +53,50 @@ class DrawerCustom extends StatelessWidget {
                       top: 0,
                       left: 30,
                       child: FutureBuilder(
-              future: carregaUserLogado(),
-              //initialData : "{}",
-              builder: (context, AsyncSnapshot<String?> snapshot) {
-                List<Widget> children;
-                if (snapshot.hasData) {
-                  children = <Widget>[Text(
-                        snapshot.data??"Name",
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 10,
-                        ))];
-                } else if (snapshot.hasError) {
-                  children = <Widget>[
-                    const Icon(
-                      Icons.error_outline,
-                      color: Colors.red,
-                      size: 60,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: Text('Error: ${snapshot.error}'),
-                    ),
-                  ];
-                } else {
-                  children = const <Widget>[
-                    SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: CircularProgressIndicator(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 16),
-                      child: Text('Carregando...'),
-                    ),
-                  ];
-                }
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: children,
-                  ),
-                );
-              }),
+                          future: carregaUserLogado(),
+                          //initialData : "{}",
+                          builder: (context, AsyncSnapshot<String?> snapshot) {
+                            List<Widget> children;
+                            if (snapshot.hasData) {
+                              children = <Widget>[
+                                Text(snapshot.data ?? "Name",
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 10,
+                                    ))
+                              ];
+                            } else if (snapshot.hasError) {
+                              children = <Widget>[
+                                const Icon(
+                                  Icons.error_outline,
+                                  color: Colors.red,
+                                  size: 60,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 16),
+                                  child: Text('Error: ${snapshot.error}'),
+                                ),
+                              ];
+                            } else {
+                              children = const <Widget>[
+                                SizedBox(
+                                  width: 60,
+                                  height: 60,
+                                  child: CircularProgressIndicator(),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 16),
+                                  child: Text('Carregando...'),
+                                ),
+                              ];
+                            }
+                            return Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: children,
+                              ),
+                            );
+                          }),
                     ),
                     const Positioned(
                       top: 12,
@@ -139,7 +142,8 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: Colors.white,
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -164,7 +168,8 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: Colors.white,
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
                     textStyle: TextStyle(
                       fontFamily: GoogleFonts.inter().fontFamily,
                       fontSize: 14,
@@ -193,7 +198,8 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: Colors.white,
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -213,12 +219,13 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  const Relatorios(),
+                        builder: (context) => const Relatorios(),
                       ),
                     );
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: Colors.white,
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -243,7 +250,8 @@ class DrawerCustom extends StatelessWidget {
                     );
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: Colors.white,
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -259,9 +267,17 @@ class DrawerCustom extends StatelessWidget {
               padding: EdgeInsets.only(bottom: _spaceBetween),
               child: Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Visualizar_Remedio(),
+                      ),
+                    );
+                  },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: Colors.white,
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -277,9 +293,12 @@ class DrawerCustom extends StatelessWidget {
               padding: EdgeInsets.only(bottom: _spaceBetween),
               child: Center(
                 child: TextButton(
-                  onPressed: () {realizaLogOff(context);},
+                  onPressed: () {
+                    realizaLogOff(context);
+                  },
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: MyTheme.defaultTheme.primaryColor,
+                    foregroundColor: Colors.white,
+                    backgroundColor: MyTheme.defaultTheme.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -308,7 +327,8 @@ class DrawerCustom extends StatelessWidget {
                   ),
                   label: const Text('Meu Perfil'),
                   style: TextButton.styleFrom(
-                    foregroundColor: MyTheme.defaultTheme.primaryColor, backgroundColor: Colors.white,
+                    foregroundColor: MyTheme.defaultTheme.primaryColor,
+                    backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -329,7 +349,8 @@ class DrawerCustom extends StatelessWidget {
                   ),
                   label: const Text('Configurações'),
                   style: TextButton.styleFrom(
-                    foregroundColor: MyTheme.defaultTheme.primaryColor, backgroundColor: Colors.white,
+                    foregroundColor: MyTheme.defaultTheme.primaryColor,
+                    backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                       side: BorderSide(
@@ -363,15 +384,13 @@ class DrawerCustom extends StatelessWidget {
   }
 
   Future<String?> carregaUserLogado() async {
-      Cuidador usuario = await Sessao.obterUser();  
-      return usuario.name;
+    Cuidador usuario = await Sessao.obterUser();
+    return usuario.name;
   }
 
-  realizaLogOff(context){
-      Sessao.logOff();
-      Navigator.push( context,
-      MaterialPageRoute(
-        builder: ((context) => const Login())));
+  realizaLogOff(context) {
+    Sessao.logOff();
+    Navigator.push(
+        context, MaterialPageRoute(builder: ((context) => const Login())));
   }
-
 }

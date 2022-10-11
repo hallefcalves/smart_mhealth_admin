@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import '../flutter_flow/flutter_flow_util.dart';
 import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
+import 'package:smart_mhealth_admin/components/readonly_focus.dart';
 import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
@@ -13,7 +14,6 @@ class CardIdoso extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      color: const Color(0xFFF5F5F5),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -29,9 +29,6 @@ class CardIdoso extends StatelessWidget {
                   child: Container(
                     width: 175,
                     height: 175,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFEEEEEE),
-                    ),
                     child: Container(
                       width: 120,
                       height: 120,
@@ -39,53 +36,54 @@ class CardIdoso extends StatelessWidget {
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
-                      child: Image.network(
-                        'https://picsum.photos/seed/364/600',
+                      child: Image.asset(
+                        'lib/assets/images/severinapereira.jpg',
+                        scale: 2.0,
                       ),
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      debugPrint('Button pressed ...');
-                      /* //a navegação será algo assim
+                  child: Column(
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () {
+                          debugPrint('Button pressed ...');
+                          /* //a navegação será algo assim
                         Navigator.push(context,
                           MaterialPageRoute(builder: (context) => PerfilIdoso(idoso)));
                       */
-                    },
-                    text: 'Ver Perfil',
-                    options: FFButtonOptions(
-                      width: 146,
-                      height: 57,
-                      color: primaryColor,
-                      textStyle:
-                          TextStyle(fontFamily: GoogleFonts.inter().fontFamily),
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
+                        },
+                        text: 'Ver Perfil',
+                        options: FFButtonOptions(
+                          width: 110,
+                          height: 40,
+                          color: primaryColor,
+                          textStyle: TextStyle(
+                              fontFamily: GoogleFonts.inter().fontFamily),
+                          borderRadius: 100,
+                        ),
                       ),
-                      borderRadius: 100,
-                    ),
-                  ),
-                ),
-                FFButtonWidget(
-                  onPressed: () {
-                    debugPrint('Button pressed ...');
-                  },
-                  text: '+ Remédios',
-                  options: FFButtonOptions(
-                    width: 177,
-                    height: 57,
-                    color: primaryColor,
-                    textStyle:
-                        TextStyle(fontFamily: GoogleFonts.inter().fontFamily),
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 100,
+                      const Text(
+                        " ",
+                        style: TextStyle(fontSize: 9),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () {
+                          debugPrint('Button pressed ...');
+                        },
+                        text: '+ Remédios',
+                        options: FFButtonOptions(
+                          width: 110,
+                          height: 40,
+                          color: primaryColor,
+                          textStyle: TextStyle(
+                              fontFamily: GoogleFonts.inter().fontFamily),
+                          borderRadius: 100,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -107,39 +105,42 @@ class CardIdoso extends StatelessWidget {
                         color: textColor),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: 224,
-                  decoration: BoxDecoration(
-                    color: background,
-                    border: Border.all(
-                      color: secondaryColor,
-                    ),
-                  ),
-                  child: Stack(
-                    alignment: const AlignmentDirectional(0.05, 0.05),
-                    children: [
-                      Align(
-                        alignment: const AlignmentDirectional(-0.82, -1.07),
-                        child: Container(
-                          width: 140,
-                          height: 25,
-                          decoration: const BoxDecoration(
-                            color: background,
+                Stack(
+                  alignment: const AlignmentDirectional(0.05, 0.05),
+                  children: [
+                    Align(
+                      alignment: const AlignmentDirectional(-0.3, -0.5),
+                      child: SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: TextFormField(
+                          maxLines: 10,
+                          autofocus: true,
+                          readOnly: true,
+                          focusNode: new AlwaysEnabledFocusNode(),
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Próximos Alarmes',
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: MyTheme.defaultTheme.primaryColor),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: MyTheme.defaultTheme.primaryColor,
+                              width: 2,
+                            )),
+                            filled: true,
+                            fillColor: Colors.white,
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: const AlignmentDirectional(-0.77, -1.08),
-                        child: Text(
-                          'Próximos Alarmes',
-                          style: TextStyle(
-                              fontFamily: GoogleFonts.inter().fontFamily,
-                              color: textColor),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),

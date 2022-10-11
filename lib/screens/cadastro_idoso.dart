@@ -56,13 +56,14 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                 child: InkWell(
                   onTap: () => {
                     showDialog<void>(
-                      context: context,
-                      builder: (context) => const CustomAlertDialog(
-                        "O que é um Cuidado?",
-                        "É a pessoa que vai utlizar o aplicativo de lembrete de tomar os remédios",
-                        "OK",
-                        "",
-                        Icons.info_outline, null)),
+                        context: context,
+                        builder: (context) => const CustomAlertDialog(
+                            "O que é um Cuidado?",
+                            "É a pessoa que vai utlizar o aplicativo de lembrete de tomar os remédios",
+                            "OK",
+                            "",
+                            Icons.info_outline,
+                            null)),
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -127,8 +128,9 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/834/600',
+                          child: Image.asset(
+                            'lib/assets/images/severinapereira.jpg',
+                            scale: 3.0,
                           ),
                         ),
                       ),
@@ -136,20 +138,13 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                     Align(
                       alignment: const AlignmentDirectional(-1.02, 0.93),
                       child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(215, 0, 0, 5),
-                        child: Container(
-                          width: 45,
-                          height: 45,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            'https://picsum.photos/seed/16/600',
-                          ),
-                        ),
-                      ),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              215, 0, 0, 5),
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: MyTheme.defaultTheme.primaryColor,
+                            size: 40,
+                          )),
                     ),
                   ],
                 ),
@@ -214,13 +209,13 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
               controller: passwordController,
-              obscureText: true,
               enableSuggestions: false,
+              obscureText: false,
               autocorrect: false,
               autofocus: true,
               decoration: InputDecoration(
-                labelText: 'Senha',
-                hintText: '*************',
+                labelText: 'Telefone',
+                hintText: '(xx) xxxxx-xxxx',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
                       BorderSide(color: MyTheme.defaultTheme.primaryColor),
@@ -249,7 +244,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                 TelefoneInputFormatter()
               ],
               decoration: InputDecoration(
-                labelText: 'Telefone',
+                labelText: 'Telefone secundário',
                 hintText: '(xx) xxxxx-xxxx',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
@@ -273,14 +268,27 @@ class _CadastroIdoso extends State<CadastroIdoso> {
             children: [
               Center(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
+                  padding: const EdgeInsetsDirectional.fromSTEB(57, 30, 0, 20),
                   child: Row(
                     children: [
                       ElevatedButton(
                           onPressed: () =>
                               {realizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: MyTheme.defaultTheme.primaryColor,
+                              backgroundColor:
+                                  MyTheme.defaultTheme.primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 35, vertical: 15)),
+                          child: const Text('+ Código')),
+                      Text("     "),
+                      ElevatedButton(
+                          onPressed: () =>
+                              {realizaCadastro()}, //popuc code e others
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  MyTheme.defaultTheme.primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
@@ -308,16 +316,19 @@ class _CadastroIdoso extends State<CadastroIdoso> {
     dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());*/
     Cuidador user = await Sessao.obterUser();
     dadosIdoso.refCuidador = user.id;
-    criaIdoso(dadosIdoso).then((value) => 
-      showDialog<void>(
-          context: context,
-          builder: (context) => CustomAlertDialog("Sucesso", "Criado com sucesso", "Ok",
-              "", const IconData(0x41, fontFamily: 'Roboto'), navegaConclui)
-          )
-        );
+    criaIdoso(dadosIdoso).then((value) => showDialog<void>(
+        context: context,
+        builder: (context) => CustomAlertDialog(
+            "Sucesso",
+            "Criado com sucesso",
+            "Ok",
+            "",
+            const IconData(0x41, fontFamily: 'Roboto'),
+            navegaConclui)));
   }
-  navegaConclui(){
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const MeusCuidados()));
+
+  navegaConclui() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const MeusCuidados()));
   }
 }
