@@ -4,6 +4,7 @@ import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../screens/visualizar_remedio.dart';
 import '../http/remedio/remedio.dart';
 import '../screens/cadastro_remedio.dart';
 
@@ -29,7 +30,7 @@ class CardRemedio extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(183, 0, 0, 0),
                     child: Text(
-                      remedio.name??"Paracetamol",
+                      remedio.name ?? "Paracetamol",
                       style: TextStyle(
                           fontFamily: GoogleFonts.inter().fontFamily,
                           fontSize: 20,
@@ -60,9 +61,11 @@ class CardRemedio extends StatelessWidget {
                   child: FFButtonWidget(
                     onPressed: () => {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CadastroRemedio()))
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Visualizar_Remedio(),
+                        ),
+                      )
                     },
                     text: '+ Mais informações',
                     options: FFButtonOptions(
@@ -100,8 +103,7 @@ class CardRemedio extends StatelessWidget {
                 const Align(
                   alignment: AlignmentDirectional(-1.02, -0.33),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
+                    padding: EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
                     child: FaIcon(
                       FontAwesomeIcons.penToSquare,
                       size: 20,

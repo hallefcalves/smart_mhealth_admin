@@ -341,7 +341,12 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(130, 20, 130, 0),
             child: ElevatedButton(
-              onPressed: () => {},
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const ListagemRemedios())))
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: MyTheme.defaultTheme.primaryColor,
                 minimumSize: const Size(80, 40),

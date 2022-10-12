@@ -211,11 +211,15 @@ class _CadastroIdoso extends State<CadastroIdoso> {
               controller: passwordController,
               enableSuggestions: false,
               obscureText: false,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                TelefoneInputFormatter()
+              ],
               autocorrect: false,
               autofocus: true,
               decoration: InputDecoration(
                 labelText: 'Telefone',
-                hintText: '(xx) xxxxx-xxxx',
+                hintText: '(xx) xxxx-xxxx',
                 enabledBorder: OutlineInputBorder(
                   borderSide:
                       BorderSide(color: MyTheme.defaultTheme.primaryColor),

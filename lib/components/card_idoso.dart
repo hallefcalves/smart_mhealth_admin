@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
 import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
+import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CardIdoso extends StatelessWidget {
@@ -49,11 +50,12 @@ class CardIdoso extends StatelessWidget {
                     children: [
                       FFButtonWidget(
                         onPressed: () {
-                          debugPrint('Button pressed ...');
-                          /* //a navegação será algo assim
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PerfilIdoso(idoso)));
-                      */
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PerfilIdoso(),
+                            ),
+                          );
                         },
                         text: 'Ver Perfil',
                         options: FFButtonOptions(

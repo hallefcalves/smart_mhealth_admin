@@ -267,14 +267,7 @@ class DrawerCustom extends StatelessWidget {
               padding: EdgeInsets.only(bottom: _spaceBetween),
               child: Center(
                 child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Visualizar_Remedio(),
-                      ),
-                    );
-                  },
+                  onPressed: () {},
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: MyTheme.defaultTheme.primaryColor,
