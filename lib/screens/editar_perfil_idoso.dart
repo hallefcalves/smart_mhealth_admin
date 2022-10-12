@@ -199,12 +199,12 @@ class _EditarPerfilIdoso extends State<EditarPerfilIdoso> {
                       Text("   "),
                       ElevatedButton(
                           onPressed: () => {
-                                Navigator.push(
+                                /*Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => PerfilIdoso(),
                                   ),
-                                )
+                                )*/
                               }, //popuc code e others
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
