@@ -53,7 +53,7 @@ class CardIdoso extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PerfilIdoso(),
+                              builder: (context) => PerfilIdoso(idoso: idoso),
                             ),
                           );
                         },

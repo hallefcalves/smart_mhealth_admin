@@ -5,6 +5,7 @@ import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
+import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
@@ -13,20 +14,25 @@ import '../globals.dart' as globals;
 import '../components/alertdialog.dart';
 import '../util/sessao.dart';
 
-class Visualizar_Remedio extends StatefulWidget {
-  const Visualizar_Remedio({Key? key}) : super(key: key);
+class VisualizarRemedio extends StatefulWidget {
+  const VisualizarRemedio({Key? key, required this.remedio}) : super(key: key);
+  final Remedio remedio;
 
   @override
   // ignore: library_private_types_in_public_api
-  _Visualizar_Remedio createState() => _Visualizar_Remedio();
+  _VisualizarRemedio createState() => _VisualizarRemedio();
 }
 
-class _Visualizar_Remedio extends State<Visualizar_Remedio> {
+class _VisualizarRemedio extends State<VisualizarRemedio> {
   @override
   void initState() {
     super.initState();
     nameController.addListener(_checkIfFieldIsEmpty);
     qtdController.addListener(_checkIfFieldIsEmpty);
+    nameController.text = widget.remedio.name??"err";
+    dataValidadeController.text = widget.remedio.dataValidade??"";
+    loteController.text = widget.remedio.lote??"err";
+    qtdController.text = widget.remedio.qtdPilulas.toString();
   }
 
   @override
@@ -109,12 +115,12 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
               )
             ]),
           ),
-          const Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
               child: Center(
                   child: Text(
-                "Atorvastina 10mg",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                nameController.text,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ))),
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
@@ -122,7 +128,7 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
               readOnly: true,
               controller: nameController,
               autofocus: true,
-              focusNode: new AlwaysEnabledFocusNode(),
+              focusNode: AlwaysEnabledFocusNode(),
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'Princípio Ativo',
@@ -157,7 +163,7 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
                       controller: loteController,
                       autofocus: true,
                       readOnly: true,
-                      focusNode: new AlwaysEnabledFocusNode(),
+                      focusNode: AlwaysEnabledFocusNode(),
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: 'Data de Validade',
@@ -189,7 +195,7 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
                       controller: qtdController,
                       autofocus: true,
                       readOnly: true,
-                      focusNode: new AlwaysEnabledFocusNode(),
+                      focusNode: AlwaysEnabledFocusNode(),
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: 'Lote',
@@ -220,10 +226,10 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
-              controller: nameController,
+              //controller: nameController,
               autofocus: true,
               readOnly: true,
-              focusNode: new AlwaysEnabledFocusNode(),
+              focusNode: AlwaysEnabledFocusNode(),
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'Tipo de Remédio',
@@ -249,10 +255,10 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
-              controller: nameController,
+              //controller: nameController,
               autofocus: true,
               readOnly: true,
-              focusNode: new AlwaysEnabledFocusNode(),
+              focusNode: AlwaysEnabledFocusNode(),
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'Fabricante',
@@ -282,10 +288,10 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
                 Align(
                   alignment: const AlignmentDirectional(-0.9, -1.60),
                   child: TextFormField(
-                    controller: nameController,
+                    //controller: nameController,
                     autofocus: true,
                     readOnly: true,
-                    focusNode: new AlwaysEnabledFocusNode(),
+                    focusNode: AlwaysEnabledFocusNode(),
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'Bula',
@@ -308,7 +314,7 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(1, 5, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(1, 5, 0, 0),
                   child: Row(
                     children: [
                       ElevatedButton(
@@ -326,7 +332,7 @@ class _Visualizar_Remedio extends State<Visualizar_Remedio> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
                         child: FaIcon(
                           FontAwesomeIcons.filePdf,
                           color: MyTheme.defaultTheme.primaryColor,

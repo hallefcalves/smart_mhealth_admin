@@ -10,8 +10,8 @@ import '../screens/cadastro_remedio.dart';
 
 // ignore: must_be_immutable
 class CardRemedio extends StatelessWidget {
-  CardRemedio(this.remedio, {Key? key}) : super(key: key);
-  Remedio remedio;
+  const CardRemedio(this.remedio, {Key? key}) : super(key: key);
+  final Remedio remedio;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class CardRemedio extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Visualizar_Remedio(),
+                          builder: (context) => VisualizarRemedio(remedio: remedio),
                         ),
                       )
                     },

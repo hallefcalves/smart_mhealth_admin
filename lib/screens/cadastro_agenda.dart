@@ -2,14 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/http/agenda/agenda.dart';
+import 'package:smart_mhealth_admin/http/agenda/web_agenda.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:smart_mhealth_admin/util/util_datas.dart';
 
-class CadastroAgenda extends StatelessWidget {
+import '../components/alertdialog.dart';
+import '../http/cuidador/cuidador.dart';
+import '../util/sessao.dart';
+
+class CadastroAgenda extends StatefulWidget {
   const CadastroAgenda({Key? key}) : super(key: key);
 
-  //todo: other icons
+  @override
+  // ignore: library_private_types_in_public_api
+  _CadastroAgenda createState() => _CadastroAgenda();
+}
+
+class _CadastroAgenda extends State<CadastroAgenda> {
+  @override
+  void initState() {
+    super.initState();
+  }
+  
+  TextEditingController horaInController = TextEditingController();
+  TextEditingController minInController = TextEditingController();
+  TextEditingController horaFrequenciaController = TextEditingController();
+  TextEditingController minsFrequenciaController = TextEditingController();
+  TextEditingController minutosAdiarController = TextEditingController();
+  TextEditingController repeticoesController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +106,7 @@ class CadastroAgenda extends StatelessWidget {
                       width: 45,
                       height: 30,
                       child: TextField(
+                        controller: horaInController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -116,6 +140,7 @@ class CadastroAgenda extends StatelessWidget {
                       width: 45,
                       height: 30,
                       child: TextField(
+                        controller: minInController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -175,6 +200,7 @@ class CadastroAgenda extends StatelessWidget {
                       width: 45,
                       height: 30,
                       child: TextField(
+                        controller: horaFrequenciaController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -208,6 +234,7 @@ class CadastroAgenda extends StatelessWidget {
                       width: 45,
                       height: 30,
                       child: TextField(
+                        controller: minsFrequenciaController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -267,6 +294,7 @@ class CadastroAgenda extends StatelessWidget {
                       width: 36,
                       height: 30,
                       child: TextField(
+                        controller: repeticoesController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -297,6 +325,7 @@ class CadastroAgenda extends StatelessWidget {
                       width: 45,
                       height: 30,
                       child: TextField(
+                        controller: minutosAdiarController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -326,9 +355,8 @@ class CadastroAgenda extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Agendas()))
-            }, //popuc code e others
+              realizaCadastro()
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: MyTheme.defaultTheme.primaryColor,
               minimumSize: const Size(80, 40),
@@ -343,4 +371,33 @@ class CadastroAgenda extends StatelessWidget {
       ),
     );
   }
+
+  
+  realizaCadastro() async {
+    var dadosAgenda = Agenda();
+
+    dadosAgenda.frequencia = UtilDatas.horaParaData(
+      int.parse(horaFrequenciaController.text), int.parse(minsFrequenciaController.text));
+
+    dadosAgenda.horarioInicio = UtilDatas.horaParaData(
+      int.parse(horaInController.text),int.parse(minInController.text));
+
+    dadosAgenda.minutosAdiar = int.parse(minutosAdiarController.text);
+    dadosAgenda.repeticoesAdiar = int.parse(repeticoesController.text);
+    Cuidador user = await Sessao.obterUser();
+    dadosAgenda.refCuidador = user.id;
+
+    criaAgenda(dadosAgenda);
+    showDialog<void>(
+        context: context,
+        builder: (context) => CustomAlertDialog("Cadastrado", "Sucesso ao cadastrar!", "confirma",
+            "", const IconData(0x41, fontFamily: 'Roboto'), navegaConclui));
+    
+  }
+
+  navegaConclui(){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const Agendas()));
+  }
+
 }

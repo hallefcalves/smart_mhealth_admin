@@ -234,6 +234,7 @@ class _Login extends State<Login> {
     });*/
 
     String? jsonUser = await obtemCuidadorPorEmail(emailController.text);
+    //debugPrint(jsonUser);
     Cuidador c = Cuidador.obtemCuidador(jsonUser);
     if (c.senha == senha) {
       showDialog<void>(

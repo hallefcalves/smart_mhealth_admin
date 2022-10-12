@@ -6,16 +6,32 @@ import 'package:smart_mhealth_admin/http/agenda/agenda.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CardAgendas extends StatelessWidget {
-  const CardAgendas(this.agenda, {Key? key}) : super(key: key);
+import '../util/util_datas.dart';
+
+class CardAgendas extends StatefulWidget {
+  const CardAgendas({Key? key, required this.agenda}) : super(key: key);
   final Agenda agenda;
+  @override
+  // ignore: library_private_types_in_public_api
+  _CardAgendas createState() => _CardAgendas();
+}
+
+class _CardAgendas extends State<CardAgendas> {
+  @override
+  void initState() {
+    super.initState();
+    String txtFreq = UtilDatas.obtemStringHora(widget.agenda.frequencia);
+    String txtIni = UtilDatas.obtemStringHora(widget.agenda.horarioInicio);
+
+    txtAgenda = "Todos os dias\n\n"
+      "de $txtFreq em $txtFreq\n\n"
+      "começando às $txtIni\n\n";
+  }
   final IconData modeEditRounded =
       const IconData(0xf8ca, fontFamily: 'MaterialIcons');
 
   //Texto que virá da criação de agendas
-  final String txtAgenda = "Todos os dias\n\n"
-      "de 4h em 4h\n\n"
-      "começando às 08h00\n\n";
+  String txtAgenda = "";
 
   @override
   Widget build(BuildContext context) {
