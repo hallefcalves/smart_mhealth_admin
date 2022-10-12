@@ -41,7 +41,8 @@ class Smartmhealth extends StatelessWidget {
         '/cadastro_agenda': (context) => const CadastroAgenda(),
         '/relatorios': (context) => const Relatorios(),
         '/colaboradores': (context) => const Colaboradores(),
-        '/visualizar_remedio': (context) => const Visualizar_Remedio()
+        '/visualizar_remedio': (context) => const Visualizar_Remedio(),
+        'perfil_idoso': (context) => const PerfilIdoso()
       },
     );
   }

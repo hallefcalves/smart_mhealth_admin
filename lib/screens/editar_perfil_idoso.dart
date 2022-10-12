@@ -6,12 +6,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
+import 'package:smart_mhealth_admin/components/box_edit_remedio.dart';
 import 'package:smart_mhealth_admin/components/box_remedio.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
-import 'package:smart_mhealth_admin/screens/editar_perfil_idoso.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
+import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/util/sessao.dart';
 
@@ -19,15 +20,15 @@ import '../http/cuidador/cuidador.dart';
 import '../http/idoso/idoso.dart';
 import '../http/idoso/web_idoso.dart';
 
-class PerfilIdoso extends StatefulWidget {
-  const PerfilIdoso({Key? key}) : super(key: key);
+class EditarPerfilIdoso extends StatefulWidget {
+  const EditarPerfilIdoso({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _PerfilIdoso createState() => _PerfilIdoso();
+  _EditarPerfilIdoso createState() => _EditarPerfilIdoso();
 }
 
-class _PerfilIdoso extends State<PerfilIdoso> {
+class _EditarPerfilIdoso extends State<EditarPerfilIdoso> {
   @override
   void initState() {
     super.initState();
@@ -87,10 +88,8 @@ class _PerfilIdoso extends State<PerfilIdoso> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
-              readOnly: true,
-              controller: nameController,
+              readOnly: false,
               autofocus: true,
-              focusNode: AlwaysEnabledFocusNode(),
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'E-mail',
@@ -116,10 +115,8 @@ class _PerfilIdoso extends State<PerfilIdoso> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
-              readOnly: true,
-              controller: nameController,
+              readOnly: false,
               autofocus: true,
-              focusNode: AlwaysEnabledFocusNode(),
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'Número de Telefone',
@@ -145,10 +142,8 @@ class _PerfilIdoso extends State<PerfilIdoso> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: TextFormField(
-              readOnly: true,
-              controller: nameController,
+              readOnly: false,
               autofocus: true,
-              focusNode: AlwaysEnabledFocusNode(),
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'Telefone Secundário',
@@ -177,8 +172,8 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                 "Remédios: ",
                 style: TextStyle(fontSize: 16),
               )),
-          BoxRemedio(),
-          BoxRemedio(),
+          BoxEditRemedio(),
+          BoxEditRemedio(),
           Column(
             children: [
               Center(
@@ -187,28 +182,30 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                   child: Row(
                     children: [
                       ElevatedButton(
-                          onPressed: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const EditarPerfilIdoso(),
-                                  ),
-                                )
-                              },
+                          onPressed: () =>
+                              {realizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  MyTheme.defaultTheme.primaryColor,
+                                  Color.fromARGB(255, 236, 141, 141),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 45, vertical: 15)),
-                          child: const Text('Editar')),
+                          child: const Text(
+                            'Deletar',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 37, 37, 37)),
+                          )),
                       Text("   "),
                       ElevatedButton(
                           onPressed: () => {
-                                //Tela de associar remedio e agenda com idoso (com comboBox)
-                              },
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PerfilIdoso(),
+                                  ),
+                                )
+                              }, //popuc code e others
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   MyTheme.defaultTheme.primaryColor,
@@ -216,7 +213,7 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 35, vertical: 15)),
-                          child: const Text('+ Remédio')),
+                          child: const Text('Concluir')),
                     ],
                   ),
                 ),
