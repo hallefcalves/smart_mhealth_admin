@@ -176,7 +176,7 @@ class _Login extends State<Login> {
                 onPressed: () => {},
                 label: const Text('Google'),
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: MyTheme.defaultTheme.primaryColor, 
+                  foregroundColor: MyTheme.defaultTheme.primaryColor,
                   backgroundColor: MyTheme.defaultTheme.backgroundColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),

@@ -19,21 +19,21 @@ class BarcodeScanner {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-      debugPrint(barcodeScanRes);
+          '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
       _result = await verRemedioAPI(barcodeScanRes);
       decoded = JSON.parse(_result);
-      debugPrint(decoded.toString());
-      if (decoded != null) {
-        RegExpMatch? match =
-            expNome.firstMatch(decoded["description"].toString());
-        RegExpMatch? matchQuan =
-            expQuantidade.firstMatch(decoded["description"].toString());
-        globals.remedioNome = match![0]!;
-        globals.qtd = matchQuan![0]!;
-      }
+
+        debugPrint(barcodeScanRes);
+      
+
+        debugPrint(decoded.description);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
+    }
+
+    if (decoded != null) {
+      RegExpMatch? match = expNome.firstMatch(decoded["description"].toString());
+      globals.remedioNome = match![0]! ;
     }
   }
 }
