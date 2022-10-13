@@ -55,11 +55,11 @@ class DrawerCustom extends StatelessWidget {
                       child: FutureBuilder(
                           future: carregaUserLogado(),
                           //initialData : "{}",
-                          builder: (context, AsyncSnapshot<String?> snapshot) {
+                          builder: (context, AsyncSnapshot<Cuidador?> snapshot) {
                             List<Widget> children;
                             if (snapshot.hasData) {
                               children = <Widget>[
-                                Text(snapshot.data ?? "Name",
+                                Text("${(snapshot.data ?? Cuidador()).name??"Name"} - ${(snapshot.data ?? Cuidador()).codigo??"cod"}",
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 10,
@@ -376,9 +376,9 @@ class DrawerCustom extends StatelessWidget {
     );
   }
 
-  Future<String?> carregaUserLogado() async {
+  Future<Cuidador?> carregaUserLogado() async {
     Cuidador usuario = await Sessao.obterUser();
-    return usuario.name;
+    return usuario;
   }
 
   realizaLogOff(context) {

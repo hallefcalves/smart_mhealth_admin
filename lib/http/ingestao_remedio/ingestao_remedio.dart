@@ -8,7 +8,7 @@ class RemedioIngestao {
   int? qtdPilulas;
   String? dataValidade;
   String? refIdoso;
-
+  String? refRemedioCuidador;
 
   static String obtemJson(dado){
     return json.encode({
@@ -23,7 +23,8 @@ class RemedioIngestao {
       "lote": {"type": "Text", "value": dado.lote},
       "qtdPilulas": {"type": "Integer", "value": dado.qtdPilulas},
       "dataValidade": {"type": "date", "value": dado.dataValidade},
-      "refIdoso": {"type": "Relationship", "value": dado.refIdoso}
+      "refIdoso": {"type": "Relationship", "value": dado.refIdoso},
+      "refRemedioCuidador": {"type": "Relationship", "value": dado.refRemedioCuidador}
     });
   }
 
@@ -37,6 +38,7 @@ class RemedioIngestao {
     r.qtdPilulas = dados['qtdPilulas']['value'];
     r.dataValidade = dados['dataValidade']['value'];
     r.refIdoso = dados['refIdoso']['value'];
+    r.refRemedioCuidador = dados['refRemedioCuidador']['value'];
     return r;
   }
 

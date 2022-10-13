@@ -14,7 +14,7 @@ class Cuidador {
   List? refIdosos = [];
   List? refAgendas = [];
   String? imagem;
-  int? codigo;
+  String? codigo;
   String? senha;
 
   Map<String, dynamic> toJson() {
@@ -42,6 +42,8 @@ class Cuidador {
       dado.id = "urn:ngsi-ld:cuidador:$idUnico";
     }
 
+    String codigo = dado.id.toString().substring(dado.id.toString().length-4);
+
     return json.encode({
       "id": dado.id,
       "type": "cuidador",
@@ -51,7 +53,7 @@ class Cuidador {
       "tel": {"type": "Text", "value": dado.tel ?? ""},
       "tel2": {"type": "Text", "value": dado.tel2 ?? ""},
       /*"refIdosos": txtIdosos,*/
-      "codigo": {"type": "Integer", "value": "106283"}
+      "codigo": {"type": "string", "value": codigo}
     });
   }
 
@@ -79,9 +81,9 @@ class Cuidador {
     r.email = dados['email']['value'];
     r.senha = dados['senha']['value'];
     r.tel = dados['tel']['value'];
+    r.codigo = dados['codigo']['value'];
     //r.tel2 = dados['qtdPilulas']['value'];
     //r.imagem = dados['imagem']['value'];
-    //for each idoso
     return r;
   }
 }

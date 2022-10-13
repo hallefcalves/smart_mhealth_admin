@@ -61,7 +61,7 @@ class Idoso {
   }
 
   static getCodigoIdoso(idBase){
-    return "someValue";//change
+    return idBase.toString().substring(idBase.toString().length-4);
   }
 
   static Idoso obtemIdoso(json) {
@@ -72,6 +72,7 @@ class Idoso {
     r.email = dados['email']['value'];
     r.tel = dados['lote']['value'];
     r.tel2 = dados['qtdPilulas']['value'];
+    r.refCuidador = dados['refCuidador']['value'];
     return r;
   }
 
@@ -86,6 +87,7 @@ class Idoso {
       r.email = dado['email']['value'];
       r.tel = dado['tel']['value'];
       r.tel2 = dado['tel2']['value'];
+      r.refCuidador = dado['refCuidador']['value'];
       idosos.add(r);
     }
     return idosos;
