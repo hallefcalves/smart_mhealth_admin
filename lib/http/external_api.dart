@@ -18,20 +18,19 @@ Future<String> verRemedioAPI(gtin) async {
 }
 
 Future<String> procurarBula(name) async {
-  var urlRemedio =
-      Uri.parse("https://bula.vercel.app/pesquisar?nome=$name&pagina=1");
+  RegExp expNome = RegExp('[A-Za-z0-9]+');
+  RegExpMatch? match = expNome.firstMatch(name);
+  var urlRemedio = Uri.parse(
+      "https://bula.vercel.app/pesquisar?nome=${match![0]!}&pagina=1");
   var res = await http.get(urlRemedio);
   if (res.statusCode != 200) {
     throw Exception('http.get error: statusCode= ${res.statusCode}');
   }
   var decode = JSON.parse(res.body);
-  print(decode);
   var id = decode["content"][0]["idBulaProfissionalProtegido"].toString();
-  id = id.replaceAll(RegExp(r'"'),'');
-  print(id);
+  id = id.replaceAll(RegExp(r'"'), '');
   var urlBula =
       "https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/$id/?Authorization=";
-  print(urlBula);
   return urlBula;
 }
 

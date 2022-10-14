@@ -1,6 +1,4 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/box_remedio.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
@@ -9,11 +7,7 @@ import 'package:smart_mhealth_admin/screens/criar_alarme.dart';
 import 'package:smart_mhealth_admin/screens/editar_perfil_idoso.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
-import 'package:smart_mhealth_admin/util/sessao.dart';
-
-import '../http/cuidador/cuidador.dart';
 import '../http/idoso/idoso.dart';
-import '../http/idoso/web_idoso.dart';
 
 class PerfilIdoso extends StatefulWidget {
   const PerfilIdoso({Key? key, required this.idoso}) : super(key: key);

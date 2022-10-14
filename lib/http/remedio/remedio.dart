@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:smart_mhealth_admin/http/external_api.dart';
-
 import '../web.dart';
 
 class Remedio {

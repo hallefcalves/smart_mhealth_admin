@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
@@ -113,10 +112,7 @@ class Orion {
   static deletaEntidade(id, tipo) async {
     var urll = 'http://${Orion.url}:1026/v2/entities/$id';
     debugPrint(urll);
-    var headers = {
-      'fiware-service': 'helixiot',
-      'fiware-servicepath': '/'
-    };
+    var headers = {'fiware-service': 'helixiot', 'fiware-servicepath': '/'};
     var request = http.Request('DELETE', Uri.parse(urll));
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();

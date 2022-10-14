@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_mhealth_admin/http/ingestao_remedio/ingestao_remedio.dart';
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';

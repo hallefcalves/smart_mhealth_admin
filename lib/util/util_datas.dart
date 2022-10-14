@@ -1,7 +1,4 @@
 
-import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
-
 class UtilDatas {
   static DateTime horaParaData(int hora, int min) {
     return DateTime.utc(0, 1, 1, hora, min);

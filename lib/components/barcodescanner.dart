@@ -43,9 +43,6 @@ class BarcodeScanner {
       } else {
         globals.qtd = matchQtd.first[0].toString();
       }
-
-      print(globals.remedioNome);
-      print(globals.qtd);
     }
   }
 }

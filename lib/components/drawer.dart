@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
-import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
-import 'package:smart_mhealth_admin/screens/visualizar_remedio.dart';
 import 'package:smart_mhealth_admin/screens/login.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/screens/perfil_cuidador.dart';

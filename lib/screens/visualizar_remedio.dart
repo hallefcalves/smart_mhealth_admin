@@ -1,13 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/barcodescanner.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
-import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
 import 'package:smart_mhealth_admin/http/external_api.dart';
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
@@ -17,7 +13,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import '../globals.dart' as globals;
 import '../components/alertdialog.dart';
-import '../util/sessao.dart';
 import 'dart:isolate';
 import 'dart:ui';
 import 'package:permission_handler/permission_handler.dart';
@@ -46,9 +41,6 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
     IsolateNameServer.registerPortWithName(
         _port.sendPort, 'downloader_send_port');
     _port.listen((dynamic data) {
-      String id = data[0];
-      DownloadTaskStatus status = data[1];
-      int progress = data[2];
       setState(() {});
     });
 
