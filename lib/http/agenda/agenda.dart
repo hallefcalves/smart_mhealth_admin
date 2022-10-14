@@ -30,6 +30,9 @@ class Agenda {
   static Agenda obtemAgenda(json){
     var dados = jsonDecode(json);
     Agenda r = Agenda();
+    if (dados is List){
+      dados = dados[0];
+    }
     r.id = dados['id'];
     r.frequencia = DateTime.parse(dados['frequencia']['value']);
     r.horarioInicio = DateTime.parse(dados['horarioInicio']['value']);

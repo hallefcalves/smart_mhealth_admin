@@ -2,41 +2,40 @@ import 'dart:convert';
 
 class Alarme {
   String? id;
-  String? name;
-  DateTime? horarioInicio;
-  String? remedio;
-  int? qtdPilulas;
-  String? dataValidade;
+  String? refRemedio;
   String? refIdoso;
+  String? refAgenda;
+  int? tentativas;
+  DateTime? ultimoConsumo;
 
 
   static String obtemJson(dado){
     return json.encode({
       "id": dado.id,
-      "type": "remedio",
-      "name": {"type": "string", "value": dado.name},
-      "imagem": {
-        "type": "string",
-        "value":
-        dado.imagem
+      "type": "alarme",
+      "refRemedio": {"type": "Relationship", "value": dado.refRemedio},
+      "refIdoso": {
+        "type": "Relationship",
+        "value": dado.refIdoso
       },
-      "lote": {"type": "Text", "value": dado.lote},
-      "qtdPilulas": {"type": "Integer", "value": dado.qtdPilulas},
-      "dataValidade": {"type": "date", "value": dado.dataValidade},
-      "refIdoso": {"type": "Relationship", "value": dado.refIdoso}
+      "refAgenda": {"type": "Relationship", "value": dado.refAgenda},
+      "tentativas": {"type": "Integer", "value": dado.tentativas},
+      "ultimoConsumo": {"type": "date", "value": dado.ultimoConsumo}
     });
   }
 
-  static Alarme obtemRemedio(json){
+  static Alarme obtemAlarme(json){
     var dados = jsonDecode(json);
-    Alarme r = Alarme();
+    Alarme r = Alarme();    
+    if (dados is List){
+      dados = dados[0];
+    }
     r.id = dados['id'];
-    r.name = dados['name']['value'];
-    r.horarioInicio = dados['imagem']['value'];
-    r.remedio = dados['lote']['value'];
-    r.qtdPilulas = dados['qtdPilulas']['value'];
-    r.dataValidade = dados['dataValidade']['value'];
+    r.refRemedio = dados['refRemedio']['value'];
     r.refIdoso = dados['refIdoso']['value'];
+    r.refAgenda = dados['refAgenda']['value'];
+    r.tentativas = dados['tentativas']['value'];
+    r.ultimoConsumo = dados['ultimoConsumo']['value'];
     return r;
   }
 

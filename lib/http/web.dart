@@ -15,7 +15,7 @@ class Orion {
     var request = http.Request(
         'GET',
         Uri.parse(
-            'http://$url:1026/v2/entities/?id=$codigo/'));
+            'http://$url:1026/v2/entities/$codigo'));
     //request.body = '''''';
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
