@@ -4,6 +4,7 @@ import 'package:smart_mhealth_admin/components/barcodescanner.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
+import 'package:smart_mhealth_admin/http/external_api.dart';
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
@@ -363,11 +364,15 @@ class _CadastroRemedio extends State<CadastroRemedio> {
   realizaCadastro(context) async {
     var dadosRemedio = Remedio();
 
+    dadosRemedio.bula = await procurarBula(nameController.text);
+    
     dadosRemedio.name = nameController.text;
     dadosRemedio.dataValidade = dataValidadeController.text;
     dadosRemedio.lote = loteController.text;
     dadosRemedio.qtdPilulas = qtdController.text;
     dadosRemedio.mensagem = msgController.text;
+    
+    print(dadosRemedio.bula);
 
     Cuidador user = await Sessao.obterUser();
     dadosRemedio.refCuidador = user.id;

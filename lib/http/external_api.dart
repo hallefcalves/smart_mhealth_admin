@@ -26,10 +26,17 @@ Future<String> procurarBula(name) async {
   }
   var decode = JSON.parse(res.body);
   var id = decode["content"][0]["idBulaProfissionalProtegido"];
-  var urlBula = Uri.parse("https://bula.vercel.app/bula?id=$id");
-  var res2 = await http.get(urlBula);
-  var decode2 = JSON.parse(res2.body);
-  return decode2["pdf"].toString();
+  print(id);
+  var urlBula =
+      "https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/$id/?Authorization=";
+  print(urlBula);
+  return urlBula;
+  // debugPrint(id.toString());
+  // var res2 = await http.get(Uri.https("https://bula.vercel.app/bula?id=$id"));
+  // debugPrint(res2.toString());
+  // var decode2 = JSON.parse(res2.body);
+  // print(decode2);
+  // return decode2["pdf"].toString();
 }
 
 class TextUp extends StatefulWidget {

@@ -20,7 +20,8 @@ class Remedio {
       dado.id = "urn:ngsi-ld:remedio:${Orion.createUniqueId()}";
     }
 
-    dado.bula = procurarBula(dado.name);
+    
+    print(dado.bula);
 
     return json.encode({
       "id": dado.id,
