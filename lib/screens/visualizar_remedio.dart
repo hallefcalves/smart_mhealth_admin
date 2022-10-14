@@ -29,9 +29,9 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
     super.initState();
     nameController.addListener(_checkIfFieldIsEmpty);
     qtdController.addListener(_checkIfFieldIsEmpty);
-    nameController.text = widget.remedio.name??"err";
-    dataValidadeController.text = widget.remedio.dataValidade??"";
-    loteController.text = widget.remedio.lote??"err";
+    nameController.text = widget.remedio.name ?? "err";
+    dataValidadeController.text = widget.remedio.dataValidade ?? "";
+    loteController.text = widget.remedio.lote ?? "err";
     qtdController.text = widget.remedio.qtdPilulas.toString();
   }
 
@@ -120,7 +120,8 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
               child: Center(
                   child: Text(
                 nameController.text,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ))),
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 0, 40, 0),
@@ -283,6 +284,36 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
           ),
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
+            child: TextFormField(
+              //controller: nameController,
+              autofocus: true,
+              maxLines: 5,
+              readOnly: true,
+              focusNode: AlwaysEnabledFocusNode(),
+              obscureText: false,
+              decoration: InputDecoration(
+                labelText: 'Mensagem',
+                hintText: 'Texto',
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: MyTheme.defaultTheme.primaryColor),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(4.0),
+                    topRight: Radius.circular(4.0),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  color: MyTheme.defaultTheme.primaryColor,
+                  width: 2,
+                )),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(40, 20, 40, 0),
             child: Stack(
               children: [
                 Align(
@@ -332,7 +363,8 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
                         child: FaIcon(
                           FontAwesomeIcons.filePdf,
                           color: MyTheme.defaultTheme.primaryColor,

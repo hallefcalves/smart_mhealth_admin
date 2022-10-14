@@ -97,7 +97,7 @@ class CardIdoso extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 26, 0, 28),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 26, 0, 0),
                   child: Text(
                     idoso.name ?? 'Severina Pereira',
                     textAlign: TextAlign.center,
@@ -105,6 +105,16 @@ class CardIdoso extends StatelessWidget {
                         fontFamily: GoogleFonts.inter().fontFamily,
                         fontSize: 24,
                         color: textColor),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(90, 6, 0, 10),
+                  child: Align(
+                    child: Text(
+                      "Código: A7E1",
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Stack(
