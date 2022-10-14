@@ -7,8 +7,8 @@ import 'package:smart_mhealth_admin/http/external_api.dart';
 import '../globals.dart' as globals;
 
 class BarcodeScanner {
-  RegExp expNome = RegExp('([a-zA-Z]+( [a-zA-Z]+)+)');
-  RegExp expQuantidade = RegExp('[A-Za-z0-9]+');
+  RegExp expNome = RegExp('[A-Za-z0-9]+');
+  RegExp expQuantidade = RegExp('[0-9]+');
 
   String _result = '';
 
@@ -23,17 +23,27 @@ class BarcodeScanner {
       _result = await verRemedioAPI(barcodeScanRes);
       decoded = JSON.parse(_result);
 
-        debugPrint(barcodeScanRes);
-      
+      debugPrint(barcodeScanRes);
 
-        debugPrint(decoded.description);
+      debugPrint(decoded.description);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
 
     if (decoded != null) {
-      RegExpMatch? match = expNome.firstMatch(decoded["description"].toString());
-      globals.remedioNome = match![0]! ;
+      RegExpMatch? match =
+          expNome.firstMatch(decoded["description"].toString());
+      Iterable<RegExpMatch> matchQtd =
+          expQuantidade.allMatches(decoded["description"].toString());
+      globals.remedioNome = match![0]!;
+      if (matchQtd.length > 1) {
+        globals.qtd = matchQtd.last[0].toString();
+      } else {
+        globals.qtd = matchQtd.first[0].toString();
+      }
+
+      print(globals.remedioNome);
+      print(globals.qtd);
     }
   }
 }
