@@ -107,13 +107,13 @@ class CardIdoso extends StatelessWidget {
                         color: textColor),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(90, 6, 0, 10),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(90, 6, 0, 10),
                   child: Align(
                     child: Text(
-                      "Código: A7E1",
+                      "Código: ${idoso.codigo??""}",
                       style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -129,7 +129,7 @@ class CardIdoso extends StatelessWidget {
                           maxLines: 10,
                           autofocus: true,
                           readOnly: true,
-                          focusNode: new AlwaysEnabledFocusNode(),
+                          focusNode: AlwaysEnabledFocusNode(),
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Próximos Alarmes',
