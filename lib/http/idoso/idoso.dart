@@ -21,7 +21,7 @@ class Idoso {
     }
 
     if(dado.codigo==null || dado.codigo==""){
-      dado.codigo = getCodigoIdoso(dado.refCuidador);
+      dado.codigo = getCodigoIdoso(dado.id);
     }
 
     var txtRemedios = [];
@@ -56,12 +56,12 @@ class Idoso {
         "type": "Relationships", "value": txtIngestaoRemedio
       },
       "refCuidador": {"type": "Relationship", "value": dado.refCuidador},
-      "codigo": {"type": "Integer", "value": dado.codigo}
+      "codigo": {"type": "string", "value": dado.codigo}
     });
   }
 
   static getCodigoIdoso(idBase){
-    return idBase.toString().substring(idBase.toString().length-4);
+    return idBase.toString().substring(idBase.toString().length-32, idBase.toString().length-32+4);
   }
 
   static Idoso obtemIdoso(json) {
@@ -70,9 +70,10 @@ class Idoso {
     r.id = dados['id'];
     r.name = dados['name']['value'];
     r.email = dados['email']['value'];
-    r.tel = dados['lote']['value'];
-    r.tel2 = dados['qtdPilulas']['value'];
+    r.tel = dados['tel']['value'];
+    r.tel2 = dados['tel2']['value'];
     r.refCuidador = dados['refCuidador']['value'];
+    r.codigo = dados['codigo']['value'];
     return r;
   }
 
@@ -88,6 +89,7 @@ class Idoso {
       r.tel = dado['tel']['value'];
       r.tel2 = dado['tel2']['value'];
       r.refCuidador = dado['refCuidador']['value'];
+      r.codigo = dado['codigo']['value'];
       idosos.add(r);
     }
     return idosos;

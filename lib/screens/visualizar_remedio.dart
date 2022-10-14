@@ -160,7 +160,7 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 10, 0),
                     child: TextFormField(
-                      controller: loteController,
+                      controller: dataValidadeController,
                       autofocus: true,
                       readOnly: true,
                       focusNode: AlwaysEnabledFocusNode(),
@@ -192,7 +192,7 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 0, 0),
                     child: TextFormField(
-                      controller: qtdController,
+                      controller: loteController,
                       autofocus: true,
                       readOnly: true,
                       focusNode: AlwaysEnabledFocusNode(),

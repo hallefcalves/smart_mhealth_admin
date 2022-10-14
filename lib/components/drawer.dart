@@ -59,7 +59,7 @@ class DrawerCustom extends StatelessWidget {
                             List<Widget> children;
                             if (snapshot.hasData) {
                               children = <Widget>[
-                                Text("${(snapshot.data ?? Cuidador()).name??"Name"} - ${(snapshot.data ?? Cuidador()).codigo??"cod"}",
+                                Text("${(snapshot.data ?? Cuidador()).name??"Name"} ",
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 10,

@@ -365,7 +365,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
     dadosRemedio.name = nameController.text;
     dadosRemedio.dataValidade = dataValidadeController.text;
     dadosRemedio.lote = loteController.text;
-    dadosRemedio.qtdPilulas = int.parse(qtdController.text);
+    dadosRemedio.qtdPilulas = qtdController.text;
     dadosRemedio.mensagem = msgController.text;
 
     Cuidador user = await Sessao.obterUser();

@@ -7,7 +7,7 @@ class Remedio {
   String? name;
   String? imagem;
   String? lote;
-  int? qtdPilulas;
+  String? qtdPilulas;
   String? dataValidade;
   String? mensagem;
   String? refCuidador;
@@ -28,7 +28,7 @@ class Remedio {
         "value": dado.imagem
       },
       "lote": {"type": "Text", "value": dado.lote},
-      "qtdPilulas": {"type": "Integer", "value": dado.qtdPilulas},
+      "qtdPilulas": {"type": "Text", "value": dado.qtdPilulas},
       "dataValidade": {"type": "date", "value": dado.dataValidade},
       "mensagem": {"type": "Relationship", "value": dado.mensagem},
       "refCuidador": {"type": "Relationship", "value": dado.refCuidador}
@@ -61,7 +61,7 @@ class Remedio {
       r.name = dado['name']['value'];
       r.imagem = dado['imagem']['value'];
       r.lote = dado['lote']['value'];
-      r.qtdPilulas = dado['qtdPilulas']['value'];
+      r.qtdPilulas = dado['qtdPilulas']['value'].toString();
       r.dataValidade = dado['dataValidade']['value'];
       r.mensagem = dado['mensagem']['value'];
       r.refCuidador = dado['refCuidador']['value'];
