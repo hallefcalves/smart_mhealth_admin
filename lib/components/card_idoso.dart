@@ -5,6 +5,7 @@ import 'package:smart_mhealth_admin/components/flutter_flow_widgets.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
 import 'package:smart_mhealth_admin/http/idoso/idoso.dart';
 import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
+import 'package:smart_mhealth_admin/screens/criar_alarme.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 
 class CardIdoso extends StatelessWidget {
@@ -73,7 +74,12 @@ class CardIdoso extends StatelessWidget {
                       ),
                       FFButtonWidget(
                         onPressed: () {
-                          debugPrint('Button pressed ...');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CriarAlarme(),
+                            ),
+                          );
                         },
                         text: '+ Remédios',
                         options: FFButtonOptions(
@@ -111,9 +117,9 @@ class CardIdoso extends StatelessWidget {
                   padding: const EdgeInsetsDirectional.fromSTEB(90, 6, 0, 10),
                   child: Align(
                     child: Text(
-                      "Código: ${idoso.codigo??""}",
-                      style:
-                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                      "Código: ${idoso.codigo ?? ""}",
+                      style: const TextStyle(
+                          fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
