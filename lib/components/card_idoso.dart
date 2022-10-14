@@ -77,7 +77,7 @@ class CardIdoso extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => CriarAlarme(),
+                              builder: (context) => CriarAlarme(idoso: idoso,),
                             ),
                           );
                         },

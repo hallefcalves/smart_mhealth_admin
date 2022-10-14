@@ -1,23 +1,21 @@
-import 'package:brasil_fields/brasil_fields.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_mhealth_admin/http/agenda/agenda.dart';
+import 'package:smart_mhealth_admin/http/agenda/web_agenda.dart';
+import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/util/sessao.dart';
 
 import '../http/cuidador/cuidador.dart';
 import '../http/idoso/idoso.dart';
-import '../http/idoso/web_idoso.dart';
+import '../http/remedio/remedio.dart';
 
 class CriarAlarme extends StatefulWidget {
-  const CriarAlarme({Key? key}) : super(key: key);
+  const CriarAlarme({Key? key , required this.idoso}) : super(key: key);
+  final Idoso idoso;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -25,9 +23,33 @@ class CriarAlarme extends StatefulWidget {
 }
 
 class _CriarAlarme extends State<CriarAlarme> {
+  List<Remedio> remedios = [];
+  List<Agenda> agendas = [];
+  String comboRemediosValue = "";
+  String comboAgendasValue = "";
   @override
   void initState() {
     super.initState();
+  }
+
+  iniciaCombos() async {
+    if(remedios.isNotEmpty&&agendas.isNotEmpty){
+      return "";
+    }
+
+
+    Cuidador user = await Sessao.obterUser();
+
+    var jsonRemedios = await obtemListaRemedios(user.id);
+    remedios = Remedio.obtemRemedios(jsonRemedios);
+    comboRemediosValue = remedios[0].id??"";
+    var jsonAgendas = await obtemListaAgendas(user.id);
+
+    agendas = Agenda.obtemAgendas(jsonAgendas);
+    /*String txtFreq = UtilDatas.obtemStringHora(agendas[0].frequencia);
+    String txtIni = UtilDatas.obtemStringHora(agendas[0].horarioInicio);*/
+    comboAgendasValue = agendas[0].id??""; //"De $txtFreq em $txtFreq começando às $txtIni";
+    return "sucesso $comboAgendasValue $comboRemediosValue";
   }
 
   final String image = 'lib/assets/images/Logo.png';
@@ -80,17 +102,183 @@ class _CriarAlarme extends State<CriarAlarme> {
               )
             ]),
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Center(
               child: Text(
-                "Severina Pereira",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                widget.idoso.name??"",
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),
+          FutureBuilder(
+          future: iniciaCombos(),
+          builder: (context, AsyncSnapshot<dynamic> snapshot) {
+            List<Widget> children = [];
+            if (snapshot.hasData) {
+              children = [
+              DropdownButton<String>(
+                value: comboRemediosValue,
+                icon: const Icon(Icons.arrow_downward),
+                elevation: 16,
+                style: const TextStyle(color: Colors.deepPurple),
+                underline: Container(
+                  height: 2,
+                  color: Colors.deepPurpleAccent,
+                ),
+                onChanged: (String? value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    comboRemediosValue = value!;
+                  });
+                },
+                items: remedios.map<DropdownMenuItem<String>>((Remedio value) {
+                  return DropdownMenuItem<String>(
+                    value: value.id,
+                    child: Text(value.name??""),
+                  );
+                }).toList(),
+              ),
+              DropdownButton<String>(
+                value: comboAgendasValue,
+                icon: const Icon(Icons.arrow_downward),
+                elevation: 16,
+                style: const TextStyle(color: Colors.deepPurple),
+                underline: Container(
+                  height: 2,
+                  color: Colors.deepPurpleAccent,
+                ),
+                onChanged: (String? value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    comboAgendasValue = value!;
+                  });
+                },
+                items: agendas.map<DropdownMenuItem<String>>((Agenda value) {
+                  return DropdownMenuItem<String>(
+                    value: value.id,
+                    child: Text(value.obtemTexto()),
+                  );
+                }).toList(),
+              ),
+              Center(
+                child: Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
+                  child: Row(
+                    children: [
+                      ElevatedButton(
+                          onPressed: () =>
+                              {realizaCadastro()}, //popuc code e others
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  MyTheme.defaultTheme.primaryColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 30, vertical: 10)),
+                          child: const Text('+ Concluir')),
+                    ],
+                  ),
+                ),
+              )
+            ];
+            } else if (snapshot.hasError) {
+              children = <Widget>[
+                const Icon(Icons.error_outline,color: Colors.red, size: 60,),
+                  Padding(padding: const EdgeInsets.only(top: 16),child: Text('Error: ${snapshot.error}'),),
+              ];
+            } 
+
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: children,
+              ),
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
+  realizaCadastro() async {
+    /*var dadosIdoso = Idoso();
+    //dadosIdoso.senha = passwordController.text;
+    dadosIdoso.email = emailController.text;
+    dadosIdoso.name = nameController.text;
+    //todo obter id do cuidador logado
+    //
+    /*dynamic user = await SessionManager().get("user");
+    dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());*/
+    Cuidador user = await Sessao.obterUser();
+    dadosIdoso.refCuidador = user.id;
+    criaIdoso(dadosIdoso).then((value) => showDialog<void>(
+        context: context,
+        builder: (context) => CustomAlertDialog(
+            "Sucesso",
+            "Criado com sucesso",
+            "Ok",
+            "",
+            const IconData(0x41, fontFamily: 'Roboto'),
+            navegaConclui)));*/
+    debugPrint("$comboAgendasValue - $comboRemediosValue");
+  }
+
+  navegaConclui() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const MeusCuidados()));
+  }
+}
+
+/*
+
           Column(
             children: [
+              DropdownButton<String>(
+                value: comboRemediosValue,
+                icon: const Icon(Icons.arrow_downward),
+                elevation: 16,
+                style: const TextStyle(color: Colors.deepPurple),
+                underline: Container(
+                  height: 2,
+                  color: Colors.deepPurpleAccent,
+                ),
+                onChanged: (String? value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    comboRemediosValue = value!;
+                  });
+                },
+                items: remedios.map<DropdownMenuItem<String>>((Remedio value) {
+                  return DropdownMenuItem<String>(
+                    value: value.id,
+                    child: Text(value.name??""),
+                  );
+                }).toList(),
+              ),
+              DropdownButton<String>(
+                value: comboAgendasValue,
+                icon: const Icon(Icons.arrow_downward),
+                elevation: 16,
+                style: const TextStyle(color: Colors.deepPurple),
+                underline: Container(
+                  height: 2,
+                  color: Colors.deepPurpleAccent,
+                ),
+                onChanged: (String? value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    comboAgendasValue = value!;
+                  });
+                },
+                items: agendas.map<DropdownMenuItem<String>>((Agenda value) {
+                  return DropdownMenuItem<String>(
+                    value: value.id,
+                    child: Text(value.obtemTexto()),
+                  );
+                }).toList(),
+              ),
               Center(
                 child: Padding(
                   padding:
@@ -113,36 +301,4 @@ class _CriarAlarme extends State<CriarAlarme> {
                 ),
               )
             ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  realizaCadastro() async {
-    var dadosIdoso = Idoso();
-    //dadosIdoso.senha = passwordController.text;
-    dadosIdoso.email = emailController.text;
-    dadosIdoso.name = nameController.text;
-    //todo obter id do cuidador logado
-    //
-    /*dynamic user = await SessionManager().get("user");
-    dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());*/
-    Cuidador user = await Sessao.obterUser();
-    dadosIdoso.refCuidador = user.id;
-    criaIdoso(dadosIdoso).then((value) => showDialog<void>(
-        context: context,
-        builder: (context) => CustomAlertDialog(
-            "Sucesso",
-            "Criado com sucesso",
-            "Ok",
-            "",
-            const IconData(0x41, fontFamily: 'Roboto'),
-            navegaConclui)));
-  }
-
-  navegaConclui() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const MeusCuidados()));
-  }
-}
+          ), */

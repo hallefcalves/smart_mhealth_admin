@@ -1,15 +1,11 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/box_remedio.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
+import 'package:smart_mhealth_admin/screens/criar_alarme.dart';
 import 'package:smart_mhealth_admin/screens/editar_perfil_idoso.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
@@ -181,8 +177,8 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                 "Remédios: ",
                 style: TextStyle(fontSize: 16),
               )),
-          BoxRemedio(),
-          BoxRemedio(),
+          const BoxRemedio(),
+          const BoxRemedio(),
           Column(
             children: [
               Center(
@@ -208,10 +204,16 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 45, vertical: 15)),
                           child: const Text('Editar')),
-                      Text("   "),
+                      const Text("   "),
                       ElevatedButton(
                           onPressed: () => {
-                                //Tela de associar remedio e agenda com idoso (com comboBox)
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                         CriarAlarme(idoso: widget.idoso,),
+                                  ),
+                                )
                               },
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
@@ -233,7 +235,7 @@ class _PerfilIdoso extends State<PerfilIdoso> {
   }
 
   realizaCadastro() async {
-    var dadosIdoso = Idoso();
+    /*var dadosIdoso = Idoso();
     //dadosIdoso.senha = passwordController.text;
     dadosIdoso.email = emailController.text;
     //dadosIdoso.name = nameController.text;
@@ -251,7 +253,7 @@ class _PerfilIdoso extends State<PerfilIdoso> {
             "Ok",
             "",
             const IconData(0x41, fontFamily: 'Roboto'),
-            navegaConclui)));
+            navegaConclui)));*/
   }
 
   navegaConclui() {

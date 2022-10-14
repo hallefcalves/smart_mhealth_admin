@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../../util/util_datas.dart';
 import '../web.dart';
 
 class Agenda {
@@ -8,6 +9,12 @@ class Agenda {
   int? repeticoesAdiar;
   int? minutosAdiar;
   String? refCuidador;
+
+  obtemTexto(){
+    String txtFreq = UtilDatas.obtemStringHora(frequencia);
+    String txtIni = UtilDatas.obtemStringHora(horarioInicio);
+    return "De $txtFreq em $txtFreq começando às $txtIni";
+  }
 
   //todo: ajustar datas
   static String obtemJson(dado){

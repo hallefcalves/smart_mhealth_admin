@@ -7,6 +7,7 @@ import 'package:smart_mhealth_admin/screens/cadastro_agenda.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_cuidador.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_remedio.dart';
 import 'package:smart_mhealth_admin/screens/colaboradores.dart';
+import 'package:smart_mhealth_admin/screens/criar_alarme.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/screens/visualizar_remedio.dart';
 import 'package:smart_mhealth_admin/screens/login.dart';
@@ -29,7 +30,7 @@ class Smartmhealth extends StatelessWidget {
     return MaterialApp(
       title: 'Smartmhealth',
       theme: MyTheme.defaultTheme,
-      initialRoute: '/menu',
+      initialRoute: '/criar_alarme',
       routes: {
         '/': (context) => const Login(),
         '/cadastro_admin': (context) => const CadastroAdmin(),
@@ -44,7 +45,8 @@ class Smartmhealth extends StatelessWidget {
         '/cadastro_agenda': (context) => const CadastroAgenda(),
         '/relatorios': (context) => const Relatorios(),
         '/colaboradores': (context) => const Colaboradores(),
-        '/visualizar_remedio': (context) => VisualizarRemedio(remedio: Remedio())
+        '/visualizar_remedio': (context) => VisualizarRemedio(remedio: Remedio()),
+        '/criar_alarme': (context) => CriarAlarme(idoso: Idoso(),)
       },
     );
   }
