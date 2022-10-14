@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/barcodescanner.dart';
@@ -5,14 +8,19 @@ import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
 import 'package:smart_mhealth_admin/http/cuidador/cuidador.dart';
+import 'package:smart_mhealth_admin/http/external_api.dart';
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
 import 'package:smart_mhealth_admin/screens/listagem_remedios.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import '../globals.dart' as globals;
 import '../components/alertdialog.dart';
 import '../util/sessao.dart';
+import 'dart:isolate';
+import 'dart:ui';
+import 'package:permission_handler/permission_handler.dart';
 
 class VisualizarRemedio extends StatefulWidget {
   const VisualizarRemedio({Key? key, required this.remedio}) : super(key: key);
@@ -24,8 +32,9 @@ class VisualizarRemedio extends StatefulWidget {
 }
 
 class _VisualizarRemedio extends State<VisualizarRemedio> {
+  final ReceivePort _port = ReceivePort();
   @override
-  void initState() {
+  initState() {
     super.initState();
     nameController.addListener(_checkIfFieldIsEmpty);
     qtdController.addListener(_checkIfFieldIsEmpty);
@@ -33,13 +42,23 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
     dataValidadeController.text = widget.remedio.dataValidade ?? "";
     loteController.text = widget.remedio.lote ?? "err";
     qtdController.text = widget.remedio.qtdPilulas.toString();
+    IsolateNameServer.registerPortWithName(
+        _port.sendPort, 'downloader_send_port');
+    _port.listen((dynamic data) {
+      String id = data[0];
+      DownloadTaskStatus status = data[1];
+      int progress = data[2];
+      setState(() {});
+    });
+
+    FlutterDownloader.registerCallback(downloadCallback);
   }
 
   @override
   void dispose() {
     // Clean up the controller when the widget is removed from the widget tree.
     // This also removes the _checkIfFieldIsEmpty listener.
-    nameController.dispose();
+    IsolateNameServer.removePortNameMapping('downloader_send_port');
     super.dispose();
   }
 
@@ -48,6 +67,17 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
       nameController.text = globals.remedioNome;
       qtdController.text = globals.qtd;
     }
+  }
+
+  static void downloadCallback(
+      String id, DownloadTaskStatus status, int progress) {
+    if (kDebugMode) {
+      print(
+          'Background Isolate Callback: task ($id) is in status ($status) and process ($progress)');
+    }
+    final SendPort send =
+        IsolateNameServer.lookupPortByName('downloader_send_port')!;
+    send.send([id, status, progress]);
   }
 
   final String image = 'lib/assets/images/Logo.png';
@@ -349,7 +379,7 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
                   child: Row(
                     children: [
                       ElevatedButton(
-                        onPressed: () => {},
+                        onPressed: () => {_baixaBula(nameController.text)},
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             foregroundColor: Colors.transparent,
@@ -399,5 +429,22 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
         ],
       ),
     );
+  }
+}
+
+_baixaBula(text) async {
+  var url = await procurarBula(text);
+  if (await Permission.storage.request().isGranted) {
+    await FlutterDownloader.enqueue(
+      url: url,
+      headers: {}, // optional: header send with url (auth token etc)
+      savedDir: '/storage/emulated/0/Download/',
+      fileName: 'Bula$text.pdf',
+      showNotification:
+          true, // show download progress in status bar (for Android)
+      openFileFromNotification: true,
+    ); // click on notification to open downloaded file (for Android)
+  } else {
+    debugPrint('Permission Denied');
   }
 }

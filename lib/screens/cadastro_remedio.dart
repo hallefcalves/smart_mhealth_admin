@@ -43,6 +43,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
     if (globals.remedioNome != '' && globals.qtd != '') {
       nameController.text = globals.remedioNome;
       qtdController.text = globals.qtd;
+      setState(() {});
     }
   }
 
@@ -364,15 +365,11 @@ class _CadastroRemedio extends State<CadastroRemedio> {
   realizaCadastro(context) async {
     var dadosRemedio = Remedio();
 
-    dadosRemedio.bula = await procurarBula(nameController.text);
-    
     dadosRemedio.name = nameController.text;
     dadosRemedio.dataValidade = dataValidadeController.text;
     dadosRemedio.lote = loteController.text;
     dadosRemedio.qtdPilulas = qtdController.text;
     dadosRemedio.mensagem = msgController.text;
-    
-    print(dadosRemedio.bula);
 
     Cuidador user = await Sessao.obterUser();
     dadosRemedio.refCuidador = user.id;
