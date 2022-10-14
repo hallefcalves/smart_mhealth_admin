@@ -42,6 +42,7 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
     dataValidadeController.text = widget.remedio.dataValidade ?? "";
     loteController.text = widget.remedio.lote ?? "err";
     qtdController.text = widget.remedio.qtdPilulas.toString();
+
     IsolateNameServer.registerPortWithName(
         _port.sendPort, 'downloader_send_port');
     _port.listen((dynamic data) {
@@ -406,29 +407,59 @@ class _VisualizarRemedio extends State<VisualizarRemedio> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(130, 20, 130, 0),
-            child: ElevatedButton(
-              onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => const ListagemRemedios())))
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: MyTheme.defaultTheme.primaryColor,
-                minimumSize: const Size(80, 40),
-                maximumSize: const Size(80, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+          const SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => {
+                  deletaRemedio(widget.remedio.id).then((value) =>
+                      showDialog<void>(
+                          context: context,
+                          builder: (context) => CustomAlertDialog(
+                              "Deletado",
+                              "Deletado com sucesso",
+                              "Ok",
+                              "",
+                              const IconData(0x41, fontFamily: 'Roboto'),
+                              navegaConclui)))
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: MyTheme.defaultTheme.errorColor,
+                  minimumSize: const Size(90, 40),
+                  maximumSize: const Size(90, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
+                child: const Text('Excluir'),
               ),
-              child: const Text('Concluir'),
-            ),
+              const SizedBox(
+                width: 30,
+              ),
+              ElevatedButton(
+                onPressed: () => {navegaConclui()},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: MyTheme.defaultTheme.primaryColor,
+                  minimumSize: const Size(90, 40),
+                  maximumSize: const Size(90, 40),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text('Concluir'),
+              ),
+            ],
           ),
         ],
       ),
     );
+  }
+
+  navegaConclui() {
+    Navigator.push(context,
+        MaterialPageRoute(builder: ((context) => const ListagemRemedios())));
   }
 }
 

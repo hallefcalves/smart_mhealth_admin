@@ -45,10 +45,10 @@ class ListagemRemedios extends StatelessWidget {
                 List<Widget> children;
                 if (snapshot.hasData) {
                   List<Remedio> lista = Remedio.obtemRemedios(snapshot.data);
-                  
+
                   children = lista.map((strone){
-                        return CardRemedio(strone);
-                      }).toList();
+                    return CardRemedio(strone);
+                  }).toList();
                 } else if (snapshot.hasError) {
                   children = <Widget>[
                     const Icon(
@@ -76,15 +76,15 @@ class ListagemRemedios extends StatelessWidget {
                 }
                 if(children.isEmpty){
                   return Center(
-                  child: Padding(
-                      padding: const EdgeInsets.only(top: 22, bottom: 22),
-                      child: Text(
-                    'Cadastre remédios para começar!',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: MyTheme.defaultTheme.primaryColor,
+                      child: Padding(
+                    padding: const EdgeInsets.only(top: 22, bottom: 22),
+                    child: Text(
+                      'Cadastre remédios para começar!',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: MyTheme.defaultTheme.primaryColor,
                       ),),
                   ));
                 }
@@ -122,12 +122,12 @@ class ListagemRemedios extends StatelessWidget {
   }
 
   Future<String?> carregaRemedios() async {
-      /*dynamic user = await SessionManager().get("user");
+    /*dynamic user = await SessionManager().get("user");
       var idCuidador = Cuidador.obtemIdSession(user.toString());
       print(idCuidador);*/
-      Cuidador user = await Sessao.obterUser();
-      debugPrint(user.id);
-      return obtemListaRemedios(user.id);
+    Cuidador user = await Sessao.obterUser();
+    debugPrint(user.id);
+    return obtemListaRemedios(user.id);
   }
 
 }
