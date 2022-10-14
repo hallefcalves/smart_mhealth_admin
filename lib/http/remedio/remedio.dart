@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:smart_mhealth_admin/http/external_api.dart';
+
 import '../web.dart';
 
 class Remedio {
@@ -11,31 +13,30 @@ class Remedio {
   String? dataValidade;
   String? mensagem;
   String? refCuidador;
+  String? bula;
 
-
-  static String obtemJson(dado){
-
-    if(dado.id==null || dado.id==""){
+  static String obtemJson(dado) {
+    if (dado.id == null || dado.id == "") {
       dado.id = "urn:ngsi-ld:remedio:${Orion.createUniqueId()}";
     }
+
+    dado.bula = procurarBula(dado.name);
 
     return json.encode({
       "id": dado.id,
       "type": "remedio",
       "name": {"type": "string", "value": dado.name},
-      "imagem": {
-        "type": "string",
-        "value": dado.imagem
-      },
+      "imagem": {"type": "string", "value": dado.imagem},
       "lote": {"type": "Text", "value": dado.lote},
       "qtdPilulas": {"type": "Integer", "value": dado.qtdPilulas},
       "dataValidade": {"type": "date", "value": dado.dataValidade},
       "mensagem": {"type": "Relationship", "value": dado.mensagem},
-      "refCuidador": {"type": "Relationship", "value": dado.refCuidador}
+      "refCuidador": {"type": "Relationship", "value": dado.refCuidador},
+      "linkBula": {"type": "String", "value": dado.bula}
     });
   }
 
-  static Remedio obtemRemedio(json){
+  static Remedio obtemRemedio(json) {
     var dados = jsonDecode(json);
     Remedio r = Remedio();
     r.id = dados['id'];
@@ -46,14 +47,15 @@ class Remedio {
     r.dataValidade = dados['dataValidade']['value'];
     r.mensagem = dados['mensagem']['value'];
     r.refCuidador = dados['refCuidador']['value'];
+    r.bula = dados['linkBula']['value'];
     return r;
   }
 
   static List<Remedio> obtemRemedios(json) {
     var dados = jsonDecode(json);
     List<Remedio> remedios = [];
-    
-    for(final dado in dados){
+
+    for (final dado in dados) {
       Remedio r = Remedio();
       //print(dado);
       //print(dado['name']);
@@ -69,7 +71,6 @@ class Remedio {
     }
     return remedios;
   }
-
 }
 
 /*{

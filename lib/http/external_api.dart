@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:g_json/g_json.dart';
 import 'package:http/http.dart' as http;
 
 Future<String> verRemedioAPI(gtin) async {
@@ -14,6 +15,21 @@ Future<String> verRemedioAPI(gtin) async {
     throw Exception('http.get error: statusCode= ${res.statusCode}');
   }
   return (res.body);
+}
+
+Future<String> procurarBula(name) async {
+  var urlRemedio =
+      Uri.parse("https://bula.vercel.app/pesquisar?nome=$name&pagina=1");
+  var res = await http.get(urlRemedio);
+  if (res.statusCode != 200) {
+    throw Exception('http.get error: statusCode= ${res.statusCode}');
+  }
+  var decode = JSON.parse(res.body);
+  var id = decode["content"][0]["idBulaProfissionalProtegido"];
+  var urlBula = Uri.parse("https://bula.vercel.app/bula?id=$id");
+  var res2 = await http.get(urlBula);
+  var decode2 = JSON.parse(res2.body);
+  return decode2["pdf"].toString();
 }
 
 class TextUp extends StatefulWidget {

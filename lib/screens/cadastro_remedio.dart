@@ -34,6 +34,7 @@ class _CadastroRemedio extends State<CadastroRemedio> {
     // Clean up the controller when the widget is removed from the widget tree.
     // This also removes the _checkIfFieldIsEmpty listener.
     nameController.dispose();
+    qtdController.dispose();
     super.dispose();
   }
 
@@ -382,7 +383,6 @@ class _CadastroRemedio extends State<CadastroRemedio> {
   }
 
   navegaConclui() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const ListagemRemedios()));
+    Navigator.pop(context);
   }
 }
