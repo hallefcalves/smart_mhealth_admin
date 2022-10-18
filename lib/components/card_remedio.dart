@@ -6,7 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../screens/visualizar_remedio.dart';
 import '../http/remedio/remedio.dart';
-import '../screens/cadastro_remedio.dart';
 
 // ignore: must_be_immutable
 class CardRemedio extends StatelessWidget {

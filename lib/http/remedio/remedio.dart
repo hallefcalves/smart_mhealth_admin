@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:smart_mhealth_admin/http/external_api.dart';
-
 import '../web.dart';
 
 class Remedio {
@@ -13,15 +10,11 @@ class Remedio {
   String? dataValidade;
   String? mensagem;
   String? refCuidador;
-  String? bula;
 
   static String obtemJson(dado) {
     if (dado.id == null || dado.id == "") {
       dado.id = "urn:ngsi-ld:remedio:${Orion.createUniqueId()}";
     }
-
-    
-    print(dado.bula);
 
     return json.encode({
       "id": dado.id,
@@ -32,8 +25,7 @@ class Remedio {
       "qtdPilulas": {"type": "Text", "value": dado.qtdPilulas},
       "dataValidade": {"type": "date", "value": dado.dataValidade},
       "mensagem": {"type": "Relationship", "value": dado.mensagem},
-      "refCuidador": {"type": "Relationship", "value": dado.refCuidador},
-      "linkBula": {"type": "String", "value": dado.bula}
+      "refCuidador": {"type": "Relationship", "value": dado.refCuidador}
     });
   }
 
@@ -48,7 +40,6 @@ class Remedio {
     r.dataValidade = dados['dataValidade']['value'];
     r.mensagem = dados['mensagem']['value'];
     r.refCuidador = dados['refCuidador']['value'];
-    r.bula = dados['linkBula']['value'];
     return r;
   }
 

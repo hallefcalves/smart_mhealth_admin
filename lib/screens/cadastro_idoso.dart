@@ -1,7 +1,6 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
@@ -286,7 +285,7 @@ class _CadastroIdoso extends State<CadastroIdoso> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 35, vertical: 15)),
                           child: const Text('+ Código')),
-                      Text("     "),
+                      const Text("     "),
                       ElevatedButton(
                           onPressed: () =>
                               {realizaCadastro()}, //popuc code e others

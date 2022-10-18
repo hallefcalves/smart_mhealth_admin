@@ -45,6 +45,9 @@ dependencies:
   iconify: ^0.0.1
   colorful_iconify_flutter: ^0.0.2
   brasil_fields: ^1.6.0
+  url_launcher_web: ^2.0.13
+  flutter_downloader: ^1.8.4
+  permission_handler: ^10.1.0
 
 dev_dependencies:
   flutter_test:

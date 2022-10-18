@@ -50,6 +50,7 @@ class MyTheme {
       scaffoldBackgroundColor: background,
       cardColor: background,
       backgroundColor:background, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: facebookColor),
+      errorColor: errorPressed
     );
   }
 }

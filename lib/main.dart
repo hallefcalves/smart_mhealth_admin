@@ -1,5 +1,5 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import 'package:smart_mhealth_admin/screens/agendas.dart';
 import 'package:smart_mhealth_admin/screens/cadastro_admin.dart';
@@ -20,7 +20,18 @@ import 'package:smart_mhealth_admin/themes/color.dart';
 
 import 'http/idoso/idoso.dart';
 
-void main() => runApp(const Smartmhealth());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Plugin must be initialized before using
+  FlutterDownloader.initialize(
+      debug:
+          true, // optional: set to false to disable printing logs to console (default: true)
+      ignoreSsl:
+          true // option: set to false to disable working with http links (default: false)
+      );
+  runApp(const Smartmhealth());
+}
 
 class Smartmhealth extends StatelessWidget {
   const Smartmhealth({Key? key}) : super(key: key);
@@ -45,8 +56,11 @@ class Smartmhealth extends StatelessWidget {
         '/cadastro_agenda': (context) => const CadastroAgenda(),
         '/relatorios': (context) => const Relatorios(),
         '/colaboradores': (context) => const Colaboradores(),
-        '/visualizar_remedio': (context) => VisualizarRemedio(remedio: Remedio()),
-        '/criar_alarme': (context) => CriarAlarme(idoso: Idoso(),)
+        '/visualizar_remedio': (context) =>
+            VisualizarRemedio(remedio: Remedio()),
+        '/criar_alarme': (context) => CriarAlarme(
+              idoso: Idoso(),
+            )
       },
     );
   }

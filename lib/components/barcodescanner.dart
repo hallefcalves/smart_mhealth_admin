@@ -38,12 +38,11 @@ class BarcodeScanner {
       globals.remedioNome = match![0]!;
       if (matchQtd.length > 1) {
         globals.qtd = matchQtd.last[0].toString();
+        globals.remedioNome =
+            '${globals.remedioNome} ${matchQtd.first[0]}MG';
       } else {
         globals.qtd = matchQtd.first[0].toString();
       }
-
-      print(globals.remedioNome);
-      print(globals.qtd);
     }
   }
 }

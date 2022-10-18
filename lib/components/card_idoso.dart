@@ -28,7 +28,7 @@ class CardIdoso extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 21),
-                  child: Container(
+                  child: SizedBox(
                     width: 175,
                     height: 175,
                     child: Container(

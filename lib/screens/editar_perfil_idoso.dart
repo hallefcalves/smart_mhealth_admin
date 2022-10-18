@@ -1,18 +1,9 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/box_edit_remedio.dart';
-import 'package:smart_mhealth_admin/components/box_remedio.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_mhealth_admin/components/readonly_focus.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
-import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/util/sessao.dart';
 
@@ -172,8 +163,8 @@ class _EditarPerfilIdoso extends State<EditarPerfilIdoso> {
                 "Remédios: ",
                 style: TextStyle(fontSize: 16),
               )),
-          BoxEditRemedio(),
-          BoxEditRemedio(),
+          const BoxEditRemedio(),
+          const BoxEditRemedio(),
           Column(
             children: [
               Center(
@@ -186,7 +177,7 @@ class _EditarPerfilIdoso extends State<EditarPerfilIdoso> {
                               {realizaCadastro()}, //popuc code e others
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  Color.fromARGB(255, 236, 141, 141),
+                                  const Color.fromARGB(255, 236, 141, 141),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
@@ -196,7 +187,7 @@ class _EditarPerfilIdoso extends State<EditarPerfilIdoso> {
                             style: TextStyle(
                                 color: Color.fromARGB(255, 37, 37, 37)),
                           )),
-                      Text("   "),
+                      const Text("   "),
                       ElevatedButton(
                           onPressed: () => {
                                 /*Navigator.push(
