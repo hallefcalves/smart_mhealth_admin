@@ -1,10 +1,13 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_mhealth_admin/components/alertdialog.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/box_remedio.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:smart_mhealth_admin/components/readonly_focus.dart';
+import 'package:smart_mhealth_admin/http/alarme/alarme.dart';
+import 'package:smart_mhealth_admin/http/alarme/web_alarme.dart';
 import 'package:smart_mhealth_admin/screens/criar_alarme.dart';
 import 'package:smart_mhealth_admin/screens/editar_perfil_idoso.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
@@ -30,9 +33,9 @@ class _PerfilIdoso extends State<PerfilIdoso> {
     nome = widget.idoso.name??"";
     emailController.text = widget.idoso.email??"";
     telefoneController.text = widget.idoso.tel??"";
-
+    
   }
-
+  //List<Alarme> alarmes = [];
   String nome = "";
   final String image = 'lib/assets/images/Logo.png';
 
@@ -177,8 +180,60 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                 "Remédios: ",
                 style: TextStyle(fontSize: 16),
               )),
-          const BoxRemedio(),
-          const BoxRemedio(),
+          FutureBuilder(
+              future: carregaRemediosAlarmes(),
+              builder: (context, AsyncSnapshot<List<Alarme>?> snapshot) {
+                List<Widget> children;
+                if (snapshot.hasData) {
+                  children = snapshot.data!.map((strone){
+                        return BoxRemedio(strone);
+                      }).toList();
+                } else if (snapshot.hasError) {
+                  children = <Widget>[
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  ];
+                } else {
+                  children = const <Widget>[
+                    SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: CircularProgressIndicator(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: Text('Carregando...'),
+                    ),
+                  ];
+                }
+                if(children.isEmpty){
+                  return Center(
+                  child: Padding(
+                      padding: const EdgeInsets.only(top: 22, bottom: 22),
+                      child: Text(
+                    'Nenhum remédio associado!',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: MyTheme.defaultTheme.primaryColor,
+                      ),),
+                  ));
+                }
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: children,
+                  ),
+                );
+              }),
           Column(
             children: [
               Center(
@@ -235,25 +290,12 @@ class _PerfilIdoso extends State<PerfilIdoso> {
   }
 
   realizaCadastro() async {
-    /*var dadosIdoso = Idoso();
-    //dadosIdoso.senha = passwordController.text;
-    dadosIdoso.email = emailController.text;
-    //dadosIdoso.name = nameController.text;
-    //todo obter id do cuidador logado
-    //
-    /*dynamic user = await SessionManager().get("user");
-    dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());*/
-    Cuidador user = await Sessao.obterUser();
-    dadosIdoso.refCuidador = user.id;
-    criaIdoso(dadosIdoso).then((value) => showDialog<void>(
-        context: context,
-        builder: (context) => CustomAlertDialog(
-            "Sucesso",
-            "Criado com sucesso",
-            "Ok",
-            "",
-            const IconData(0x41, fontFamily: 'Roboto'),
-            navegaConclui)));*/
+  }
+
+  Future<List<Alarme>> carregaRemediosAlarmes() async{
+    String? jsonAlarmes = await obtemListaAlarme(widget.idoso.id);
+    List<Alarme> allarmes = Alarme.obtemAlarmes(jsonAlarmes);
+    return allarmes;
   }
 
   navegaConclui() {

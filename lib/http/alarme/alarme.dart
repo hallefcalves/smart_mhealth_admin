@@ -1,15 +1,23 @@
 import 'dart:convert';
 
+import '../web.dart';
+
 class Alarme {
   String? id;
   String? refRemedio;
   String? refIdoso;
   String? refAgenda;
   int? tentativas;
-  DateTime? ultimoConsumo;
+  DateTime? ultimoConsumo = DateTime(0);//temp
 
 
   static String obtemJson(dado){
+
+    if(dado.id==null || dado.id==""){
+      var idUnico = Orion.createUniqueId();
+      dado.id = "urn:ngsi-ld:alarme:$idUnico";
+    }
+
     return json.encode({
       "id": dado.id,
       "type": "alarme",
@@ -20,7 +28,7 @@ class Alarme {
       },
       "refAgenda": {"type": "Relationship", "value": dado.refAgenda},
       "tentativas": {"type": "Integer", "value": dado.tentativas},
-      "ultimoConsumo": {"type": "date", "value": dado.ultimoConsumo}
+      "ultimoConsumo": {"type": "date", "value": dado.ultimoConsumo.toString()}
     });
   }
 
@@ -35,8 +43,25 @@ class Alarme {
     r.refIdoso = dados['refIdoso']['value'];
     r.refAgenda = dados['refAgenda']['value'];
     r.tentativas = dados['tentativas']['value'];
-    r.ultimoConsumo = dados['ultimoConsumo']['value'];
+    r.ultimoConsumo = DateTime.parse(dados['ultimoConsumo']['value']);
     return r;
+  }
+
+  static List<Alarme> obtemAlarmes(json) {
+    var dados = jsonDecode(json);
+    List<Alarme> alarmes = [];
+    
+    for(final dado in dados){
+      Alarme r = Alarme();
+      r.id = dado['id'];
+      r.refRemedio = dado['refRemedio']['value'];
+      r.refIdoso = dado['refIdoso']['value'];
+      r.refAgenda = dado['refAgenda']['value'];
+      r.tentativas = dado['tentativas']['value'];
+      r.ultimoConsumo = DateTime.parse(dado['ultimoConsumo']['value']);
+      alarmes.add(r);
+    }
+    return alarmes;
   }
 
 }

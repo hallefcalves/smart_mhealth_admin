@@ -4,11 +4,14 @@ import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
 import 'package:smart_mhealth_admin/http/agenda/agenda.dart';
 import 'package:smart_mhealth_admin/http/agenda/web_agenda.dart';
+import 'package:smart_mhealth_admin/http/alarme/web_alarme.dart';
 import 'package:smart_mhealth_admin/http/remedio/web_remedio.dart';
 import 'package:smart_mhealth_admin/screens/meus_cuidados.dart';
+import 'package:smart_mhealth_admin/screens/perfil_idoso.dart';
 import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/util/sessao.dart';
 
+import '../components/alertdialog.dart';
 import '../http/cuidador/cuidador.dart';
 import '../http/idoso/idoso.dart';
 import '../http/remedio/remedio.dart';
@@ -203,17 +206,10 @@ class _CriarAlarme extends State<CriarAlarme> {
   }
 
   realizaCadastro() async {
-    /*var dadosIdoso = Idoso();
-    //dadosIdoso.senha = passwordController.text;
-    dadosIdoso.email = emailController.text;
-    dadosIdoso.name = nameController.text;
-    //todo obter id do cuidador logado
-    //
-    /*dynamic user = await SessionManager().get("user");
-    dadosIdoso.refCuidador = Cuidador.obtemIdSession(user.toString());*/
-    Cuidador user = await Sessao.obterUser();
-    dadosIdoso.refCuidador = user.id;
-    criaIdoso(dadosIdoso).then((value) => showDialog<void>(
+    Remedio remedio = remedios.firstWhere((element) => element.id==comboRemediosValue);
+    debugPrint(remedio.name);
+    debugPrint("$comboAgendasValue - $comboRemediosValue");
+    criaAlarme(widget.idoso.id, comboAgendasValue, remedio).then((value) => showDialog<void>(
         context: context,
         builder: (context) => CustomAlertDialog(
             "Sucesso",
@@ -221,13 +217,12 @@ class _CriarAlarme extends State<CriarAlarme> {
             "Ok",
             "",
             const IconData(0x41, fontFamily: 'Roboto'),
-            navegaConclui)));*/
-    debugPrint("$comboAgendasValue - $comboRemediosValue");
+            navegaConclui)));
   }
 
   navegaConclui() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const MeusCuidados()));
+        context, MaterialPageRoute(builder: (context) => PerfilIdoso(idoso:widget.idoso)));
   }
 }
 

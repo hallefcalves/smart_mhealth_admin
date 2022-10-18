@@ -4,9 +4,9 @@ import 'package:smart_mhealth_admin/http/ingestao_remedio/ingestao_remedio.dart'
 import 'package:smart_mhealth_admin/http/remedio/remedio.dart';
 import '../web.dart';
 
-criaRemedioIngestaoComBase(Remedio dadosRemedioBase, idIdoso) async {
+criaRemedioIngestaoComBase(Remedio dadosRemedioBase, idIdoso, idRemedioNovo) async {
   RemedioIngestao novoRem = RemedioIngestao();
-  novoRem.id = "urn:ngsi-ld:remedio:${Orion.createUniqueId()}";
+  novoRem.id = idRemedioNovo;
   novoRem.name = dadosRemedioBase.name;
   novoRem.imagem = dadosRemedioBase.imagem;
   novoRem.lote = dadosRemedioBase.lote;
@@ -19,3 +19,12 @@ criaRemedioIngestaoComBase(Remedio dadosRemedioBase, idIdoso) async {
 
   return Orion.criaEntidade(RemedioIngestao.obtemJson(novoRem));
 }
+
+Future<String?> obtemListaRemediosIngestao(idIdoso) async {
+  return Orion.obtemDadosQuery('?type=remedio&q=refIdoso==$idIdoso');
+}
+
+Future<String?> obtemRemedioIngestao(id) async {
+  return Orion.obtemDados(id);
+}
+

@@ -30,16 +30,17 @@ Future<String?> obtemListaAlarme(idIdoso) async {
   }
 }*/
 
-criaAlarme(idIdoso, Remedio remedio, Agenda agenda) async {
+criaAlarme(idIdoso, idAgenda, Remedio remedio) async {
   //tbm cadastra copia remedio
-  criaRemedioIngestaoComBase(remedio, idIdoso);
+  String idRemedioNovo = "urn:ngsi-ld:remedio:${Orion.createUniqueId()}";
+  criaRemedioIngestaoComBase(remedio, idIdoso, idRemedioNovo);
   Alarme alarme = Alarme();
-  alarme.refAgenda = agenda.id;
+  alarme.refAgenda = idAgenda;
   alarme.refIdoso = idIdoso;
-  alarme.refRemedio = remedio.id;
+  alarme.refRemedio = idRemedioNovo;
   alarme.tentativas = 0;
   //alarme.ultimoConsumo = "";
-  return Orion.criaEntidade(Agenda.obtemJson(alarme));
+  return Orion.criaEntidade(Alarme.obtemJson(alarme));
 }
 
 deletaAlarme(id) async {

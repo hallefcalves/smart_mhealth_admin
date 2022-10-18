@@ -34,8 +34,11 @@ class RemedioIngestao {
     });
   }
 
-  static RemedioIngestao obtemRemedio(json){
+  static RemedioIngestao obtemRemedioIngestao(json){
     var dados = jsonDecode(json);
+    if (dados is List){
+      dados = dados[0];
+    }
     RemedioIngestao r = RemedioIngestao();
     r.id = dados['id'];
     r.name = dados['name']['value'];
@@ -46,6 +49,25 @@ class RemedioIngestao {
     r.refIdoso = dados['refIdoso']['value'];
     r.refRemedioCuidador = dados['refRemedioCuidador']['value'];
     return r;
+  }
+
+  static List<RemedioIngestao> obtemRemediosIngestao(json) {
+    var dados = jsonDecode(json);
+    List<RemedioIngestao> remedios = [];
+    
+    for(final dado in dados){
+      RemedioIngestao r = RemedioIngestao();
+      r.id = dado['id'];
+      r.name = dado['name']['value'];
+      r.imagem = dado['imagem']['value'];
+      r.lote = dado['lote']['value'];
+      r.qtdPilulas = dado['qtdPilulas']['value'].toString();
+      r.dataValidade = dado['dataValidade']['value'];
+      r.refIdoso = dado['refIdoso']['value'];
+      r.refRemedioCuidador = dado['refRemedioCuidador']['value'];
+      remedios.add(r);
+    }
+    return remedios;
   }
 
 }
