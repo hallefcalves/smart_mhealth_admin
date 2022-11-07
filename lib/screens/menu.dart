@@ -16,6 +16,7 @@ import 'package:smart_mhealth_admin/themes/color.dart';
 import 'package:smart_mhealth_admin/util/sessao.dart';
 
 import '../http/cuidador/cuidador.dart';
+
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
 
@@ -30,6 +31,7 @@ class _Menu extends State<Menu> {
     super.initState();
     obtemLogado();
   }
+
   final String image = 'lib/assets/images/Logo_Verde.png';
 
   String userLogado = "";
@@ -128,7 +130,8 @@ class _Menu extends State<Menu> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => const PerfilCuidador())));
+                                builder: ((context) =>
+                                    const PerfilCuidador())));
                       },
                     ),
                     IconButton(
@@ -139,7 +142,8 @@ class _Menu extends State<Menu> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => const ListagemRemedios())));
+                                builder: ((context) =>
+                                    const ListagemRemedios())));
                       },
                     ),
                   ],
@@ -156,7 +160,7 @@ class _Menu extends State<Menu> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => const Relatorios())));
+                                builder: ((context) => Relatorios())));
                       },
                     ),
                     IconButton(
@@ -191,12 +195,15 @@ class _Menu extends State<Menu> {
           Align(
             alignment: Alignment.bottomRight,
             child: ElevatedButton(
-              onPressed: () {Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const CadastroAdmin())));},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const CadastroAdmin())));
+              },
               style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(), backgroundColor: MyTheme.defaultTheme.backgroundColor,
+                  shape: const CircleBorder(),
+                  backgroundColor: MyTheme.defaultTheme.backgroundColor,
                   padding: const EdgeInsets.all(20) // <-- Splash color
                   ),
               child: FaIcon(
@@ -214,17 +221,16 @@ class _Menu extends State<Menu> {
   obtemLogado() async {
     Cuidador user = await Sessao.obterUser();
     //print(user.id);
-    userLogado = user.name??"Nome";
-    
+    userLogado = user.name ?? "Nome";
+
     //SessionManager().get("user").then((valor) => );
   }
 
-  setLogado(valor){
+  setLogado(valor) {
     debugPrint("Valor:");
     debugPrint(valor);
     userLogado = Cuidador.obtemIdSession(valor);
     debugPrint("Id user:");
     debugPrint(userLogado);
   }
-
 }

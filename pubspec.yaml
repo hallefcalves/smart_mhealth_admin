@@ -48,6 +48,7 @@ dependencies:
   url_launcher_web: ^2.0.13
   flutter_downloader: ^1.8.4
   permission_handler: ^10.1.0
+  syncfusion_flutter_charts: ^20.3.52
 
 dev_dependencies:
   flutter_test:

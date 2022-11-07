@@ -52,11 +52,13 @@ class DrawerCustom extends StatelessWidget {
                       child: FutureBuilder(
                           future: carregaUserLogado(),
                           //initialData : "{}",
-                          builder: (context, AsyncSnapshot<Cuidador?> snapshot) {
+                          builder:
+                              (context, AsyncSnapshot<Cuidador?> snapshot) {
                             List<Widget> children;
                             if (snapshot.hasData) {
                               children = <Widget>[
-                                Text("${(snapshot.data ?? Cuidador()).name??"Name"} ",
+                                Text(
+                                    "${(snapshot.data ?? Cuidador()).name ?? "Name"} ",
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 10,
@@ -216,7 +218,7 @@ class DrawerCustom extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Relatorios(),
+                        builder: (context) => Relatorios(),
                       ),
                     );
                   },
