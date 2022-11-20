@@ -39,7 +39,7 @@ class CardIdoso extends StatelessWidget {
                         shape: BoxShape.circle,
                       ),
                       child: Image.asset(
-                        'lib/assets/images/severinapereira.jpg',
+                        'lib/assets/images/francisco.jpg',
                         scale: 2.0,
                       ),
                     ),
@@ -105,7 +105,7 @@ class CardIdoso extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 26, 0, 0),
                   child: Text(
-                    idoso.name ?? 'Severina Pereira',
+                    idoso.name ?? 'Francisco',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontFamily: GoogleFonts.inter().fontFamily,

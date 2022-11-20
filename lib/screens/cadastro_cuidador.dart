@@ -35,7 +35,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
   TextEditingController emailController = TextEditingController();
   TextEditingController telefoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,7 +124,7 @@ class _CadastroCuidador extends State<CadastroCuidador> {
                             shape: BoxShape.circle,
                           ),
                           child: Image.asset(
-                            'lib/assets/images/marianapereira.jpg',
+                            'lib/assets/images/larissa.png',
                             scale: 2.0,
                           ),
                         ),

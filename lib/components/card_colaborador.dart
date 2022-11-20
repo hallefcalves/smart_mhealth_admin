@@ -45,7 +45,7 @@ class CardColaborador extends StatelessWidget {
                         shape: BoxShape.circle,
                       ),
                       child: Image.asset(
-                        'lib/assets/images/marianapereira.jpg',
+                        'lib/assets/images/larissa.png',
                         scale: 2.0,
                       ),
                     ),
@@ -71,8 +71,7 @@ class CardColaborador extends StatelessWidget {
                 const Align(
                   alignment: AlignmentDirectional(-1.02, -0.33),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
+                    padding: EdgeInsetsDirectional.fromSTEB(123, 90, 0, 12),
                     child: FaIcon(
                       FontAwesomeIcons.penToSquare,
                       size: 20,

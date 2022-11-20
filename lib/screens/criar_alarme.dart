@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:smart_mhealth_admin/components/appbar.dart';
 import 'package:smart_mhealth_admin/components/drawer.dart';
@@ -17,7 +16,7 @@ import '../http/idoso/idoso.dart';
 import '../http/remedio/remedio.dart';
 
 class CriarAlarme extends StatefulWidget {
-  const CriarAlarme({Key? key , required this.idoso}) : super(key: key);
+  const CriarAlarme({Key? key, required this.idoso}) : super(key: key);
   final Idoso idoso;
 
   @override
@@ -36,22 +35,22 @@ class _CriarAlarme extends State<CriarAlarme> {
   }
 
   iniciaCombos() async {
-    if(remedios.isNotEmpty&&agendas.isNotEmpty){
+    if (remedios.isNotEmpty && agendas.isNotEmpty) {
       return "";
     }
-
 
     Cuidador user = await Sessao.obterUser();
 
     var jsonRemedios = await obtemListaRemedios(user.id);
     remedios = Remedio.obtemRemedios(jsonRemedios);
-    comboRemediosValue = remedios[0].id??"";
+    comboRemediosValue = remedios[0].id ?? "";
     var jsonAgendas = await obtemListaAgendas(user.id);
 
     agendas = Agenda.obtemAgendas(jsonAgendas);
     /*String txtFreq = UtilDatas.obtemStringHora(agendas[0].frequencia);
     String txtIni = UtilDatas.obtemStringHora(agendas[0].horarioInicio);*/
-    comboAgendasValue = agendas[0].id??""; //"De $txtFreq em $txtFreq começando às $txtIni";
+    comboAgendasValue =
+        agendas[0].id ?? ""; //"De $txtFreq em $txtFreq começando às $txtIni";
     return "sucesso $comboAgendasValue $comboRemediosValue";
   }
 
@@ -94,7 +93,7 @@ class _CriarAlarme extends State<CriarAlarme> {
                             shape: BoxShape.circle,
                           ),
                           child: Image.asset(
-                            'lib/assets/images/severinapereira.jpg',
+                            'lib/assets/images/francisco.png',
                             scale: 3.0,
                           ),
                         ),
@@ -109,120 +108,135 @@ class _CriarAlarme extends State<CriarAlarme> {
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Center(
               child: Text(
-                widget.idoso.name??"",
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                widget.idoso.name ?? "",
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),
           FutureBuilder(
-          future: iniciaCombos(),
-          builder: (context, AsyncSnapshot<dynamic> snapshot) {
-            List<Widget> children = [];
-            if (snapshot.hasData) {
-              children = [
-              DropdownButton<String>(
-                value: comboRemediosValue,
-                icon: const Icon(Icons.arrow_downward),
-                elevation: 16,
-                style: const TextStyle(color: Colors.deepPurple),
-                underline: Container(
-                  height: 2,
-                  color: Colors.deepPurpleAccent,
-                ),
-                onChanged: (String? value) {
-                  // This is called when the user selects an item.
-                  setState(() {
-                    comboRemediosValue = value!;
-                  });
-                },
-                items: remedios.map<DropdownMenuItem<String>>((Remedio value) {
-                  return DropdownMenuItem<String>(
-                    value: value.id,
-                    child: Text(value.name??""),
-                  );
-                }).toList(),
-              ),
-              DropdownButton<String>(
-                value: comboAgendasValue,
-                icon: const Icon(Icons.arrow_downward),
-                elevation: 16,
-                style: const TextStyle(color: Colors.deepPurple),
-                underline: Container(
-                  height: 2,
-                  color: Colors.deepPurpleAccent,
-                ),
-                onChanged: (String? value) {
-                  // This is called when the user selects an item.
-                  setState(() {
-                    comboAgendasValue = value!;
-                  });
-                },
-                items: agendas.map<DropdownMenuItem<String>>((Agenda value) {
-                  return DropdownMenuItem<String>(
-                    value: value.id,
-                    child: Text(value.obtemTexto()),
-                  );
-                }).toList(),
-              ),
-              Center(
-                child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(130, 30, 130, 20),
-                  child: Row(
-                    children: [
-                      ElevatedButton(
-                          onPressed: () =>
-                              {realizaCadastro()}, //popuc code e others
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  MyTheme.defaultTheme.primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 10)),
-                          child: const Text('+ Concluir')),
-                    ],
-                  ),
-                ),
-              )
-            ];
-            } else if (snapshot.hasError) {
-              children = <Widget>[
-                const Icon(Icons.error_outline,color: Colors.red, size: 60,),
-                  Padding(padding: const EdgeInsets.only(top: 16),child: Text('Error: ${snapshot.error}'),),
-              ];
-            } 
+              future: iniciaCombos(),
+              builder: (context, AsyncSnapshot<dynamic> snapshot) {
+                List<Widget> children = [];
+                if (snapshot.hasData) {
+                  children = [
+                    DropdownButton<String>(
+                      value: comboRemediosValue,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.deepPurple),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.deepPurpleAccent,
+                      ),
+                      onChanged: (String? value) {
+                        // This is called when the user selects an item.
+                        setState(() {
+                          comboRemediosValue = value!;
+                        });
+                      },
+                      items: remedios
+                          .map<DropdownMenuItem<String>>((Remedio value) {
+                        return DropdownMenuItem<String>(
+                          value: value.id,
+                          child: Text(value.name ?? ""),
+                        );
+                      }).toList(),
+                    ),
+                    DropdownButton<String>(
+                      value: comboAgendasValue,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.deepPurple),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.deepPurpleAccent,
+                      ),
+                      onChanged: (String? value) {
+                        // This is called when the user selects an item.
+                        setState(() {
+                          comboAgendasValue = value!;
+                        });
+                      },
+                      items:
+                          agendas.map<DropdownMenuItem<String>>((Agenda value) {
+                        return DropdownMenuItem<String>(
+                          value: value.id,
+                          child: Text(value.obtemTexto()),
+                        );
+                      }).toList(),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            130, 30, 130, 20),
+                        child: Row(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () =>
+                                    {realizaCadastro()}, //popuc code e others
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        MyTheme.defaultTheme.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30, vertical: 10)),
+                                child: const Text('+ Concluir')),
+                          ],
+                        ),
+                      ),
+                    )
+                  ];
+                } else if (snapshot.hasError) {
+                  children = <Widget>[
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  ];
+                }
 
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: children,
-              ),
-            );
-          }),
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: children,
+                  ),
+                );
+              }),
         ],
       ),
     );
   }
 
   realizaCadastro() async {
-    Remedio remedio = remedios.firstWhere((element) => element.id==comboRemediosValue);
+    Remedio remedio =
+        remedios.firstWhere((element) => element.id == comboRemediosValue);
     debugPrint(remedio.name);
     debugPrint("$comboAgendasValue - $comboRemediosValue");
-    criaAlarme(widget.idoso.id, comboAgendasValue, remedio).then((value) => showDialog<void>(
-        context: context,
-        builder: (context) => CustomAlertDialog(
-            "Sucesso",
-            "Criado com sucesso",
-            "Ok",
-            "",
-            const IconData(0x41, fontFamily: 'Roboto'),
-            navegaConclui)));
+    criaAlarme(widget.idoso.id, comboAgendasValue, remedio).then((value) =>
+        showDialog<void>(
+            context: context,
+            builder: (context) => CustomAlertDialog(
+                "Sucesso",
+                "Criado com sucesso",
+                "Ok",
+                "",
+                const IconData(0x41, fontFamily: 'Roboto'),
+                navegaConclui)));
   }
 
   navegaConclui() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => PerfilIdoso(idoso:widget.idoso)));
+        context,
+        MaterialPageRoute(
+            builder: (context) => PerfilIdoso(idoso: widget.idoso)));
   }
 }
 

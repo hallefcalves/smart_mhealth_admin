@@ -61,7 +61,7 @@ class _EditarPerfilIdoso extends State<EditarPerfilIdoso> {
                         shape: BoxShape.circle,
                       ),
                       child: Image.asset(
-                        'lib/assets/images/severinapereira.jpg',
+                        'lib/assets/images/francisco.png',
                         scale: 3.0,
                       ),
                     ),

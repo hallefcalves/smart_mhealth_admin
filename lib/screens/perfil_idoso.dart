@@ -24,11 +24,11 @@ class _PerfilIdoso extends State<PerfilIdoso> {
   @override
   void initState() {
     super.initState();
-    nome = widget.idoso.name??"";
-    emailController.text = widget.idoso.email??"";
-    telefoneController.text = widget.idoso.tel??"";
-    
+    nome = widget.idoso.name ?? "";
+    emailController.text = widget.idoso.email ?? "";
+    telefoneController.text = widget.idoso.tel ?? "";
   }
+
   //List<Alarme> alarmes = [];
   String nome = "";
   final String image = 'lib/assets/images/Logo.png';
@@ -66,7 +66,7 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                         shape: BoxShape.circle,
                       ),
                       child: Image.asset(
-                        'lib/assets/images/severinapereira.jpg',
+                        'lib/assets/images/francisco.png',
                         scale: 3.0,
                       ),
                     ),
@@ -179,9 +179,9 @@ class _PerfilIdoso extends State<PerfilIdoso> {
               builder: (context, AsyncSnapshot<List<Alarme>?> snapshot) {
                 List<Widget> children;
                 if (snapshot.hasData) {
-                  children = snapshot.data!.map((strone){
-                        return BoxRemedio(strone);
-                      }).toList();
+                  children = snapshot.data!.map((strone) {
+                    return BoxRemedio(strone);
+                  }).toList();
                 } else if (snapshot.hasError) {
                   children = <Widget>[
                     const Icon(
@@ -207,18 +207,19 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                     ),
                   ];
                 }
-                if(children.isEmpty){
+                if (children.isEmpty) {
                   return Center(
-                  child: Padding(
-                      padding: const EdgeInsets.only(top: 22, bottom: 22),
-                      child: Text(
-                    'Nenhum remédio associado!',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: MyTheme.defaultTheme.primaryColor,
-                      ),),
+                      child: Padding(
+                    padding: const EdgeInsets.only(top: 22, bottom: 22),
+                    child: Text(
+                      'Nenhum remédio associado!',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: MyTheme.defaultTheme.primaryColor,
+                      ),
+                    ),
                   ));
                 }
                 return Center(
@@ -259,8 +260,9 @@ class _PerfilIdoso extends State<PerfilIdoso> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                         CriarAlarme(idoso: widget.idoso,),
+                                    builder: (context) => CriarAlarme(
+                                      idoso: widget.idoso,
+                                    ),
                                   ),
                                 )
                               },
@@ -283,10 +285,9 @@ class _PerfilIdoso extends State<PerfilIdoso> {
     );
   }
 
-  realizaCadastro() async {
-  }
+  realizaCadastro() async {}
 
-  Future<List<Alarme>> carregaRemediosAlarmes() async{
+  Future<List<Alarme>> carregaRemediosAlarmes() async {
     String? jsonAlarmes = await obtemListaAlarme(widget.idoso.id);
     List<Alarme> allarmes = Alarme.obtemAlarmes(jsonAlarmes);
     return allarmes;
